@@ -1,0 +1,87 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;;
+}
+
+.card{
+    background-color: #007bff;
+    color: white;    
+    width: 350px;       
+    overflow: hidden;
+    padding: 30px;
+    line-height: 45px;
+}
+
+.card-website{
+    margin: 20px;
+}
+
+.card-gioithieu{
+    margin: 20px;
+}
+
+.card-tuyensinh{
+    margin: 20px;
+}
+
+.card-điachi{
+    margin: 20px;
+}
+
+.card-website h2{
+    font-weight: 400;
+    line-height: 21.6px;
+    margin-bottom: 10px;
+}
+
+.card-website a{
+    color: white;
+    text-decoration: none;
+    line-height: 35px;
+    font-weight: 400;
+}
+
+.card-gioithieu h2{
+    font-weight: 400;
+    line-height: 21.6px;
+    margin-bottom: 10px;
+}
+
+.card-gioithieu a{
+    color: white;
+    text-decoration: none;
+}
+
+.card-tuyensinh h2{
+    font-weight: 400;
+    line-height: 21.6px;
+    margin-bottom: 10px;
+}
+
+
+.card-tuyensinh a{
+    color: white;
+    text-decoration: none;
+}
+
+.card-điachi h2{
+    font-weight: 400;
+    line-height: 21.6px;
+    margin-bottom: 10px;
+}
+
+.card-điachi a{
+    color: white;
+    text-decoration: none;
+}
+
+.card-điachi p i{
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
