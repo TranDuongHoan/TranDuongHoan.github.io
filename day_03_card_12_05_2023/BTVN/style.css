@@ -47,6 +47,10 @@ body{
     font-weight: 400;
 }
 
+.card-website a:hover{
+    color: darkgray;
+}
+
 .card-gioithieu h2{
     font-weight: 400;
     line-height: 21.6px;
@@ -56,6 +60,10 @@ body{
 .card-gioithieu a{
     color: white;
     text-decoration: none;
+}
+
+.card-gioithieu a:hover{
+    color: darkgray;
 }
 
 .card-tuyensinh h2{
@@ -70,6 +78,10 @@ body{
     text-decoration: none;
 }
 
+.card-tuyensinh a:hover{
+    color: darkgray;
+}
+
 .card-điachi h2{
     font-weight: 400;
     line-height: 21.6px;
@@ -79,6 +91,10 @@ body{
 .card-điachi a{
     color: white;
     text-decoration: none;
+}
+
+.card-điachi a:hover{
+    color: darkgray;
 }
 
 .card-điachi p i{
