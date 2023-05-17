@@ -1,0 +1,106 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container1{        
+    
+    margin: auto;       
+}
+
+.row1{
+    background-color: #30598c;
+    min-height: 42px;
+    display: flex;
+    flex-wrap: wrap; 
+      
+}
+
+.footage-item{    
+    flex: 1;
+      
+}
+
+body{
+    font-family: 'Roboto', sans-serif;;
+}
+
+.footer{
+    
+    color: white;    
+    overflow: hidden;
+    padding: 40px;
+    line-height: 50px;
+    
+}
+
+.footer-website h2{
+    font-weight: 400;
+    line-height: 21.6px;
+    margin-bottom: 10px;
+}
+
+.footer-website a{
+    color: white;
+    text-decoration: none;
+    line-height: 35px;
+    font-weight: 400;
+}
+
+.footer-website a:hover{
+    color: darkgray;
+}
+
+.footer-gioithieu h2{
+    font-weight: 400;
+    line-height: 21.6px;
+    margin-bottom: 10px;
+}
+
+.footer-gioithieu a{
+    color: white;
+    text-decoration: none;
+}
+
+.footer-gioithieu a:hover{
+    color: darkgray;
+}
+
+.footer-tuyensinh h2{
+    font-weight: 400;
+    line-height: 21.6px;
+    margin-bottom: 10px;
+}
+
+
+.footer-tuyensinh a{
+    color: white;
+    text-decoration: none;
+}
+
+.footer-tuyensinh a:hover{
+    color: darkgray;
+}
+
+.footer-điachi h2{
+    font-weight: 400;
+    line-height: 21.6px;
+    margin-bottom: 10px;
+}
+
+.footer-điachi a{
+    color: white;
+    text-decoration: none;
+    
+}
+
+.footer-điachi a:hover{
+    color: darkgray;
+}
+
+.footer-điachi p i{
+    margin-top: 20px;
+    margin-left: 3px;
+    margin-right: 10px;
+}
