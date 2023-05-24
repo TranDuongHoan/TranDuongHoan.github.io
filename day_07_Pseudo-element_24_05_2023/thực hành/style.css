@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.box{
+    background-color: tomato;
+    color: white;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box i{
+    font-size: 100px;
+    animation: hear 1s 1s 10;
+    
+}
+
+@keyframes hear{
+    0%{
+        font-size: 100px
+    }
+    100%{
+        font-size: 200px
+    }
+}
+
