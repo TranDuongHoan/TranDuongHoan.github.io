@@ -42,7 +42,7 @@ body{
 }
 
 .box-content1{
-    flex: 1
+    flex: 1;
     max-width: 100%;
     box-shadow: 2px 4px 5px rgba(0,0,0,.2);
     border-radius: 4px;
@@ -210,12 +210,12 @@ ul li span{
 
 .footer{
     background-color: #30598c;
-    height: 600px;
+    height: 500px;
     color: white;
     font-size: 18px;
     overflow: hidden;
-    padding: 40px;
-    line-height: 50px;
+    padding: 10px 10px;
+    line-height: 45px;
 }
 
 .footer-container{
@@ -225,8 +225,8 @@ ul li span{
 
 .footer-item{
     display: flex;
-    justify-content: space-around;    
-    padding-top: 50px;
+    justify-content: space-between;    
+    padding-top: 60px;
     font-size: 18px;
 }
 
