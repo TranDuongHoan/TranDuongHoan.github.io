@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bánh bơ bồng bềnh</title>
+
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <div id="container_body">
+    <div id="container_body_wrapper">
+      <div id="container_header">
+        <div class="header">
+          <div class="logo">
+            <a href="./BBBB logo-01.png">
+              <img src="./BBBB logo-01.png" alt="logo" />
+            </a>
+          </div>
+
+          <div class="search">
+            <form class="form" name="header_search" action="/search_result.php" method="get"
+              enctype="multipart/form-data" onsubmit="checkForm(this.name,arrCtrlSearch);return false;">
+              <div class="wrap">
+                <div class="line_block">
+                  <div class="keyword">
+                    <input type="text" id="keyword" name="keyword" value="Nhập từ khóa.." />
+                  </div>
+                  <div class="search_type">
+                    <select name="location" id="">
+                      <option value="0">Sản phẩm</option>
+                      <option value="1">Thông tin</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="button_search">
+                  <input type="submit" value="Tìm kiếm" />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="hot_line">
+            <p>
+              Hotline đặt
+              <i>Bánh sinh nhật</i>
+            </p>
+            <span class="number">Phone: 0988177838</span>
+          </div>
+          <div class="menu">
+            <ul class="main-menu">
+              <li class="menu-item">
+                <a href="" target="_self">
+                  <span><b>Trang chủ</b></span>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="" target="_self">
+                  <span><b>Đặt bánh theo yêu cầu</b></span>
+                </a>
+
+                <ul class="sub-menu">
+                  <li class="sub-menu-item">Bánh kem sinh nhật kỷ niệm</li>
+                  <li class="sub-menu-item">Bánh fodant</li>
+                  <li class="sub-menu-item">Bánh cupcake</li>
+                  <li class="sub-menu-item">Bánh in ảnh</li>
+                  <li class="sub-menu-item">Bánh Cookies</li>
+                  <li class="sub-menu-item">Bánh Cake</li>
+                  <li class="sub-menu-item">Bánh sinh nhật Whipping</li>
+                  <li class="sub-menu-item">Bảng giá bánh</li>
+                </ul>
+              </li>
+
+              <li class="menu-item">
+                <a href="" target="_self">
+                  <span><b>Hướng dẫn làm bánh</b></span>
+                </a>
+
+                <ul class="sub-menu">
+                  <li class="sub-menu-item">Hướng dẫn tự làm bánh</li>
+                  <li class="sub-menu-item">Hướng dẫn tự trang trí bánh</li>
+                  <li class="sub-menu-item">Kinh nghiệm chọn bánh</li>
+                  <li class="sub-menu-item">Kinh nghiệm làm bánh</li>
+                </ul>
+              </li>
+
+              <li class="menu-item">
+                <a href="" target="_self">
+                  <span><b>Khóa học làm bánh</b></span>
+                </a>
+
+                <ul class="sub-menu">
+                  <li class="sub-menu-item">Học làm bánh cơ bản</li>
+                  <li class="sub-menu-item">Lớp bánh chuyên đề</li>
+                  <li class="sub-menu-item">Học làm bánh miễn phí</li>
+                </ul>
+              </li>
+
+              <li class="menu-item">
+                <a href="" target="_self">
+                  <span><b>Liên hệ</b></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="container_content">
+        <div id="container_content_center_left">
+          <div class="container_content_center_left">
+            <div class="slider_default">
+              <img src="./slider.jpg" alt="anh" style="max-width: 100%; position: relative;
+              bottom: 80px;">
+            </div>
+            <div class="break_module"></div>
+            <div class="hot_news">
+              <div class="normal">
+                <div class="news_left">
+                  <h3>
+                    <a href="">Mẫu bánh cưới basic xinh xắn</a>
+                  </h3>
+                  <div class="info">
+                    <div class="img">
+                      <a href="">
+                        <img src="./new_left.jpg" width="100" height="120" />
+                      </a>
+                    </div>
+                    <div class="teaser">
+                      Bánh kem đã trở thành phần không thể thiếu trong hôn lễ. Mỗi cặp đôi chuẩn bị kết hôn đều tìm và
+                      đặt một chiếc bánh kem. Như lời nguyện cầu cho cuộc hôn nhân mãi êm ấm, hạnh phúc. Mẫu bánh cưới
+                      đẹp cũng giúp khu vực sân khấu tổ chức hôn lễ thêm bắt mắt hơn. Giúp không gian thêm ngọt ngào,
+                      lãng mạn….
+                    </div>
+                  </div>
+                </div>
+                <div class="news_right">
+                  <h3>
+                    <a href="">Bánh sinh nhật công chúa Elsa</a>
+                  </h3>
+                  <div class="info">
+                    <div class="img">
+                      <img src="./new_right.jpg" alt="anh" style="max-width: 100px;" />
+                    </div>
+                    <div class="teaser">
+                      Một trong những mẫu bánh kem được các bé gái yêu thích nhất chính là bánh sinh nhật Elsa. Nàng
+                      công chúa Elsa băng giá sở hữu vẻ đẹp lộng lẫy và gây ấn tượng bởi sức mạnh phi thường, chắc chắn
+                      sẽ khiến bé yêu có một ngày sinh nhật vui vẻ, đáng nhớ.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="temp_1">
+              <div class="title_1">
+                <div class="L">
+                  <div class="R">
+                    <span>Các mẫu <strong>Bánh sinh nhật</strong> đang được nhiều
+                      người ưa thích</span>
+                  </div>
+                </div>
+              </div>
+              <div class="content hot_product">
+                <div class="normal">
+                  <div class="picture">
+                    <div class="fix_table">
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a class="tooltip" href="./1.jpg"><img src="./1.jpg" /></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="info">
+                    <a href="">Bánh
+                      sinh nhật Đô Rê Mon [MS: 10150]</a>
+                    <div class="price">350.000 VNĐ</div>
+                    <div class="stock"></div>
+                  </div>
+                </div>
+                <div class="normal">
+                  <div class="picture">
+                    <div class="fix_table">
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a class="tooltip" href="./2.jpg"><img src="./2.jpg" /></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="info">
+                    <a href="">Bánh
+                      sinh nhật Minion
+                      [MS: 10116]</a>
+                    <div class="price">280.000 VNĐ</div>
+                    <div class="stock"></div>
+                  </div>
+                </div>
+                <div class="normal">
+                  <div class="picture">
+                    <div class="fix_table">
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a class="tooltip" href="./3.jpg"><img src="./3.jpg" /></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="info">
+                    <a href="">Bánh
+                      sinh nhật bé gái và mèo con [MS: 10097]</a>
+                    <div class="price">1.000.000 VNĐ</div>
+                    <div class="stock"></div>
+                  </div>
+                </div>
+                <div class="end">
+                  <div class="picture">
+                    <div class="fix_table">
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a class="tooltip" href="./4.jpg"><img src="./4.jpg" /></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="info">
+                    <a href="">Bánh
+                      sinh nhật cost bánh socolla
+                      [MS: 10045]</a>
+                    <div class="price">500.000 VNĐ</div>
+                    <div class="stock"></div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+                <div class="normal">
+                  <div class="picture">
+                    <div class="fix_table">
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a class="tooltip" href="./5.jpg"><img src="./5.jpg" /></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="info">
+                    <a href="">Bánh sinh nhật trang trí socolla [MS: 10021]</a>
+                    <div class="price">850.000 VNĐ</div>
+                    <div class="stock"></div>
+                  </div>
+                </div>
+                <div class="normal">
+                  <div class="picture">
+                    <div class="fix_table">
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a class="tooltip" href="./6.jpg"><img src="./6.jpg" /></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="info">
+                    <a href="">Bánh
+                      sinh nhật trang trí whipping [MS: 9943]</a>
+                    <div class="price">550.000 VNĐ</div>
+                    <div class="stock"></div>
+                  </div>
+                </div>
+                <div class="normal">
+                  <div class="picture">
+                    <div class="fix_table">
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a class="tooltip" href="./7.jpg"><img src="./7.jpg" /></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="info">
+                    <a href="">Bánh
+                      sinh nhật ngôi nhà màu hồng [MS: 9941]</a>
+                    <div class="price">550.000 VNĐ</div>
+                    <div class="stock"></div>
+                  </div>
+                </div>
+                <div class="end">
+                  <div class="picture">
+                    <div class="fix_table">
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a class="tooltip" href="./8.jpg"><img src="./8.jpg" /></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="info">
+                    <a href="">Bánh sinh nhật lâu đài công chúa [MS: 9797]</a>
+                    <div class="price">950.000 VNĐ</div>
+                    <div class="stock"></div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+                <div class="normal">
+                  <div class="picture">
+                    <div class="fix_table">
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a class="tooltip" href="./9.jpg"><img src="./9.jpg" /></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="info">
+                    <a href="">Bánh
+                      sinh nhật hình những chú cún tinh nghịch [MS: 9865]</a>
+                    <div class="price">950.000 VNĐ</div>
+                    <div class="stock"></div>
+                  </div>
+                </div>
+                <div class="normal">
+                  <div class="picture">
+                    <div class="fix_table">
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a class="tooltip" href="./10.jpg"><img src="./10.jpg" /></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="info">
+                    <a href="">Bánh
+                      sinh nhật dành cho các bé 3 tuổi [MS: 9771]</a>
+                    <div class="price">950.000 VNĐ</div>
+                    <div class="stock"></div>
+                  </div>
+                </div>
+                <div class="normal">
+                  <div class="picture">
+                    <div class="fix_table">
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a class="tooltip" href="./11.jpg"><img src="./11.jpg" /></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="info">
+                    <a href="">Bánh
+                      sinh nhật viết chữ đơn giản
+                      [MS: 9472]</a>
+                    <div class="price">350.000 VNĐ</div>
+                    <div class="stock"></div>
+                  </div>
+                </div>
+                <div class="end">
+                  <div class="picture">
+                    <div class="fix_table">
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a class="tooltip" href="./12.jpg"><img src="./12.jpg" /></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="info">
+                    <a href="">Bánh
+                      sinh nhật các chú chim cánh cụt ngộ nghĩnh [MS: 9666]</a>
+                    <div class="price">950.000 VNĐ</div>
+                    <div class="stock"></div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+                <div class="normal">
+                  <div class="picture">
+                    <div class="fix_table">
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a class="tooltip" href="./13.jpg"><img src="./13.jpg" /></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="info">
+                    <a href="">Bánh
+                      sinh nhật hình những chú cá mập dễ thương [MS: 9606]</a>
+                    <div class="price">1.100.000 VNĐ</div>
+                    <div class="stock"></div>
+                  </div>
+                </div>
+                <div class="normal">
+                  <div class="picture">
+                    <div class="fix_table">
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a class="tooltip" href="./14.jpg"><img src="./14.jpg" /></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="info">
+                    <a href="">Bánh
+                      whipping sinh nhật tổng kết năm học [MS: 9569]</a>
+                    <div class="price">300.000 VNĐ</div>
+                    <div class="stock"></div>
+                  </div>
+                </div>
+                <div class="normal">
+                  <div class="picture">
+                    <div class="fix_table">
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a class="tooltip" href="./15.jpg"><img src="./15.jpg" /></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="info">
+                    <a href="">Bánh
+                      sinh nhật chú mèo dễ thương[MS: 9549]</a>
+                    <div class="price">1.000.000 VNĐ</div>
+                    <div class="stock"></div>
+                  </div>
+                </div>
+                <div class="end">
+                  <div class="picture">
+                    <div class="fix_table">
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a class="tooltip" href="./16.jpg"><img src="./16.jpg" /></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="info">
+                    <a href="">Bánh
+                      sinh nhật nàng tiên cá xinh đẹp hiện được các bé
+                      gái yêu thích [MS: 6897]</a>
+                    <div class="price">850.000 VNĐ</div>
+                    <div class="stock"></div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+                <div class="normal">
+                  <div class="picture">
+                    <div class="fix_table">
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a class="tooltip" href="./17.jpg"><img src="./17.jpg" /></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="info">
+                    <a href="">Bánh
+                      sinh nhật vô địch giải bơi cấp trường
+                      [MS: 9309]</a>
+                    <div class="price">1.350.000 VNĐ</div>
+                    <div class="stock"></div>
+                  </div>
+                </div>
+                <div class="normal">
+                  <div class="picture">
+                    <div class="fix_table">
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a class="tooltip" href="./18.jpg"><img src="./18.jpg" /></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="info">
+                    <a href="">Bánh
+                      gato sinh nhật tình yêu vĩnh cửu được các bạn yêu nhau, tỏ tình đặt nhiều nhất
+                      [MS: 3740]</a>
+                    <div class="price">350.000 VNĐ</div>
+                    <div class="stock"></div>
+                  </div>
+                </div>
+                <div class="normal">
+                  <div class="picture">
+                    <div class="fix_table">
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a class="tooltip" href="./19.jpg"><img src="./19.jpg" /></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="info">
+                    <a href="">Bánh
+                      sinh nhật tặng bạn thân [MS: 9455]</a>
+                    <div class="price">350.000 VNĐ</div>
+                    <div class="stock"></div>
+                  </div>
+                </div>
+                <div class="end">
+                  <div class="picture">
+                    <div class="fix_table">
+                      <table cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a class="tooltip" href="./20.jpg"><img src="./20.jpg" /></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="info">
+                    <a href="">Bánh
+                      gato kem sinh nhật Unicorn tặng con gái yêu thương [MS: 9300]</a>
+                    <div class="price">500.000 VNĐ</div>
+                    <div class="stock"></div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+                <div class="clear"></div>
+                <div class="show_all"><button><span><b>Xem tất cả</b></span></button></div>
+              </div>
+              <div class="bottom_1"></div>
+            </div>
+          </div>
+        </div>
+        <div id="container_content_right">
+          <div class="container_content_right">
+            <div style="margin: 0px auto 10px; width: 237px">
+              <iframe
+                src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FBanhbobongbenh&amp;width=237&amp;height=290&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=false&amp;header=true"
+                scrolling="no" frameborder="0" style="
+                    border: none;
+                    overflow: hidden;
+                    width: 230px;
+                    height: 130px;
+                  " allowtransparency="true"></iframe>
+            </div>
+            <div id="new_product_fixed">
+              <div id="new_product" class="temp_0">
+                <div class="title_0">
+                  <div class="L">
+                    <div class="R"><span>Mẫu bánh sinh nhật mới</span></div>
+                  </div>
+                </div>
+                <div class="Content new_product">
+                  <div>
+                    <div class="picture"><a class="tooltip" href="./1_right.jpg"><img src="./1_right.jpg"></a></div>
+                    <div class="info">
+                      <a href="">Bánh sinh nhật hình ô tô</a>
+                      <div class="price">350.000 VNĐ</div>
+                      <div class="stock"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="picture"><a class="tooltip" href="./2_right.jpg"><img src="./2_right.jpg"></a></div>
+                    <div class="info">
+                      <a href="">Bánh sinh nhật nàng tiên cá</a>
+                      <div class="price">350.000 VNĐ</div>
+                      <div class="stock"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="picture"><a class="tooltip" href="./3_right.jpg"><img src="./3_right.jpg"></a></div>
+                    <div class="info">
+                      <a href="">Bánh sinh nhật công chúa váy hồng</a>
+                      <div class="price">350.000 VNĐ</div>
+                      <div class="stock"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="picture"><a class="tooltip" href="./4_right.jpg"><img src="./4_right.jpg"></a></div>
+                    <div class="info">
+                      <a href="">Bánh sinh nhật cho gia đình</a>
+                      <div class="price">350.000 VNĐ</div>
+                      <div class="stock"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="picture"><a class="tooltip" href="./5_right.jpg"><img src="./5_right.jpg"></a></div>
+                    <div class="info">
+                      <a href="">Bánh sinh nhật dành cho em bé thích dưa hấu</a>
+                      <div class="price">350.000 VNĐ</div>
+                      <div class="stock"></div>
+                    </div>
+                  </div>
+                  <div class="show_all"><button><span><b>Xem tất cả</b></span>
+                  </button></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="container_footer">
+        <div class="footer">
+          <div class="info">
+            <p style="text-align: center">
+              <span style="font-size: larger">
+                <strong>
+                  <a href="">Bánh Bơ Bồng Bềnh</a>
+                </strong>
+              </span>
+            </p>
+            <p style="text-align: center">
+              Dạy làm bánh - Nhận đặt
+              <strong>Bánh cưới</strong>
+              ,
+              <strong>Bánh sinh nhật</strong>
+              ,
+              <strong>Bánh handmade 100%</strong>
+              theo yêu cầu.
+            </p>
+            <p style="text-align: center">
+              <strong>Địa chỉ:</strong>
+              Số 462 Âu Cơ - Nhật Tân - Tây Hồ - Hà Nội
+            </p>
+            <p style="text-align: center">
+              <strong>Điện thoại:</strong>
+              <span style="color: rgb(255, 0, 0)"><strong>0988177838</strong><span style="color: rgb(0, 0, 0)"><span
+                    style="font-size: small"><span style="font-family: Arial">(Zalo)</span></span></span></span>
+            </p>
+            <p style="text-align: center">
+              <strong>Số TK:</strong> 0011004248637 -
+              <strong>Chủ TK:</strong> Nguyễn Quỳnh Trang -
+              <strong>Ngân Hàng:</strong> Vietcombank - Hà Nội.
+            </p>
+            <p style="text-align: center">
+              <strong>Email:</strong>banhbobongbenh@gmail.com
+            </p>
+            <p style="text-align: center">--------------------------</p>
+            <div class="table">
+              <div class="text_left">
+                <p>
+                  <strong>Cửa hàng Bánh Bơ Bồng Bềnh</strong><br />
+                  <strong>Địa chỉ:</strong>Số 462 Âu Cơ - Nhật Tân - Tây Hồ -
+                  Hà Nội<br />
+                  <strong>Điện thoại:</strong>0988177838<br />
+                  <strong>Email:</strong>banhbobongbenh@gmail.com<br />
+                </p>
+              </div>
+              <div class="text_right">
+                <p>
+                  <strong><a href="/chinh-sach-bao-mat-thong-tin/27.shtml">CHÍNH SÁCH BẢO MẬT THÔNG TIN</a></strong>
+                </p>
+                <p>
+                  <strong><a href="/hinh-thuc-thanh-toan/28.shtml">HÌNH THỨC THANH TOÁN</a></strong>
+                </p>
+                <p>
+                  <strong><a href="/chinh-sach-van-chuyen/29.shtml">HÌNH THỨC VẬN CHUYỂN</a></strong>
+                </p>
+                <p>
+                  <strong><a href="/chinh-sach-ban-hang/30.shtml">CHÍNH SÁCH & QUY ĐỊNH CHUNG</a></strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  </div>
+</body>
+
+</html>
