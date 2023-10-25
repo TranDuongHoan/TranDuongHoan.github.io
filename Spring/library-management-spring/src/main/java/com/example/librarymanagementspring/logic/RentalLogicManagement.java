@@ -115,8 +115,8 @@ public class RentalLogicManagement {
             for (int j = i+1; j < rentalManagements.size(); j++){
                 if(rentalManagements.get(i).getReader().getName().compareToIgnoreCase(rentalManagements.get(j).getReader().getName()) > 0){
                     RentalManagement temp = rentalManagements.get(i);
-                    rentalManagements.get(i) = rentalManagements.get(j);
-                    rentalManagements.get(j) = temp;
+                    rentalManagements.set(i, rentalManagements.get(j));
+                    rentalManagements.set(j,temp);
                 }
             }
         }
