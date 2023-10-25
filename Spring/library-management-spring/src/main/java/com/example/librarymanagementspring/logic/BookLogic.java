@@ -13,6 +13,10 @@ public class BookLogic {
 
     List<Book> books = new ArrayList<>();
 
+    public List<Book> getBooks() {
+        return books;
+    }
+
     public void inputNewBook() {
         System.out.println("Bạn muốn thêm mới bao nhiêu đầu sách: ");
         int booksNumber = new Scanner(System.in).nextInt();
@@ -26,4 +30,10 @@ public class BookLogic {
     public void showBook() {
         System.out.println(books);
     }
+
+    public boolean bookIsNotEmpty() {
+        books.isEmpty();
+        return false;
+    }
+
 }

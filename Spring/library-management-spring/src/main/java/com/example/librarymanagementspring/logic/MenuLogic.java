@@ -12,9 +12,10 @@ public class MenuLogic {
 
     BookLogic bookLogic;
     ReaderLogic readerLogic;
+    RentalLogicManagement rentalLogicManagement;
 
 
-    public void menu() {
+    public void run() {
         while (true){
             showMenuContent();
             int choice = functionsChoice();
@@ -32,11 +33,14 @@ public class MenuLogic {
                     readerLogic.showReader();
                     break;
                 case 5:
-
+                    rentalLogicManagement.inputNewRental();
+                    break;
                 case 6:
-
+                    rentalLogicManagement.showRental();
+                    break;
                 case 7:
-
+                    showSortMenu();
+                    break;
                 case 8:
 
                 case 9:
@@ -74,7 +78,30 @@ public class MenuLogic {
         System.out.println("MỜI BẠN CHỌN: ");
     }
 
-
+    private void showSortMenu() {
+        System.out.println("1. Sắp xếp theo tên bạn đọc");
+        System.out.println("2. Sắp xếp theo số cuốn sách được mượn(giảm dần)");
+        System.out.println("3. Quay lại menu tổng.");
+        int choice;
+        do{
+            choice = new Scanner(System.in).nextInt();
+            if (choice>=1 && choice<=3){
+                break;
+            }
+            System.out.println("Nhập sai, mời bạn nhập lại:");
+        }
+        while (true);
+        switch (choice) {
+            case 1:
+                rentalLogicManagement.sortByReaderName();
+                break;
+            case 2:
+                rentalLogicManagement.sortByTotalBook();
+                break;
+            case 3:
+                break;
+        }
+    }
 }
 
 

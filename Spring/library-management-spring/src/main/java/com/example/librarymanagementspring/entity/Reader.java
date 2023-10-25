@@ -13,13 +13,13 @@ import java.util.Scanner;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Reader extends Person{
+public class Reader extends Person {
     int id;
     ReaderLevel level;
-}
+
 
     @Override
-    public void inputInfo(){
+    public void inputInfo() {
         super.inputInfo();
         System.out.println("Nhập loại bạn đọc: ");
         System.out.println("1. Sinh viên");
@@ -27,9 +27,9 @@ public class Reader extends Person{
         System.out.println("3. Giảng viên");
         System.out.println("MỜI BẠN CHỌN: ");
         int levelChoice;
-        do{
+        do {
             levelChoice = new Scanner(System.in).nextInt();
-            if (levelChoice>=1 && levelChoice<=3){
+            if (levelChoice >= 1 && levelChoice <= 3) {
                 break;
             }
             System.out.println("Nhập sai, mời bạn nhập lại:");
@@ -47,3 +47,4 @@ public class Reader extends Person{
                 break;
         }
     }
+}

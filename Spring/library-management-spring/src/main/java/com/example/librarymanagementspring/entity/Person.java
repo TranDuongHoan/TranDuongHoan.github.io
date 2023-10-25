@@ -12,14 +12,14 @@ import java.util.Scanner;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Person implements InputInfo{
+public class Person implements InputInfo {
     String name;
     String address;
     String phone;
-}
+
 
     @Override
-    public void inputInfo(){
+    public void inputInfo() {
         System.out.println("Nhập tên: ");
         this.setName(new Scanner(System.in).nextLine());
         System.out.println("Nhập địa chỉ: ");
@@ -27,3 +27,4 @@ public class Person implements InputInfo{
         System.out.println("Nhập số điện thoại: ");
         this.setPhone(new Scanner(System.in).nextLine());
     }
+}

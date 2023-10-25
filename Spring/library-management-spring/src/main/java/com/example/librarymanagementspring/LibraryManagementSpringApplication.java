@@ -12,9 +12,11 @@ public class LibraryManagementSpringApplication implements CommandLineRunner {
 
     MenuLogic menuLogic;
 
+
     public static void main(String[] args) {
         SpringApplication.run(LibraryManagementSpringApplication.class, args);
     }
+
 
     public void run(String... args) throws Exception {
         menuLogic.run();
