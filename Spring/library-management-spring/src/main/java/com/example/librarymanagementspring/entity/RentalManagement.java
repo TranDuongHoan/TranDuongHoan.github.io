@@ -14,6 +14,7 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class RentalManagement {
     Reader reader;
-    RentalManagementDetail[] details;
-    Book totalBook;
+    List<RentalManagementDetail> details;
+    int totalBook;
+
 }

@@ -22,7 +22,6 @@ public class Book implements InputInfo {
     BookSpecialization bookSpecialization;
     int totalBook;
 
-
     @Override
     public void inputInfo() {
         System.out.println("Mã đầu sách: ");

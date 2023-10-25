@@ -26,6 +26,7 @@ public class RentalLogicManagement {
             System.out.println("Không có dữ liệu về người đọc hoặc đầu sách, vui lòng tạo dữ liệu:");
             return;
         }
+
         System.out.println("Nhập số người mượn sách:");
         int readerNumber = new Scanner(System.in).nextInt();
         for (int i = 0; i < readerNumber; i++) {
@@ -47,13 +48,13 @@ public class RentalLogicManagement {
                 System.out.println("Không tồn tại ID người đọc vừa nhập, xin vui lòng nhập lại: ");
             }while (true);
 
-            System.out.println("Người đọc mượn bao nhiêu cuốn sách: ");
-            int bookNumber = new Scanner(System.in).nextInt();
+            System.out.println("Người đọc mượn bao nhiêu đầu sách: ");
+            int book = new Scanner(System.in).nextInt();
 
-            List<RentalManagementDetail> details = null;
-            int count = 0;
+            List<RentalManagementDetail> details = new ArrayList<>();
+
             int totalBook = 0;
-            for (int j = 0; j < bookNumber; j++) {
+            for (int j = 0; j < book; j++) {
                 System.out.println("Đầu sách thứ " + (j + 1) + "mà người đọc muốn mượn là đầu sách nào: ");
                 int bookId;
                 Book book = null;
@@ -71,7 +72,7 @@ public class RentalLogicManagement {
                     System.out.println("Không tồn tại đầu sách có ID vừa nhập, xin vui lòng nhập lại: ");
                 }while (true);
 
-                System.out.println("Đầu sách này người đọc muốn mượn bao nhiêu cuốn:");
+                System.out.println("Đầu sách này người đọc muốn mượn bao nhiêu cuốn sách:");
                 int bookNumber;
                 do {
                     bookNumber = new Scanner(System.in).nextInt();
@@ -89,32 +90,20 @@ public class RentalLogicManagement {
                 } while (true);
 
                 RentalManagementDetail rentalManagementDetail = new RentalManagementDetail(book, bookNumber);
-                details[count] = rentalManagementDetail;
-                count++;
+
+                details.add(rentalManagementDetail);
                 totalBook += bookNumber * book.getTotalBook();
             }
 
-            RentalManagement rentalManagement = new RentalManagement(reader, details);
-            saveRental(rentalManagement);
+            RentalManagement rentalManagement = new RentalManagement(reader, details, totalBook);
+            rentalManagements.add(rentalManagement);
         }
     }
 
     public void showRental() {
-        for (int i = 0; i < rentalManagements.size(); i++) {
-            if (rentalManagements.get(i) != null){
-                System.out.println(rentalManagements.get(i));
-            }
-        }
+        System.out.println(rentalManagements);
     }
 
-    public void saveRental(RentalManagement rentalManagement){
-        for(int i=0; i < rentalManagements.size(); i++){
-            if(rentalManagements.get(i) == null){
-                rentalManagements.set(i, rentalManagement);
-                break;
-            }
-        }
-    }
 
     public void sortByReaderName() {
         if (isEmptyRental()){
@@ -140,8 +129,8 @@ public class RentalLogicManagement {
             return;
         }
         for(int i = 0; i< rentalManagements.size(); i++){
-            for (int j = 0; j < rentalManagements.get(i).getDetails().length; j++){
-                for(int k = j + 1; k < rentalManagements.get(i).getDetails().length; k++){
+            for (int j = 0; j < rentalManagements.get(i).getDetails().size(); j++){
+                for(int k = j + 1; k < rentalManagements.get(i).getDetails().size(); k++){
                     if(rentalManagements.get(i).getDetails()[j].getBook().getTotalBook()){
                     }
                 }
