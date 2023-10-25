@@ -49,12 +49,12 @@ public class RentalLogicManagement {
             }while (true);
 
             System.out.println("Người đọc mượn bao nhiêu đầu sách: ");
-            int book = new Scanner(System.in).nextInt();
+            int booksNumber = new Scanner(System.in).nextInt();
 
             List<RentalManagementDetail> details = new ArrayList<>();
 
             int totalBook = 0;
-            for (int j = 0; j < book; j++) {
+            for (int j = 0; j < booksNumber; j++) {
                 System.out.println("Đầu sách thứ " + (j + 1) + "mà người đọc muốn mượn là đầu sách nào: ");
                 int bookId;
                 Book book = null;
@@ -131,7 +131,7 @@ public class RentalLogicManagement {
         for(int i = 0; i< rentalManagements.size(); i++){
             for (int j = 0; j < rentalManagements.get(i).getDetails().size(); j++){
                 for(int k = j + 1; k < rentalManagements.get(i).getDetails().size(); k++){
-                    if(rentalManagements.get(i).getDetails().get(j).getBook().getTotalBook() > rentalManagements.get(i).getDetails().get(j),){
+                    if(rentalManagements.get(i).getDetails().get(j).getBook().getTotalBook() > rentalManagements.get(i).getDetails().get(k).getBook().getTotalBook()){
                         RentalManagementDetail temp = rentalManagements.get(i).getDetails().get(k);
                         rentalManagements.get(i).getDetails().set(j,rentalManagements.get(i).getDetails().get(k));
                         rentalManagements.get(i).getDetails().set(k, temp);
