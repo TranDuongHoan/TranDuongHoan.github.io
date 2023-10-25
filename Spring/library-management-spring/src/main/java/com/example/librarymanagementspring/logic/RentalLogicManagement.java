@@ -131,7 +131,10 @@ public class RentalLogicManagement {
         for(int i = 0; i< rentalManagements.size(); i++){
             for (int j = 0; j < rentalManagements.get(i).getDetails().size(); j++){
                 for(int k = j + 1; k < rentalManagements.get(i).getDetails().size(); k++){
-                    if(rentalManagements.get(i).getDetails()[j].getBook().getTotalBook()){
+                    if(rentalManagements.get(i).getDetails().get(j).getBook().getTotalBook() > rentalManagements.get(i).getDetails().get(j),){
+                        RentalManagementDetail temp = rentalManagements.get(i).getDetails().get(k);
+                        rentalManagements.get(i).getDetails().set(j,rentalManagements.get(i).getDetails().get(k));
+                        rentalManagements.get(i).getDetails().set(k, temp);
                     }
                 }
             }
