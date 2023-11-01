@@ -15,12 +15,18 @@ import java.util.Scanner;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Book implements InputInfo {
+    static int AUTO_ID = 100;
     int id;
     String name;
     String author;
     int publishedYear;
     BookSpecialization bookSpecialization;
     int totalBook;
+
+    public Book() {
+        this.id = AUTO_ID;
+        AUTO_ID++;
+    }
 
     @Override
     public void inputInfo() {

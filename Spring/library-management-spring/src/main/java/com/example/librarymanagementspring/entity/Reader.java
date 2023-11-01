@@ -14,8 +14,14 @@ import java.util.Scanner;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Reader extends Person {
+    static int AUTO_ID = 100;
     int id;
     ReaderLevel level;
+
+    public Reader() {
+        this.id = AUTO_ID;
+        AUTO_ID++;
+    }
 
 
     @Override

@@ -19,7 +19,7 @@ public class ReaderController {
 
     private final ReaderService readerService;
 
-    @GetMapping("/books")
+    @GetMapping("/readers")
     public String home(Model model) {
         List<Reader> readers = readerService.getAll();
         model.addAttribute("dsBanDoc", readers);

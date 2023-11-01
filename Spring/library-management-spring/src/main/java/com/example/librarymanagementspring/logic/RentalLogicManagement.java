@@ -5,14 +5,16 @@ import com.example.librarymanagementspring.entity.Reader;
 import com.example.librarymanagementspring.entity.RentalManagement;
 import com.example.librarymanagementspring.entity.RentalManagementDetail;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-@AllArgsConstructor
+@Component
+@RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class RentalLogicManagement {
 
