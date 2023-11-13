@@ -2,12 +2,12 @@ package com.example.springmvc01.model.request;
 
 import com.example.springmvc01.statics.BookCategory;
 import lombok.Data;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Data
-public class BookCreationRequest {
+
+public class BookUpdateRequest {
     private int id;
     private String name;
     private String author;

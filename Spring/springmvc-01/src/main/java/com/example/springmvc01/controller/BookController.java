@@ -2,6 +2,8 @@ package com.example.springmvc01.controller;
 
 import com.example.springmvc01.entity.Book;
 import com.example.springmvc01.model.request.BookCreationRequest;
+import com.example.springmvc01.model.request.BookUpdateRequest;
+import com.example.springmvc01.model.response.BookDetailResponse;
 import com.example.springmvc01.service.BookService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -48,5 +50,21 @@ public class BookController {
         model.addAttribute("dsSach", books);
         return "books";
     }
+
+    @GetMapping("/update-book/{book-id}")
+    public String forwardToBookUpdate(Model model, @PathVariable("book-id") int id){
+        BookDetailResponse book = bookService.findById(id);
+        model.addAttribute("sachMuonCapNhat", book);
+        return "book-update";
+    }
+
+    @PostMapping("/update-book")
+    public String updateBook(@ModelAttribute("sachMuonCapNhat") BookUpdateRequest book, Model model) {
+        bookService.updateBook(book);
+        List<Book> books = bookService.getAll();
+        model.addAttribute("dsSach", books);
+        return "books";
+    }
+
 
 }

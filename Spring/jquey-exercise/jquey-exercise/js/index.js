@@ -1,50 +1,55 @@
-$(document).ready(function () {
+let checkedRows = [];
+let students = JSON.parse(data);
 
-    let checkedRows = [];
-    let students = JSON.parse(data);
+function initData() {
+    $("#btn-update").prop("disabled", true);
+    $("#btn-delete").prop("disabled", true);
 
-    function initData() {
+    renderTable();
+}
+
+function renderTable() {
+    $("tbody").empty();
+    for (let i = 0; i < students.length; i++) {
+        const sinhVien = students[i];
+        const row = "<tr><td><input type='checkbox' id='" + sinhVien.id + "' onchange='changeCheckbox(this)'/></td><td>" + sinhVien.name + "</td><td>" + sinhVien.birthday + "</td><td>" + sinhVien.phone + "</td><td>" + sinhVien.hometown + "</td></tr>";
+        $("tbody").append($(row));
+    }
+}
+
+function changeCheckbox(event) {
+    const studentId = $(event).attr("id");
+    if ($(event).is(':checked')) {
+        checkedRows.push(parseInt(studentId));
+    } else {
+        checkedRows = checkedRows.filter(row => row !== studentId);
+    }
+
+    if (checkedRows.length > 0) {
+        $("#btn-update").prop("disabled", false);
+        $("#btn-delete").prop("disabled", false);
+    } else {
         $("#btn-update").prop("disabled", true);
         $("#btn-delete").prop("disabled", true);
-
-        renderTable();
     }
+}
 
-    function renderTable() {
-        $("tbody").empty();
-        for (let i = 0; i < students.length; i++) {
-            const sinhVien = students[i];
-            const row = "<tr><td><input type='checkbox' id=" + sinhVien.id + "></td><td>" + sinhVien.name + "</td><td>" + sinhVien.birthday + "</td><td>" + sinhVien.phone + "</td><td>" + sinhVien.hometown + "</td></tr>";
-            $("tbody").append($(row));
-        }
-    }
+function resetForm() {
+    $("#name").val("");
+    $("#birthday").val("");
+    $("#phone").val("");
+    $("#hometown").val("");
+}
 
+function resetError() {
+    $("#name-error").html("");
+    $("#birthday").val("");
+    $("#phone").val("");
+    $("#hometown").val("");
+}
+
+$(document).ready(function () {
     initData();
-
-    $("input[type='checkbox']").change(function () {
-        const studentId = $(this).attr("id");
-        if ($(this).is(':checked')) {
-            checkedRows.push(parseInt(studentId));
-        } else {
-            // const temp = [];
-            // for (let i = 0; i < checkedRows.length; i++) {
-            //     if (checkedRows[i] === studentId) {
-            //         continue;
-            //     }
-            //     temp.push(checkedRows[i]);
-            // }
-            // checkedRows = temps;
-            checkedRows = checkedRows.filter(row => row !== studentId);
-        }
-
-        if (checkedRows.length > 0) {
-            $("#btn-update").prop("disabled", false);
-            $("#btn-delete").prop("disabled", false);
-        } else {
-            $("#btn-update").prop("disabled", true);
-            $("#btn-delete").prop("disabled", true);
-        }
-    });
 
     $("#btn-delete").click(function () {
         if (checkedRows.length < 1) {
@@ -56,6 +61,7 @@ $(document).ready(function () {
             return;
         }
         students = students.filter(sv => !checkedRows.includes(sv.id));
+        checkedRows = [];
         renderTable();
     });
 
@@ -90,19 +96,5 @@ $(document).ready(function () {
         resetError();
         alert("Bạn đã thêm mới thành công!");
     });
-
-    function resetForm() {
-        $("#name").val("");
-        $("#birthday").val("");
-        $("#phone").val("");
-        $("#hometown").val("");
-    }
-
-    function resetError() {
-        $("#name-error").html("");
-        $("#birthday").val("");
-        $("#phone").val("");
-        $("#hometown").val("");
-    }
 
 });

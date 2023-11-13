@@ -2,8 +2,10 @@ package com.example.springmvc01.repository;
 
 import com.example.springmvc01.entity.Book;
 import com.example.springmvc01.model.request.BookCreationRequest;
+import com.example.springmvc01.model.request.BookUpdateRequest;
 import com.example.springmvc01.statics.BookCategory;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sun.org.apache.bcel.internal.generic.ARETURN;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -75,10 +77,40 @@ public class BookRepository {
                 .name(bookCreationRequest.getName())
                 .author(bookCreationRequest.getAuthor())
                 .description(bookCreationRequest.getDescription())
-//                .categories(Arrays.asList(BookCategory.KID))
+                .categories(bookCreationRequest.getCategories())
                 .publishedYear(bookCreationRequest.getPublishedYear())
                 .build();
         books.add(book);
 
     }
+
+
+
+    public void updateBook(BookUpdateRequest book) {
+        for (int i = 0; i < books.size(); i++){
+            if (books.get(i).getId() == book.getId()){
+                books.get(i).setName(book.getName());
+                books.get(i).setAuthor(book.getAuthor());
+                books.get(i).setDescription(book.getDescription());
+                books.get(i).setPublishedYear(book.getPublishedYear());
+                books.get(i).setCategories(book.getCategories());
+                break;
+            }
+        }
+    }
+
+    public Book findById(int id) {
+        for (int i = 0; i < books.size(); i++){
+            if (books.get(i).getId() == id){
+                return books.get(i);
+            }
+        }
+        return null;
+//        return books.stream().filter(b -> b.getId() == id).findFirst().get();
+    }
+
+
+
+
+
 }

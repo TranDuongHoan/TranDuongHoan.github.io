@@ -32,7 +32,7 @@
     <div class="row my-5">
         <div class="col">
             <a href="/create-book" class="btn btn-success">Create book</a>
-            <a href="/manage-reader" class="btn btn-success">Manage Readers</a>
+            <a href="/create-reader" class="btn btn-success">Create reader</a>
         </div>
     </div>
 
@@ -63,6 +63,12 @@
                     </td>
                     <td th:text="${book.description}"></td>
                     <td>
+                        <a class="btn btn-primary btn-sm"
+                           th:href="${'/update-book/' + book.id}"
+
+                        >
+                            <i class="far fa-edit" aria-hidden="true"></i>
+                        </a>
                         <a class="btn btn-danger btn-sm"
                            th:href="${'/delete-book/' + book.id}"
                            th:data-confirm-delete="|Are you sure you want to delete this book?|"

@@ -1,13 +1,16 @@
-package com.example.springmvc01.model.request;
+package com.example.springmvc01.model.response;
 
 import com.example.springmvc01.statics.BookCategory;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Data
-public class BookCreationRequest {
+@Builder
+@AllArgsConstructor
+public class BookDetailResponse {
     private int id;
     private String name;
     private String author;

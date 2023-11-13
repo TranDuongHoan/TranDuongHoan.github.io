@@ -28,7 +28,7 @@ public class ReaderController {
 
     @GetMapping("/create-reader")
     public String forwardToReaderCreation(Model model) {
-        model.addAttribute("bandocThemMoi", new ReaderCreationRequest());
+        model.addAttribute("banDocThemMoi", new ReaderCreationRequest());
         return "reader-creation";
     }
 

@@ -22,13 +22,15 @@
 <div class="container">
     <div class="row text-center mb-5">
         <div class="col">
-            <h1>Đây là trang tạo mới sách</h1>
+            <h1>Đây là trang cập nhật sách</h1>
         </div>
     </div>
 
     <div class="row">
         <div class="col">
-            <form method="POST" th:action="@{/create-book}" th:object="${sachMuonThemMoi}">
+            <form method="POST" th:action="@{/update-book}" th:object="${sachMuonCapNhat}">
+                <input type="hidden"  id="id"
+                       th:field="*{id}">
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" class="form-control" placeholder="Enter name" id="name"

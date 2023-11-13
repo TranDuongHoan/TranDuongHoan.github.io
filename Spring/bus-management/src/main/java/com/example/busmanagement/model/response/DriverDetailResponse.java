@@ -1,23 +1,20 @@
-package com.example.springmvc01.entity;
+package com.example.busmanagement.model.response;
 
-
-import com.example.springmvc01.statics.ReaderLevel;
+import com.example.busmanagement.statics.DriverLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-
-public class Reader{
+public class DriverDetailResponse {
     private int id;
-    private List<ReaderLevel> levels;
     private String name;
     private String address;
     private int phone;
+    private List<DriverLevel> levels;
+
 }
