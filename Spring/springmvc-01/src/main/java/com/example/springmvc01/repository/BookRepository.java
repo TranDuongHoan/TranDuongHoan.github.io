@@ -4,15 +4,17 @@ import com.example.springmvc01.entity.Book;
 import com.example.springmvc01.model.request.BookCreationRequest;
 import com.example.springmvc01.model.request.BookUpdateRequest;
 import com.example.springmvc01.statics.BookCategory;
+import com.example.springmvc01.util.FileUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.org.apache.bcel.internal.generic.ARETURN;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+@Slf4j
 @Repository
 @RequiredArgsConstructor
 public class BookRepository {
@@ -20,6 +22,8 @@ public class BookRepository {
     private static final List<Book> books = new ArrayList<>();
 
     private static int AUTO_ID = 1000;
+
+    private final FileUtil<Book> fileUtil;
 
     private final ObjectMapper objectMapper;
 
@@ -57,6 +61,8 @@ public class BookRepository {
     }
 
     public List<Book> getAll() {
+        List<Book> list = fileUtil.readDataFromFile("books", Book[].class);
+        log.info(list.toString());
         return books;
     }
 
@@ -80,6 +86,8 @@ public class BookRepository {
                 .categories(bookCreationRequest.getCategories())
                 .publishedYear(bookCreationRequest.getPublishedYear())
                 .build();
+
+        List<Book> books = getAll();
         books.add(book);
 
     }

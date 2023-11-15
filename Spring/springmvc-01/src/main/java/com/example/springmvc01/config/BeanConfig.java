@@ -17,4 +17,9 @@ public class BeanConfig {
         return mapper;
     }
 
+    @Bean
+    public Gson gson(){
+        return new GsonBuilder().create();
+    }
+
 }
