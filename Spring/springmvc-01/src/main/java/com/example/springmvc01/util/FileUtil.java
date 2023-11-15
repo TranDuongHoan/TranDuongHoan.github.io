@@ -1,9 +1,10 @@
 package com.example.springmvc01.util;
 
 import com.example.springmvc01.entity.Book;
+import com.google.gson.Gson;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
+import org.springframework.core.io.ClassPathResource;
 
 
 import java.io.File;
@@ -36,7 +37,7 @@ public class FileUtil<T> {
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         }
-        return Arrays.asList(gson.fromJson(fileDataStr, targetClass));
+        return (List<T>) Arrays.asList(gson.fromJson(fileDataStr, targetClass));
     }
 
     public void writeDataToFile(String filePath, List<T> data) {
