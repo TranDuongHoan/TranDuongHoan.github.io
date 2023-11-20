@@ -41,7 +41,7 @@
         <div class="form-group">
           <label for="address">Address:</label>
           <input type="text" class="form-control" placeholder="Enter address"
-                 th:field="*{address" id="address">
+                 th:field="*{address}" id="address">
           <div class="alert alert-danger bg-white border-0 pl-0 text-danger pt-1"
                th:if="${#fields.hasErrors('address')}"
                th:errors="*{address}"></div>

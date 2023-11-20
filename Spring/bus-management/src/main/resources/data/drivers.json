@@ -2,36 +2,36 @@
   "id": 1,
   "name": "Christoph Eskrigge",
   "address": "3734 Crescent Oaks Pass",
-  "phone": "240-829-9387",
+  "phone": "0912345678",
   "level": "Hạng A"
 }, {
   "id": 2,
   "name": "Vidovik Eddington",
   "address": "185 Fisk Road",
-  "phone": "435-129-4998",
+  "phone": "0902345678",
   "level": "Hạng B"
 }, {
   "id": 3,
   "name": "Aryn Mabone",
   "address": "17207 Waubesa Place",
-  "phone": "395-326-9362",
+  "phone": "0922345678",
   "level": "Hạng C"
 }, {
   "id": 4,
   "name": "Miguela Happert",
   "address": "1 Pankratz Junction",
-  "phone": "763-874-0862",
+  "phone": "0932345678",
   "level": "Hạng D"
 }, {
   "id": 5,
   "name": "Demetris Nobes",
   "address": "132 Golf Point",
-  "phone": "166-542-8194",
+  "phone": "0942345678",
   "level": "Hạng E"
 }, {
   "id": 6,
   "name": "Shannah Drysdale",
   "address": "66 Troy Parkway",
-  "phone": "474-146-4213",
+  "phone": "0952345678",
   "level": "Hạng F"
 }]
