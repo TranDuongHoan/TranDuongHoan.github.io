@@ -72,8 +72,8 @@ public class DriverRepository {
             throw new DriverNotFoundException("Drivers not found");
         }
 
-        Optional<Driver> bookCanUpdate = drivers.stream().filter(b -> b.getId() == driver.getId()).findFirst();
-        if (bookCanUpdate.isEmpty()) {
+        Optional<Driver> driverCanUpdate = drivers.stream().filter(b -> b.getId() == driver.getId()).findFirst();
+        if (driverCanUpdate.isEmpty()) {
             throw new DriverNotFoundException("Drivers not found");
         }
 

@@ -33,6 +33,13 @@ public class DriverController {
         return "drivers";
     }
 
+    @GetMapping("/delete-driver/{id}")
+    public String deleteDriver(@PathVariable("id") int id, Model model) throws DriverNotFoundException {
+        List<Driver> drivers = driverService.deleteDriver(id);
+        model.addAttribute("dsTaiXe", drivers);
+        return "drivers";
+    }
+
     @GetMapping("/create-driver")
     public String forwardToDriverCreation(Model model) {
         model.addAttribute("taiXeThemMoi", new DriverCreationRequest());
@@ -40,7 +47,7 @@ public class DriverController {
     }
 
     @PostMapping("/create-driver")
-    public String createDriver(@ModelAttribute("taiXeThemMoi") DriverCreationRequest driver, @Valid Errors errors) {
+    public String createDriver(@ModelAttribute("taiXeThemMoi") @Valid DriverCreationRequest driver,  Errors errors) {
         if (null != errors && errors.getErrorCount() > 0) {
             return "driver-creation";
         }
@@ -48,12 +55,6 @@ public class DriverController {
         return "redirect:/drivers";
     }
 
-    @GetMapping("/delete-driver/{id}")
-    public String deleteDriver(@PathVariable("id") int id, Model model) throws DriverNotFoundException {
-        List<Driver> drivers = driverService.deleteDriver(id);
-        model.addAttribute("dsTaiXe", drivers);
-        return "drivers";
-    }
 
     @GetMapping("/update-driver/{driver-id}")
     public String forwardToDriverUpdate(Model model, @PathVariable("driver-id") int id) throws DriverNotFoundException {
@@ -63,7 +64,7 @@ public class DriverController {
     }
 
     @PostMapping("/update-driver")
-    public String updateDriver(@ModelAttribute("taiXeMuonCapNhat") DriverUpdateRequest driver, @Valid Errors errors) throws DriverNotFoundException {
+    public String updateDriver(@ModelAttribute("taiXeMuonCapNhat") @Valid DriverUpdateRequest driver, Errors errors) throws DriverNotFoundException {
         if (null != errors && errors.getErrorCount() > 0) {
             return "driver-update";
         }
