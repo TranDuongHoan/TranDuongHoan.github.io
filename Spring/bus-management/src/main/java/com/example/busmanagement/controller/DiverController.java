@@ -63,7 +63,7 @@ public class DiverController {
     }
 
     @PostMapping("/update-driver")
-    public String updateDriver(@ModelAttribute("taiXeMuonCapNhat") DriverUpdateRequest driver, @Valid DriverUpdateRequest driver, Errors errors) {
+    public String updateDriver(@ModelAttribute("taiXeMuonCapNhat") DriverUpdateRequest driverUpdateRequest, @Valid DriverUpdateRequest driver, Errors errors) {
         if (null != errors && errors.getErrorCount() > 0) {
             return "book-update";
         }

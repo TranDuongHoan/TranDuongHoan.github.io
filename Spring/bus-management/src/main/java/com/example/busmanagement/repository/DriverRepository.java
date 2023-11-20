@@ -1,12 +1,12 @@
 package com.example.busmanagement.repository;
 
 
-import ch.qos.logback.core.util.FileUtil;
 import com.example.busmanagement.enity.Driver;
 import com.example.busmanagement.exception.DriverNotFoundException;
 
 import com.example.busmanagement.model.request.DriverUpdateRequest;
 
+import com.example.busmanagement.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
@@ -49,7 +49,7 @@ public class DriverRepository {
     }
 
     public List<Driver> createDriver(Driver driver) {
-        List<Driver> books = getAll();
+        List<Driver> drivers = getAll();
         if (CollectionUtils.isEmpty(drivers)) {
             drivers = new ArrayList<>();
         }

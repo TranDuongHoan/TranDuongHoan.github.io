@@ -33,12 +33,18 @@
           <label for="name">Name:</label>
           <input type="text" class="form-control" placeholder="Enter name" id="name"
                  th:field="*{name}">
+          <div class="alert alert-danger bg-white border-0 pl-0 text-danger pt-1"
+               th:if="${#fields.hasErrors('name')}"
+               th:errors="*{name}"></div>
         </div>
 
         <div class="form-group">
           <label for="address">Address:</label>
           <input type="text" class="form-control" placeholder="Enter address"
                  th:field="*{address" id="address">
+          <div class="alert alert-danger bg-white border-0 pl-0 text-danger pt-1"
+               th:if="${#fields.hasErrors('address')}"
+               th:errors="*{address}"></div>
         </div>
 
         <div class="form-group">
@@ -46,6 +52,10 @@
           <input type="number" class="form-control" placeholder="Enter phone"
                  id="phone"  th:field="*{phone}"
                  >
+          <div class="alert alert-danger bg-white border-0 pl-0 text-danger pt-1"
+               th:if="${#fields.hasErrors('phone')}"
+               th:errors="*{phone}"></div>
+
         </div>
 
         <div class="form-group">
@@ -55,6 +65,9 @@
                     th:value="${cat}" th:text="${cat.value}">
             </option>
           </select>
+          <div class="alert alert-danger bg-white border-0 pl-0 text-danger pt-1"
+               th:if="${#fields.hasErrors('levels')}"
+               th:errors="*{levels}"></div>
         </div>
 
         <button type="submit" class="btn btn-primary">Save</button>

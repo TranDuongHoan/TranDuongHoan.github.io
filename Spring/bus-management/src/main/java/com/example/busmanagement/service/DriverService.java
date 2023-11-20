@@ -22,8 +22,9 @@ public class DriverService {
         return driverRepository.getAll();
     }
 
-    public void deleteDriver(int id) {
+    public List<Driver> deleteDriver(int id) throws DriverNotFoundException {
         driverRepository.delete(id);
+        return null;
     }
 
     public List<Driver> createDriver(DriverCreationRequest driverCreationRequest) {
@@ -48,7 +49,7 @@ public class DriverService {
                 .build();
     }
 
-    public List<Driver> updateDriver(DriverUpdateRequest driver){
+    public void updateDriver(DriverUpdateRequest driver) throws DriverNotFoundException {
         driverRepository.updateDriver(driver);
     }
 }
