@@ -10,9 +10,6 @@ import java.util.List;
 
 @Data
 public class DriverCreationRequest {
-    @NotNull(message = "ID bắt buộc phải nhập")
-    @Min(value = 1)
-    private int id;
 
     @NotBlank(message = "Tên tài xế bắt buộc nhập")
     @Length(max = 100, message = "Tên tài xế không được vượt quá 100 ký tự")
