@@ -20,7 +20,7 @@ public class BeanConfig {
     }
 
     @Bean
-    public Gson gson(){
+    public Gson gson() {
         return new GsonBuilder().create();
     }
 

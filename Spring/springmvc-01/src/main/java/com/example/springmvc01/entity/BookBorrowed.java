@@ -5,13 +5,17 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Reader {
+public class BookBorrowed {
 
-    private int id;
-    private String name;
+    private Reader reader;
+    private Book book;
+    private int quantity;
+    private LocalDate borrowedDate;
 
 }

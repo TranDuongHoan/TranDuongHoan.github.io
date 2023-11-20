@@ -1,8 +1,7 @@
 package com.example.springmvc01.service;
 
 import com.example.springmvc01.entity.Reader;
-import com.example.springmvc01.model.request.BookCreationRequest;
-import com.example.springmvc01.model.request.ReaderCreationRequest;
+import com.example.springmvc01.exception.BookNotFoundException;
 import com.example.springmvc01.repository.ReaderRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,12 +18,7 @@ public class ReaderService {
         return readerRepository.getAll();
     }
 
-    public void deleteReader(int id) {
-        readerRepository.delete(id);
+    public Reader findById(int readerId) throws BookNotFoundException {
+        return readerRepository.findById(readerId);
     }
-
-    public void createReader(ReaderCreationRequest readerCreationRequest) {
-        readerRepository.createReader(readerCreationRequest);
-    }
-
 }

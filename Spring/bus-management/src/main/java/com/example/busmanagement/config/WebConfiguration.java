@@ -10,7 +10,7 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("forward:/index");
+        registry.addViewController("/").setViewName("forward:/drivers");
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 

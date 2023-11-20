@@ -1,4 +1,4 @@
-package com.example.springmvc01.util;
+package com.example.busmanagement.util;
 
 import com.google.gson.Gson;
 import lombok.AllArgsConstructor;
@@ -22,7 +22,6 @@ import java.util.List;
 @Component
 @AllArgsConstructor
 public class FileUtil<T> {
-
     private final Gson gson;
 
     public List<T> readDataFromFile(String filePath, Type targetClass) {
@@ -65,5 +64,4 @@ public class FileUtil<T> {
             }
         }
     }
-
 }
