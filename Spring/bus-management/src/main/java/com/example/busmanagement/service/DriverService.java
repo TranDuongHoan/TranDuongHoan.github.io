@@ -49,7 +49,8 @@ public class DriverService {
                 .build();
     }
 
-    public void updateDriver(DriverUpdateRequest driver) throws DriverNotFoundException {
+    public List<Driver> updateDriver(DriverUpdateRequest driver) throws DriverNotFoundException {
         driverRepository.updateDriver(driver);
+        return null;
     }
 }

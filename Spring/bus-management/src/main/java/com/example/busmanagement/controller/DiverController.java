@@ -40,7 +40,7 @@ public class DiverController {
     }
 
     @GetMapping("/delete-driver/{id}")
-    public String deleteDriver(@PathVariable("id") int id, Model model) {
+    public String deleteDriver(@PathVariable("id") int id, Model model) throws DriverNotFoundException {
         List<Driver> drivers = driverService.deleteDriver(id);
         model.addAttribute("dsTaiXe", drivers);
         return "drivers";
@@ -63,12 +63,11 @@ public class DiverController {
     }
 
     @PostMapping("/update-driver")
-    public String updateDriver(@ModelAttribute("taiXeMuonCapNhat") DriverUpdateRequest driverUpdateRequest, @Valid DriverUpdateRequest driver, Errors errors) {
+    public String updateDriver(@ModelAttribute("taiXeMuonCapNhat") DriverUpdateRequest driverUpdateRequest, @Valid DriverUpdateRequest driver, Errors errors) throws DriverNotFoundException {
         if (null != errors && errors.getErrorCount() > 0) {
-            return "book-update";
+            return "driver-update";
         }
-        List<Driver> books = driverService.updateDriver(driver);
-//        model.addAttribute("dsSach", books);
+        List<Driver> drivers = driverService.updateDriver(driver);
         return "redirect:/drivers";
     }
 }
