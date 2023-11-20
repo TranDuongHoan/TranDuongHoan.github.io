@@ -48,10 +48,12 @@ public class DiverController {
 
 
     @PostMapping("/create-driver")
-    public String createDriver(@ModelAttribute("taiXeThemMoi") DriverCreationRequest driver, Model model) {
-        driverService.createDriver(driver);
+    public String createDriver(@ModelAttribute("taiXeThemMoi") DriverCreationRequest driver, @Valid Errors errors) {
+        if (null != errors && errors.getErrorCount() > 0) {
+            return "driver-creation";
+        }
         List<Driver> drivers = driverService.getAll();
-        model.addAttribute("dsTaiXe", drivers);
+//        model.addAttribute("dsTaiXe", drivers);
         return "drivers";
     }
 
@@ -63,7 +65,7 @@ public class DiverController {
     }
 
     @PostMapping("/update-driver")
-    public String updateDriver(@ModelAttribute("taiXeMuonCapNhat") DriverUpdateRequest driverUpdateRequest, @Valid DriverUpdateRequest driver, Errors errors) throws DriverNotFoundException {
+    public String updateDriver(@ModelAttribute("taiXeMuonCapNhat") DriverUpdateRequest driver, @Valid Errors errors) throws DriverNotFoundException {
         if (null != errors && errors.getErrorCount() > 0) {
             return "driver-update";
         }
