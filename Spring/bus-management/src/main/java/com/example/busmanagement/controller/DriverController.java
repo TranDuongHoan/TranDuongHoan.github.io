@@ -22,7 +22,7 @@ import java.util.List;
 @Controller
 @AllArgsConstructor
 
-public class DiverController {
+public class DriverController {
 
     private final DriverService driverService;
 
@@ -39,21 +39,19 @@ public class DiverController {
         return "driver-creation";
     }
 
-    @GetMapping("/delete-driver/{id}")
-    public String deleteDriver(@PathVariable("id") int id, Model model) throws DriverNotFoundException {
-        List<Driver> drivers = driverService.deleteDriver(id);
-        model.addAttribute("dsTaiXe", drivers);
-        return "drivers";
-    }
-
-
     @PostMapping("/create-driver")
     public String createDriver(@ModelAttribute("taiXeThemMoi") DriverCreationRequest driver, @Valid Errors errors) {
         if (null != errors && errors.getErrorCount() > 0) {
             return "driver-creation";
         }
-        List<Driver> drivers = driverService.getAll();
-//        model.addAttribute("dsTaiXe", drivers);
+        List<Driver> drivers = driverService.createDriver(driver);
+        return "redirect:/drivers";
+    }
+
+    @GetMapping("/delete-driver/{id}")
+    public String deleteDriver(@PathVariable("id") int id, Model model) throws DriverNotFoundException {
+        List<Driver> drivers = driverService.deleteDriver(id);
+        model.addAttribute("dsTaiXe", drivers);
         return "drivers";
     }
 

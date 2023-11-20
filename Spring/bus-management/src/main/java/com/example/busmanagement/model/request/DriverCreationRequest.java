@@ -3,7 +3,6 @@ package com.example.busmanagement.model.request;
 import com.example.busmanagement.statics.DriverLevel;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.*;
 import java.util.List;

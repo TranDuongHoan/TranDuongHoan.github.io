@@ -23,8 +23,7 @@ public class DriverService {
     }
 
     public List<Driver> deleteDriver(int id) throws DriverNotFoundException {
-        driverRepository.delete(id);
-        return null;
+        return driverRepository.delete(id);
     }
 
     public List<Driver> createDriver(DriverCreationRequest driverCreationRequest) {
