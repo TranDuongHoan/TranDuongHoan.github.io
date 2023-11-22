@@ -32,7 +32,7 @@ public class FileUtil<T> {
         // java NIO
         File folder;
         try {
-            folder = new ClassPathResource("data" + File.separator + filePath + ".json").getFile();
+            folder = new File(filePath);
             if (folder.isFile()) {
                 fileDataStr = new String(Files.readAllBytes(Paths.get(folder.getAbsolutePath())));
             }
@@ -49,7 +49,7 @@ public class FileUtil<T> {
         File folder;
         Writer writer = null;
         try {
-            folder = new ClassPathResource("data" + File.separator + filePath + ".json").getFile();
+            folder = new File(filePath);
             writer = new FileWriter(folder);
             gson.toJson(data, writer);
         } catch (IOException e) {

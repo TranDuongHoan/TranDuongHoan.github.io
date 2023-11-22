@@ -1,69 +1,71 @@
 package com.example.studentmanager.controller;
 
 import com.example.studentmanager.entity.Student;
+import com.example.studentmanager.exception.StudentNotFoundException;
+import com.example.studentmanager.model.request.StudentCreationRequest;
+import com.example.studentmanager.model.request.StudentUpdateRequest;
+import com.example.studentmanager.model.response.StudentDetailResponse;
 import com.example.studentmanager.service.StudentService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
 @Controller
 @AllArgsConstructor
+@RequestMapping("/students") // base path
 public class StudentController {
     private final StudentService studentService;
 
-    @GetMapping("/books")
-    public String home(Model model) {
-        List<Student> students = studentService.getAll();
+    @GetMapping
+    public String getStudents(Model model) {
+        List<StudentDetailResponse> students = studentService.getStudent();
         model.addAttribute("dsSinhVien", students);
         return "students";
     }
 
     @GetMapping("/delete-student/{id}")
-    public String deleteStudent(@PathVariable("id") int id, Model model) throws BookNotFoundException {
+    public String deleteStudent(@PathVariable("id") int id, Model model) throws StudentNotFoundException {
         List<Student> students = studentService.deleteStudent(id);
         model.addAttribute("dsSinhVien", students);
         return "students";
     }
 
-    @GetMapping("/create-book")
-    public String forwardToBookCreation(Model model) {
-        model.addAttribute("sachMuonThemMoi", new BookCreationRequest());
-        return "book-creation";
+    @GetMapping("/create-student")
+    public String forwardToStudentCreation(Model model) {
+        model.addAttribute("sinhVienThemMoi", new StudentCreationRequest());
+        return "student-creation";
     }
 
-    @PostMapping("/create-book")
-    public String createBook(@ModelAttribute("sachMuonThemMoi") @Valid BookCreationRequest book, Errors errors) {
+    @PostMapping("/create-student")
+    public String createStudent(@ModelAttribute("sinhVienThemMoi") @Valid StudentCreationRequest student, Errors errors) {
         if (null != errors && errors.getErrorCount() > 0) {
-            return "book-creation";
+            return "student-creation";
         }
-        List<Book> books = bookService.createBook(book);
+        List<Student> students = studentService.createStudent(student);
 //            model.addAttribute("dsSach", books);
-        return "redirect:/books";
+        return "redirect:/index";
 
     }
 
-    @GetMapping("/update-book/{book-id}")
-    public String forwardToBookUpdate(Model model, @PathVariable("book-id") int id) throws BookNotFoundException {
-        BookDetailResponse book = bookService.findById(id);
-        model.addAttribute("sachMuonCapNhat", book);
-        return "book-update";
+    @GetMapping("/update-student/{student-id}")
+    public String forwardToStudentUpdate(Model model, @PathVariable("student-id") int id) throws StudentNotFoundException {
+        StudentDetailResponse student = studentService.findById(id);
+        model.addAttribute("sinhVienMoiCapNhat", student);
+        return "student-update";
     }
 
-    @PostMapping("/update-book")
-    public String updateBook(@ModelAttribute("sachMuonCapNhat") @Valid BookUpdateRequest book, Errors errors) throws BookNotFoundException {
+    @PostMapping("/update-student")
+    public String updateBook(@ModelAttribute("ssinhVienMoiCapNhat") @Valid StudentUpdateRequest student, Errors errors) throws StudentNotFoundException {
         if (null != errors && errors.getErrorCount() > 0) {
-            return "book-update";
+            return "student-update";
         }
-        List<Book> books = bookService.updateBook(book);
+        List<Student> students = studentService.updateStudent(student);
 //        model.addAttribute("dsSach", books);
-        return "redirect:/books";
+        return "redirect:/index";
     }
 }

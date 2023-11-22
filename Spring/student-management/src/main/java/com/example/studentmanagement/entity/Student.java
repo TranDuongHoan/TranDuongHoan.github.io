@@ -1,4 +1,4 @@
-package com.example.studentmanager.model.response;
+package com.example.studentmanagement.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,14 +7,13 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
-public class StudentDetailResponse {
+@AllArgsConstructor
 
+public class Student {
     private int id;
     private String name;
     private String address;
     private String phone;
-    private String className;
-
+    private String ClassName;
 }

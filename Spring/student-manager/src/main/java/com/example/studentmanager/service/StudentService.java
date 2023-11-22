@@ -8,6 +8,9 @@ import com.example.studentmanager.model.response.StudentDetailResponse;
 import com.example.studentmanager.repository.StudentRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -15,21 +18,34 @@ import java.util.List;
 public class StudentService {
     private final StudentRepository studentRepository;
 
-    public List<Student> getAll() {
-        return studentRepository.getAll();
+    public List<StudentDetailResponse> getStudent() {
+        List<Student> students = studentRepository.getStudent();
+        List<StudentDetailResponse> result = new ArrayList<>();
+        for (int i = 0; i < students.size(); i++){
+            Student student = students.get(i);
+            StudentDetailResponse studentDetailResponse = StudentDetailResponse.builder()
+                    .id(student.getId())
+                    .name(student.getName())
+                    .address(student.getAddress())
+                    .phone(student.getPhone())
+                    .className(student.getClassName())
+                    .build();
+                    result.add(studentDetailResponse);
+        }
+        return result;
     }
 
     public List<Student> deleteStudent(int id) throws StudentNotFoundException {
         return studentRepository.delete(id);
     }
 
-    public List<Student> createStudent(StudentCreationRequest studentCreationRequest) {
+    public List<Student> createStudent(@Valid StudentCreationRequest studentCreationRequest) {
         Student student = Student.builder()
                 .id(studentRepository.AUTO_ID++)
                 .name(studentCreationRequest.getName())
                 .address(studentCreationRequest.getAddress())
                 .phone(studentCreationRequest.getPhone())
-                .nameClass(studentCreationRequest.getNameClass())
+                .className(studentCreationRequest.getClassName())
                 .build();
         return studentRepository.createStudent(student);
     }
@@ -41,7 +57,7 @@ public class StudentService {
                 .name(student.getName())
                 .address(student.getAddress())
                 .phone(student.getPhone())
-                .nameClass(student.getNameClass())
+                .className(student.getClassName())
                 .build();
     }
 

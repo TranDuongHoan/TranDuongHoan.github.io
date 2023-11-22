@@ -18,18 +18,18 @@ import java.util.Optional;
 @Repository
 @RequiredArgsConstructor
 public class StudentRepository {
-    private static final String STUDENT_DATA_FILE_NAME = "students";
+    private static final String STUDENT_DATA_FILE_NAME = "C:\\Users\\admin\\Documents\\tranduonghoan\\TranDuongHoan.github.io\\Spring\\student-management\\students.json";
 
-    public static int AUTO_ID = 1000;
+    public static int AUTO_ID = 11;
 
     private final FileUtil<Student> fileUtil;
 
-    public List<Student> getAll() {
-        return fileUtil.readDataFromFile(STUDENT_DATA_FILE_NAME, Driver[].class);
+    public List<Student> getStudent() {
+        return fileUtil.readDataFromFile(STUDENT_DATA_FILE_NAME, Student[].class);
     }
 
     public List<Student> delete(int id) throws StudentNotFoundException {
-        List<Student> students = getAll();
+        List<Student> students = getStudent();
         if (CollectionUtils.isEmpty(students)) {
             throw new StudentNotFoundException("Students not found");
         }
@@ -44,7 +44,7 @@ public class StudentRepository {
     }
 
     public List<Student> createStudent(Student student) {
-        List<Student> students = getAll();
+        List<Student> students = getStudent();
         if (CollectionUtils.isEmpty(students )) {
             students  = new ArrayList<>();
         }
@@ -54,7 +54,7 @@ public class StudentRepository {
     }
 
     public Student findById(int id) throws StudentNotFoundException {
-        List<Student> students = getAll();
+        List<Student> students = getStudent();
         if (students == null || students.isEmpty()) {
             throw new StudentNotFoundException("Students not found");
         }
@@ -62,7 +62,7 @@ public class StudentRepository {
     }
 
     public List<Student> updateStudent(StudentUpdateRequest student) throws StudentNotFoundException {
-        List<Student> students = getAll();
+        List<Student> students = getStudent();
         if (CollectionUtils.isEmpty(students)) {
             throw new StudentNotFoundException("Students not found");
         }
@@ -77,7 +77,7 @@ public class StudentRepository {
                 students.get(i).setName(student.getName());
                 students.get(i).setAddress(student.getAddress());
                 students.get(i).setPhone(student.getPhone());
-                students.get(i).setNameClass(student.getNameClass());
+                students.get(i).setClassName(student.getClassName());
                 fileUtil.writeDataToFile(STUDENT_DATA_FILE_NAME, students);
                 return students;
             }

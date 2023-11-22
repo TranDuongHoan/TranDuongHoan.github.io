@@ -24,9 +24,9 @@ public class StudentUpdateRequest {
 
     @NotNull(message = "Số điện thoại bắt buộc phải nhập")
     @Min(value = 10)
-    private Integer phone;
+    private String phone;
 
     @NotBlank(message = "Tên lớp bắt buộc nhập")
     @Length(max = 100, message = "Tên lớp không được vượt quá 100 ký tự")
-    private String nameClass;
+    private String className;
 }

@@ -1,5 +1,6 @@
 package com.example.studentmanager.entity;
 
+import com.example.studentmanager.statics.SubjectType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,10 +11,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Student {
-    private int id;
+public class Subject {
+
+    private  int id;
     private String name;
-    private String address;
-    private String phone;
-    private String className;
+    private int credit;
+    private SubjectType subjectType;
 }
