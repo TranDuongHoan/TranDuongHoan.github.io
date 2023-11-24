@@ -4,7 +4,7 @@ import com.example.studentmanager.entity.Student;
 import com.example.studentmanager.exception.StudentNotFoundException;
 import com.example.studentmanager.model.request.StudentCreationRequest;
 import com.example.studentmanager.model.request.StudentUpdateRequest;
-import com.example.studentmanager.model.response.StudentDetailResponse;
+import com.example.studentmanager.model.response.StudentResponse;
 import com.example.studentmanager.service.StudentService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -23,7 +23,7 @@ public class StudentController {
 
     @GetMapping
     public String getStudents(Model model) {
-        List<StudentDetailResponse> students = studentService.getStudent();
+        List<StudentResponse> students = studentService.getStudent();
         model.addAttribute("dsSinhVien", students);
         return "students";
     }
@@ -54,7 +54,7 @@ public class StudentController {
 
     @GetMapping("/update-student/{student-id}")
     public String forwardToStudentUpdate(Model model, @PathVariable("student-id") int id) throws StudentNotFoundException {
-        StudentDetailResponse student = studentService.findById(id);
+        StudentResponse student = studentService.findById(id);
         model.addAttribute("sinhVienMoiCapNhat", student);
         return "student-update";
     }

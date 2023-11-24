@@ -18,7 +18,7 @@ import java.util.Optional;
 @Repository
 @RequiredArgsConstructor
 public class StudentRepository {
-    private static final String STUDENT_DATA_FILE_NAME = "C:\\Users\\admin\\Documents\\tranduonghoan\\TranDuongHoan.github.io\\Spring\\student-management\\students.json";
+    private static final String STUDENT_DATA_FILE_NAME = "data/students.json";
 
     public static int AUTO_ID = 11;
 
