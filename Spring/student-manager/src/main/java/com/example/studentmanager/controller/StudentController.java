@@ -37,7 +37,7 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<?> getStudent(@RequestBody StudentCreationRequest request) {
+    public ResponseEntity<?> createStudent(@RequestBody @Valid StudentCreationRequest request) {
         studentService.createStudent(request);
         return ResponseEntity.ok(null);
     }
@@ -48,6 +48,11 @@ public class StudentController {
         return ResponseEntity.ok(null);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateStudent(@PathVariable Integer id, @RequestBody @Valid StudentCreationRequest request) {
+        studentService.updateStudent(id, request);
+        return ResponseEntity.ok(null);
+    }
 
 
 }

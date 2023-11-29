@@ -113,5 +113,17 @@ public class StudentService {
     }
 
 
-
+    public void updateStudent(Integer id, StudentCreationRequest request) {
+        List<Student> students = studentRepository.getStudent();
+        for (int i = 0; i < students.size(); i++){
+            if (students.get(i).getId() == id){
+                students.get(i).setName(request.getName());
+                students.get(i).setAddress(request.getAddress());
+                students.get(i).setPhone(request.getPhone());
+                students.get(i).setClassName(request.getClassName());
+                break;
+            }
+        }
+        studentRepository.save(students);
+    }
 }
