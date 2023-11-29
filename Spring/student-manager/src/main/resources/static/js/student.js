@@ -72,10 +72,10 @@ $(document).ready(function () {
                 console.log(data);
 
                 //đổ dữ liệu vào form -- jQuery
-                $("update-student-form #name").val(data.name);
-                $("update-student-form #address").val(data.address);
-                $("update-student-form #phone").val(data.phone);
-                $("update-student-form #className").val(data.className);
+                $("#update-student-form #name").val(data.name);
+                $("#update-student-form #address").val(data.address);
+                $("#update-student-form #phone").val(data.phone);
+                $("#update-student-form #className").val(data.className);
 
                 $("#student-update-modal").modal('show');
             },
