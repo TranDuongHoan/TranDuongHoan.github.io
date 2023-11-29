@@ -2,6 +2,7 @@ package com.example.studentmanager.repository;
 
 
 import com.example.studentmanager.entity.Student;
+import com.example.studentmanager.entity.Subject;
 import com.example.studentmanager.exception.StudentNotFoundException;
 import com.example.studentmanager.util.FileUtil;
 import lombok.RequiredArgsConstructor;
@@ -9,34 +10,38 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
 @Repository
 @RequiredArgsConstructor
 public class SubjectRepository {
-    private static final String STUDENT_DATA_FILE_NAME = "data/students.json";
+    private static final String SUBJECT_DATA_FILE_NAME = "data/subjects.json";
 
     public static int AUTO_ID = 11;
 
-    private final FileUtil<Student> fileUtil;
+    private final FileUtil<Subject> fileUtil;
 
-    public List<Student> getStudent() {
-        return fileUtil.readDataFromFile(STUDENT_DATA_FILE_NAME, Student[].class);
+    public List<Subject> getSubject() {
+        return fileUtil.readDataFromFile(SUBJECT_DATA_FILE_NAME, Subject[].class);
     }
 
-    public List<Student> delete(int id) throws StudentNotFoundException {
-        List<Student> students = getStudent();
-        if (CollectionUtils.isEmpty(students)) {
-            throw new StudentNotFoundException("Students not found");
+
+    public List<Subject> createSubject(Subject subject) {
+        List<Subject> subjects = getSubject();
+        if (CollectionUtils.isEmpty(subjects)) {
+            subjects   = new ArrayList<>();
         }
-        for (int i = 0; i < students.size(); i++) {
-            if (students.get(i).getId() == id) {
-                students.remove(i);
-                fileUtil.writeDataToFile(STUDENT_DATA_FILE_NAME, students);
-                return students;
-            }
-        }
-        return null;
+        subjects  .add(subject);
+        fileUtil.writeDataToFile(SUBJECT_DATA_FILE_NAME, subjects );
+        return subjects ;
     }
+
+    public void save(List<Subject> result) {
+        fileUtil.writeDataToFile(SUBJECT_DATA_FILE_NAME, result );
+
+    }
+
+
 }

@@ -28,20 +28,7 @@ public class StudentRepository {
         return fileUtil.readDataFromFile(STUDENT_DATA_FILE_NAME, Student[].class);
     }
 
-//    public List<Student> delete(int id) throws StudentNotFoundException {
-//        List<Student> students = getStudent();
-//        if (CollectionUtils.isEmpty(students)) {
-//            throw new StudentNotFoundException("Students not found");
-//        }
-//        for (int i = 0; i < students.size(); i++) {
-//            if (students.get(i).getId() == id) {
-//                students.remove(i);
-//                fileUtil.writeDataToFile(STUDENT_DATA_FILE_NAME, students);
-//                return students;
-//            }
-//        }
-//        return null;
-//    }
+
 
     public List<Student> createStudent(Student student) {
         List<Student> students = getStudent();
