@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -47,9 +48,9 @@ public class StudentService {
 //        return result;
     }
 
-    public List<Student> deleteStudent(int id) throws StudentNotFoundException {
-        return studentRepository.delete(id);
-    }
+//    public List<Student> deleteStudent(int id) throws StudentNotFoundException {
+//        return studentRepository.delete(id);
+//    }
 
     public List<Student> createStudent(@Valid StudentCreationRequest studentCreationRequest) {
         Student student = Student.builder()
@@ -62,18 +63,55 @@ public class StudentService {
         return studentRepository.createStudent(student);
     }
 
-    public StudentResponse findById(int id) throws StudentNotFoundException {
-        Student student = studentRepository.findById(id);
-        return StudentResponse.builder()
-                .id(student.getId())
-                .name(student.getName())
-                .address(student.getAddress())
-                .phone(student.getPhone())
-                .className(student.getClassName())
-                .build();
+    public void delete(Integer id) {
+        List<Student> students = studentRepository.getStudent();
+//        List<Student> result = new ArrayList<>();
+//        for (int i=0; i<students.size(); i++){
+//            if (students.get(i).getId() == id){
+//                continue;
+//            }
+//            result.add(students.get(i));
+//        }
+
+//        List<Student> result = students
+//                .stream()
+//                .filter(s -> s.getId() != id).collect(Collectors.toList());
+
+        students.removeIf(s -> s.getId() == id);
+        studentRepository.save(students);
     }
 
-    public List<Student> updateStudent(StudentUpdateRequest student) throws StudentNotFoundException {
-        return studentRepository.updateStudent(student);
+    public StudentResponse getStudentDetails(Integer id) {
+        List<Student> students = studentRepository.getStudent();
+
+        return students.stream().filter(s->s.getId()==id)
+                .findFirst()
+                .map(student -> StudentResponse.builder()
+                        .id(student.getId())
+                        .name(student.getName())
+                        .address(student.getAddress())
+                        .phone(student.getPhone())
+                        .className(student.getClassName())
+                        .build())
+                .get();
+
+//        for (int i=0; i<students.size(); i++){
+//            if (students.get(i).getId() == id){
+//                Student student = students.get(i);
+//                return StudentResponse.builder()
+//                    .id(student.getId())
+//                    .name(student.getName())
+//                    .address(student.getAddress())
+//                    .phone(student.getPhone())
+//                    .className(student.getClassName())
+//                    .build();
+//
+//            }
+//
+//        }
+//        return null;
     }
+
+
+
 }

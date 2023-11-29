@@ -28,20 +28,20 @@ public class StudentRepository {
         return fileUtil.readDataFromFile(STUDENT_DATA_FILE_NAME, Student[].class);
     }
 
-    public List<Student> delete(int id) throws StudentNotFoundException {
-        List<Student> students = getStudent();
-        if (CollectionUtils.isEmpty(students)) {
-            throw new StudentNotFoundException("Students not found");
-        }
-        for (int i = 0; i < students.size(); i++) {
-            if (students.get(i).getId() == id) {
-                students.remove(i);
-                fileUtil.writeDataToFile(STUDENT_DATA_FILE_NAME, students);
-                return students;
-            }
-        }
-        return null;
-    }
+//    public List<Student> delete(int id) throws StudentNotFoundException {
+//        List<Student> students = getStudent();
+//        if (CollectionUtils.isEmpty(students)) {
+//            throw new StudentNotFoundException("Students not found");
+//        }
+//        for (int i = 0; i < students.size(); i++) {
+//            if (students.get(i).getId() == id) {
+//                students.remove(i);
+//                fileUtil.writeDataToFile(STUDENT_DATA_FILE_NAME, students);
+//                return students;
+//            }
+//        }
+//        return null;
+//    }
 
     public List<Student> createStudent(Student student) {
         List<Student> students = getStudent();
@@ -53,36 +53,9 @@ public class StudentRepository {
         return students ;
     }
 
-    public Student findById(int id) throws StudentNotFoundException {
-        List<Student> students = getStudent();
-        if (students == null || students.isEmpty()) {
-            throw new StudentNotFoundException("Students not found");
-        }
-        return students.stream().filter(b -> b.getId() == id).findFirst().get();
-    }
+    public void save(List<Student> result) {
+        fileUtil.writeDataToFile(STUDENT_DATA_FILE_NAME, result );
 
-    public List<Student> updateStudent(StudentUpdateRequest student) throws StudentNotFoundException {
-        List<Student> students = getStudent();
-        if (CollectionUtils.isEmpty(students)) {
-            throw new StudentNotFoundException("Students not found");
-        }
-
-        Optional<Student> studentCanUpdate = students.stream().filter(b -> b.getId() == student.getId()).findFirst();
-        if (studentCanUpdate.isEmpty()) {
-            throw new StudentNotFoundException("Students not found");
-        }
-
-        for (int i = 0; i < students.size(); i++) {
-            if (students.get(i).getId() == student.getId()) {
-                students.get(i).setName(student.getName());
-                students.get(i).setAddress(student.getAddress());
-                students.get(i).setPhone(student.getPhone());
-                students.get(i).setClassName(student.getClassName());
-                fileUtil.writeDataToFile(STUDENT_DATA_FILE_NAME, students);
-                return students;
-            }
-        }
-        return null;
     }
 
 }

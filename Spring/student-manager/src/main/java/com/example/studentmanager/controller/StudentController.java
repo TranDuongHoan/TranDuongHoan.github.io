@@ -7,12 +7,14 @@ import com.example.studentmanager.model.request.StudentUpdateRequest;
 import com.example.studentmanager.model.response.StudentResponse;
 import com.example.studentmanager.service.StudentService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Controller
@@ -22,50 +24,30 @@ public class StudentController {
     private final StudentService studentService;
 
     @GetMapping
-    public String getStudents(Model model) {
+    public String getStudent(Model model) {
         List<StudentResponse> students = studentService.getStudent();
         model.addAttribute("dsSinhVien", students);
         return "students";
     }
 
-    @GetMapping("/delete-student/{id}")
-    public String deleteStudent(@PathVariable("id") int id, Model model) throws StudentNotFoundException {
-        List<Student> students = studentService.deleteStudent(id);
-        model.addAttribute("dsSinhVien", students);
-        return "students";
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getStudentDetails(@PathVariable Integer id) {
+        StudentResponse student = studentService.getStudentDetails(id);
+        return ResponseEntity.ok(student);
     }
 
-    @GetMapping("/create-student")
-    public String forwardToStudentCreation(Model model) {
-        model.addAttribute("sinhVienThemMoi", new StudentCreationRequest());
-        return "student-creation";
+    @PostMapping
+    public ResponseEntity<?> getStudent(@RequestBody StudentCreationRequest request) {
+        studentService.createStudent(request);
+        return ResponseEntity.ok(null);
     }
 
-    @PostMapping("/create-student")
-    public String createStudent(@ModelAttribute("sinhVienThemMoi") @Valid StudentCreationRequest student, Errors errors) {
-        if (null != errors && errors.getErrorCount() > 0) {
-            return "student-creation";
-        }
-        List<Student> students = studentService.createStudent(student);
-//            model.addAttribute("dsSach", books);
-        return "redirect:/index";
-
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteStudent(@PathVariable Integer id){
+        studentService.delete(id);
+        return ResponseEntity.ok(null);
     }
 
-    @GetMapping("/update-student/{student-id}")
-    public String forwardToStudentUpdate(Model model, @PathVariable("student-id") int id) throws StudentNotFoundException {
-        StudentResponse student = studentService.findById(id);
-        model.addAttribute("sinhVienMoiCapNhat", student);
-        return "student-update";
-    }
 
-    @PostMapping("/update-student")
-    public String updateBook(@ModelAttribute("ssinhVienMoiCapNhat") @Valid StudentUpdateRequest student, Errors errors) throws StudentNotFoundException {
-        if (null != errors && errors.getErrorCount() > 0) {
-            return "student-update";
-        }
-        List<Student> students = studentService.updateStudent(student);
-//        model.addAttribute("dsSach", books);
-        return "redirect:/index";
-    }
+
 }
