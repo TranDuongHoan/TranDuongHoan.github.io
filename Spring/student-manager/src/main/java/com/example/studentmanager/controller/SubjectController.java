@@ -28,7 +28,7 @@ public class SubjectController {
     public String getSubjects(Model model) {
         List<SubjectResponse> subjects = subjectService.getSubject();
         model.addAttribute("dsMonHoc", subjects);
-        return "students";
+        return "subjects";
     }
 
     @GetMapping("/{id}")
