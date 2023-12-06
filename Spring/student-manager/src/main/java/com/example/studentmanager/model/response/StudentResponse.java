@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class StudentResponse {
 
-    private int id;
+    private Long id;
     private String name;
     private String address;
     private String phone;

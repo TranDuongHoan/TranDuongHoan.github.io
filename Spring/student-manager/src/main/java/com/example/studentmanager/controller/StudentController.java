@@ -1,6 +1,7 @@
 package com.example.studentmanager.controller;
 
-import com.example.studentmanager.entity.Student;
+//import com.example.studentmanager.entity.Student;
+//import com.example.studentmanager.exception.StudentNotFoundException;
 import com.example.studentmanager.exception.StudentNotFoundException;
 import com.example.studentmanager.model.request.StudentCreationRequest;
 import com.example.studentmanager.model.request.StudentUpdateRequest;
@@ -30,7 +31,7 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getStudentDetails(@PathVariable Integer id) {
+    public ResponseEntity<?> getStudentDetails(@PathVariable Long id) throws StudentNotFoundException {
         StudentResponse student = studentService.getStudentDetails(id);
         return ResponseEntity.ok(student);
     }
@@ -42,13 +43,13 @@ public class StudentController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteStudent(@PathVariable Integer id) {
+    public ResponseEntity<?> deleteStudent(@PathVariable Long id) {
         studentService.delete(id);
         return ResponseEntity.ok(null);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateStudent(@PathVariable Integer id, @RequestBody @Valid StudentCreationRequest request) {
+    public ResponseEntity<?> updateStudent(@PathVariable Long id, @RequestBody @Valid StudentCreationRequest request) {
         studentService.updateStudent(id, request);
         return ResponseEntity.ok(null);
     }

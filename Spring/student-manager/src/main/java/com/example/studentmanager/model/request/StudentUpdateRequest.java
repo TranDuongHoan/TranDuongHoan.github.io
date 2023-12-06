@@ -12,7 +12,7 @@ public class StudentUpdateRequest {
 
     @NotNull(message = "ID bắt buộc phải nhập")
     @Min(value = 1)
-    private Integer id;
+    private Long id;
 
     @NotBlank(message = "Tên sinh viên bắt buộc nhập")
     @Length(max = 100, message = "Tên sinh viên không được vượt quá 100 ký tự")
