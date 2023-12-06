@@ -1,17 +1,17 @@
 package com.example.studentmanager.controller;
 
-//import com.example.studentmanager.entity.Student;
-//import com.example.studentmanager.exception.StudentNotFoundException;
+
 import com.example.studentmanager.exception.StudentNotFoundException;
+
 import com.example.studentmanager.model.request.StudentCreationRequest;
-import com.example.studentmanager.model.request.StudentUpdateRequest;
+
 import com.example.studentmanager.model.response.StudentResponse;
 import com.example.studentmanager.service.StudentService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
+
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
