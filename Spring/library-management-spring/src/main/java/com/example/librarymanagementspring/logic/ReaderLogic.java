@@ -26,7 +26,7 @@ public class ReaderLogic {
     public void inputNewReader() {
         System.out.println("Bạn muốn thêm mới bao nhiêu người đọc: ");
         int readersNumber = new Scanner(System.in).nextInt();
-        for (int i = 0; i < readersNumber; i++){
+        for (int i = 0; i < readersNumber; i++) {
             System.out.println("Nhập thông tin cho người đọc thứ " + (i + 1));
             Reader reader = new Reader();
             reader.inputInfo();
@@ -38,7 +38,7 @@ public class ReaderLogic {
         System.out.println(readers);
     }
 
-    public  boolean readerIsNotEmpty() {
+    public boolean readerIsNotEmpty() {
         readers.isEmpty();
         return false;
     }

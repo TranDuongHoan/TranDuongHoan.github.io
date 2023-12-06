@@ -21,7 +21,7 @@ public class StudentCreationRequest {
     private String phone;
 
     @NotBlank(message = "Tên lớp bắt buộc nhập")
-    @Length(max = 100, message = "Tên lớp không được vượt quá 100 ký tự")
+    @Length(max = 10, message = "Tên lớp không được vượt quá 100 ký tự")
     private String className;
 
 }

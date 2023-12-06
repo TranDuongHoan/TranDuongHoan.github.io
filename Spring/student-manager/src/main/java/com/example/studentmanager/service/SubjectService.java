@@ -44,9 +44,9 @@ public class SubjectService {
     }
 
     public SubjectResponse getSubjectDetails(Integer id) {
-        List<Subject> subjects= subjectRepository.getSubject();
+        List<Subject> subjects = subjectRepository.getSubject();
 
-        return subjects.stream().filter(s->s.getId()==id)
+        return subjects.stream().filter(s -> s.getId() == id)
                 .findFirst()
                 .map(subject -> SubjectResponse.builder()
                         .id(subject.getId())

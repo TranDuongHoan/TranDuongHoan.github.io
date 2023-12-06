@@ -6,7 +6,8 @@ public enum ReaderLevel {
     GV("giáo viên");
 
     public String value;
-    ReaderLevel (String value){
+
+    ReaderLevel(String value) {
         this.value = value;
     }
 }

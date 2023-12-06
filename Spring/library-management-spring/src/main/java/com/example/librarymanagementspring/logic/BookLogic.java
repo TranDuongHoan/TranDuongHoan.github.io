@@ -24,7 +24,7 @@ public class BookLogic {
     public void inputNewBook() {
         System.out.println("Bạn muốn thêm mới bao nhiêu đầu sách: ");
         int booksNumber = new Scanner(System.in).nextInt();
-        for (int i = 0; i < booksNumber; i++){
+        for (int i = 0; i < booksNumber; i++) {
             System.out.println("Nhập thông tin cho đầu sách thứ " + (i + 1));
             Book book = new Book();
             book.inputInfo();

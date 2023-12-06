@@ -84,7 +84,7 @@ public class StudentService {
     public StudentResponse getStudentDetails(Integer id) {
         List<Student> students = studentRepository.getStudent();
 
-        return students.stream().filter(s->s.getId()==id)
+        return students.stream().filter(s -> s.getId() == id)
                 .findFirst()
                 .map(student -> StudentResponse.builder()
                         .id(student.getId())
@@ -115,8 +115,8 @@ public class StudentService {
 
     public void updateStudent(Integer id, StudentCreationRequest request) {
         List<Student> students = studentRepository.getStudent();
-        for (int i = 0; i < students.size(); i++){
-            if (students.get(i).getId() == id){
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).getId() == id) {
                 students.get(i).setName(request.getName());
                 students.get(i).setAddress(request.getAddress());
                 students.get(i).setPhone(request.getPhone());

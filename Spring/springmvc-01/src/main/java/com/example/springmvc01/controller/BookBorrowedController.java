@@ -41,7 +41,7 @@ public class BookBorrowedController {
 
     @PostMapping
     public String createBorrowBook(@ModelAttribute("luotMuonSach") BorrowBookCreationRequest request, Model model) throws BookNotFoundException {
-        List<BookBorrowed> borrowBooks =  borrowBookService.createBorrowBook(request);
+        List<BookBorrowed> borrowBooks = borrowBookService.createBorrowBook(request);
         model.addAttribute("dsMuon", borrowBooks);
         return "borrow-books";
     }

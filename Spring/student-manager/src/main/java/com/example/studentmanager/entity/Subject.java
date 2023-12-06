@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 
 public class Subject {
 
-    private  int id;
+    private int id;
     private String name;
     private int credit;
     private SubjectType subjectType;

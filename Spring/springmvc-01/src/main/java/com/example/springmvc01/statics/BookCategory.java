@@ -9,8 +9,7 @@ public enum BookCategory {
     NOVEL("Tiểu thuyết"),
     SHORT_STORY("Truyện ngắn"),
     KID("Thiếu nhi"),
-    @JsonEnumDefaultValue OTHER("Khác")
-    ;
+    @JsonEnumDefaultValue OTHER("Khác");
 
     public String value;
 

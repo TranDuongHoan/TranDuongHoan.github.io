@@ -81,7 +81,7 @@ public class DriverRepository {
             if (drivers.get(i).getId() == driver.getId()) {
                 drivers.get(i).setName(driver.getName());
                 drivers.get(i).setAddress(driver.getAddress());
-                drivers.get(i).setPhone(driver.getPhone());                
+                drivers.get(i).setPhone(driver.getPhone());
                 drivers.get(i).setLevels(driver.getLevels());
                 fileUtil.writeDataToFile(DRIVER_DATA_FILE_NAME, drivers);
                 return drivers;

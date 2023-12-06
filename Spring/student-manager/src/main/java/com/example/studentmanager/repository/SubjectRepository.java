@@ -31,15 +31,15 @@ public class SubjectRepository {
     public List<Subject> createSubject(Subject subject) {
         List<Subject> subjects = getSubject();
         if (CollectionUtils.isEmpty(subjects)) {
-            subjects   = new ArrayList<>();
+            subjects = new ArrayList<>();
         }
-        subjects  .add(subject);
-        fileUtil.writeDataToFile(SUBJECT_DATA_FILE_NAME, subjects );
-        return subjects ;
+        subjects.add(subject);
+        fileUtil.writeDataToFile(SUBJECT_DATA_FILE_NAME, subjects);
+        return subjects;
     }
 
     public void save(List<Subject> result) {
-        fileUtil.writeDataToFile(SUBJECT_DATA_FILE_NAME, result );
+        fileUtil.writeDataToFile(SUBJECT_DATA_FILE_NAME, result);
 
     }
 

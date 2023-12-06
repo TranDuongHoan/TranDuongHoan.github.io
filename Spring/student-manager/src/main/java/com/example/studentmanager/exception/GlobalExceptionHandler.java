@@ -15,7 +15,7 @@ public class GlobalExceptionHandler {
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler({com.example.studentmanager.exception.StudentNotFoundException.class})
-    public void handBookFoundException(com.example.studentmanager.exception.StudentNotFoundException exception){
+    public void handBookFoundException(com.example.studentmanager.exception.StudentNotFoundException exception) {
         log.error(exception.getMessage(), exception);
     }
 

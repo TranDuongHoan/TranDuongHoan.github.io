@@ -15,7 +15,7 @@ public class GlobalExceptionHandler {
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler({BookNotFoundException.class})
-    public void handBookFoundException(BookNotFoundException exception){
+    public void handBookFoundException(BookNotFoundException exception) {
         log.error(exception.getMessage(), exception);
     }
 

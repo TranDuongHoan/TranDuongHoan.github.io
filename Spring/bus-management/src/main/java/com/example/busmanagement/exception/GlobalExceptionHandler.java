@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler({DriverNotFoundException.class})
-    public void handDriverFoundException(DriverNotFoundException exception){
+    public void handDriverFoundException(DriverNotFoundException exception) {
         log.error(exception.getMessage(), exception);
     }
 }

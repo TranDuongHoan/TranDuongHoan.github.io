@@ -29,19 +29,18 @@ public class StudentRepository {
     }
 
 
-
     public List<Student> createStudent(Student student) {
         List<Student> students = getStudent();
-        if (CollectionUtils.isEmpty(students )) {
-            students  = new ArrayList<>();
+        if (CollectionUtils.isEmpty(students)) {
+            students = new ArrayList<>();
         }
-        students .add(student);
-        fileUtil.writeDataToFile(STUDENT_DATA_FILE_NAME, students );
-        return students ;
+        students.add(student);
+        fileUtil.writeDataToFile(STUDENT_DATA_FILE_NAME, students);
+        return students;
     }
 
     public void save(List<Student> result) {
-        fileUtil.writeDataToFile(STUDENT_DATA_FILE_NAME, result );
+        fileUtil.writeDataToFile(STUDENT_DATA_FILE_NAME, result);
 
     }
 

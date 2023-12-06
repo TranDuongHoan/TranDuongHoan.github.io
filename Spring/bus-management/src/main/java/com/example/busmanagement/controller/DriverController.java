@@ -47,7 +47,7 @@ public class DriverController {
     }
 
     @PostMapping("/create-driver")
-    public String createDriver(@ModelAttribute("taiXeThemMoi") @Valid DriverCreationRequest driver,  Errors errors) {
+    public String createDriver(@ModelAttribute("taiXeThemMoi") @Valid DriverCreationRequest driver, Errors errors) {
         if (null != errors && errors.getErrorCount() > 0) {
             return "driver-creation";
         }

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student management</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link rel="stylesheet" href="/student-list.css"/>
+</head>
+<body>
+
+<div class="container-fluid m-0 p-0">
+
+    <div th:insert="fragments/nav :: nav"></div>
+
+    <div class="row mt-3 ml-3">
+        <div class="col">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#student-create-modal">
+                Create
+            </button>
+        </div>
+    </div>
+
+    <div th:insert="fragments/student-create-modal :: student-create-modal"
+         th:with="sinhVienMuonTaoMoi=${sinhVienMuonTaoMoi}"></div>
+
+    <div class="row mt-4 mx-3">
+        <div class="col">
+            <table class="table table-bordered table-hover table-striped">
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Address</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Phone</th>
+                    <th class="text-center">Date of birth</th>
+                    <th class="text-center">GPA</th>
+                    <th class="text-center">Region</th>
+                </tr>
+                <tr th:each="sinhVien: ${danhSachSinhVien}">
+                    <td th:text="${sinhVien.id}"/>
+                    <td th:text="${sinhVien.name}"/>
+                    <td th:text="${sinhVien.address}"/>
+                    <td th:text="${sinhVien.email}"/>
+                    <td th:text="${sinhVien.phone}"/>
+                    <td th:text="${sinhVien.dob}"/>
+                    <td th:text="${sinhVien.gpa}"/>
+                    <td th:text="${sinhVien.region.name}"/>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div th:insert="fragments/footer :: footer"></div>
+</div>
+
+</body>
+</html>

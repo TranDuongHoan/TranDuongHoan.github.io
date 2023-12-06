@@ -4,7 +4,9 @@
     "name": "Gunner Cheater",
     "author": "Dionisio MacPhail",
     "publishedYear": 2007,
-    "categories": ["SCIENCE"],
+    "categories": [
+      "SCIENCE"
+    ],
     "description": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat."
   },
   {
@@ -12,7 +14,10 @@
     "name": "Gian Havercroft",
     "author": "Crichton Harbage",
     "publishedYear": 2005,
-    "categories": ["SHORT_STORY", "SCI_FI"],
+    "categories": [
+      "SHORT_STORY",
+      "SCI_FI"
+    ],
     "description": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.Sed ante. Vivamus tortor. Duis mattis egestas metus."
   },
   {
@@ -20,7 +25,10 @@
     "name": "Hastings McGeachy",
     "author": "Nissa Rump",
     "publishedYear": 1996,
-    "categories": ["KID", "NOVEL"],
+    "categories": [
+      "KID",
+      "NOVEL"
+    ],
     "description": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus."
   },
   {
@@ -28,7 +36,9 @@
     "name": "Fredek Showering",
     "author": "Velma Edmons",
     "publishedYear": 2003,
-    "categories": ["NOVEL"],
+    "categories": [
+      "NOVEL"
+    ],
     "description": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris."
   },
   {
@@ -36,7 +46,9 @@
     "name": "Daphene Squelch",
     "author": "Nataniel Einchcombe",
     "publishedYear": 1995,
-    "categories": ["SCI_FI"],
+    "categories": [
+      "SCI_FI"
+    ],
     "description": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti."
   },
   {
@@ -44,7 +56,9 @@
     "name": "Mead Gostage",
     "author": "Trudi Slater",
     "publishedYear": 2006,
-    "categories": ["SHORT_STORY"],
+    "categories": [
+      "SHORT_STORY"
+    ],
     "description": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui."
   },
   {
@@ -52,7 +66,11 @@
     "name": "Jazmin Bestwall",
     "author": "Emmaline Elcomb",
     "publishedYear": 2009,
-    "categories": ["SCIENCE", "SCI_FI", "NOVEL"],
+    "categories": [
+      "SCIENCE",
+      "SCI_FI",
+      "NOVEL"
+    ],
     "description": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
   },
   {
@@ -60,7 +78,9 @@
     "name": "Elsinore Jerrans",
     "author": "Alon Paoloni",
     "publishedYear": 1994,
-    "categories": ["SHORT_STORY"],
+    "categories": [
+      "SHORT_STORY"
+    ],
     "description": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst."
   },
   {
@@ -68,7 +88,9 @@
     "name": "Florida Magrane",
     "author": "Hillier Gatling",
     "publishedYear": 2003,
-    "categories": ["SCI_FI"],
+    "categories": [
+      "SCI_FI"
+    ],
     "description": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris."
   },
   {
@@ -76,7 +98,9 @@
     "name": "Niko Whightman",
     "author": "Lennie Bembrick",
     "publishedYear": 2008,
-    "categories": ["SCIENCE"],
+    "categories": [
+      "SCIENCE"
+    ],
     "description": "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus."
   },
   {
@@ -84,7 +108,9 @@
     "name": "Bryce Dies",
     "author": "Dulciana Ferby",
     "publishedYear": 2012,
-    "categories": ["SHORT_STORY"],
+    "categories": [
+      "SHORT_STORY"
+    ],
     "description": "Fusce consequat. Nulla nisl. Nunc nisl."
   },
   {
@@ -92,7 +118,9 @@
     "name": "Kaleena McGeady",
     "author": "Malachi Pepall",
     "publishedYear": 2006,
-    "categories": ["NOVEL"],
+    "categories": [
+      "NOVEL"
+    ],
     "description": "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat."
   }
 ]

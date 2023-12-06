@@ -5,7 +5,8 @@ public enum SubjectType {
     CO_SO("Cơ sở"),
     CHUYEN_NGHANH("Chuyên ngành");
     private String value;
-    SubjectType(String value){
+
+    SubjectType(String value) {
         this.value = value;
     }
 }

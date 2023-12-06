@@ -18,7 +18,7 @@ public class MenuLogic {
 
 
     public void run() {
-        while (true){
+        while (true) {
             showMenuContent();
             int choice = functionsChoice();
             switch (choice) {
@@ -55,9 +55,9 @@ public class MenuLogic {
 
     private int functionsChoice() {
         int choice;
-        do{
+        do {
             choice = new Scanner(System.in).nextInt();
-            if (choice>=1 && choice<=10){
+            if (choice >= 1 && choice <= 10) {
                 break;
             }
             System.out.println("Nhập sai, mời bạn nhập lại:");
@@ -65,6 +65,7 @@ public class MenuLogic {
         while (true);
         return choice;
     }
+
     private void showMenuContent() {
         System.out.println("------------PHẦN MỀM QUẢN LÝ MƯỢN SÁCH THƯ VIỆN-------------");
         System.out.println("1. Thêm mới đầu sách.");
@@ -85,9 +86,9 @@ public class MenuLogic {
         System.out.println("2. Sắp xếp theo số cuốn sách được mượn(giảm dần)");
         System.out.println("3. Quay lại menu tổng.");
         int choice;
-        do{
+        do {
             choice = new Scanner(System.in).nextInt();
-            if (choice>=1 && choice<=3){
+            if (choice >= 1 && choice <= 3) {
                 break;
             }
             System.out.println("Nhập sai, mời bạn nhập lại:");

@@ -1,80 +1,80 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-  <meta charset="UTF-8">
-  <title>QUẢN LÝ PHÂN CÔNG LÁI XE</title>
+    <meta charset="UTF-8">
+    <title>QUẢN LÝ PHÂN CÔNG LÁI XE</title>
 
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
-  <!-- jQuery library -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
 
-  <!-- Popper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 
-  <!-- Latest compiled JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
 <body>
 
 <div class="container">
-  <div class="row text-center mb-5">
-    <div class="col">
-      <h1>Đây là trang tạo mới tài xế</h1>
+    <div class="row text-center mb-5">
+        <div class="col">
+            <h1>Đây là trang tạo mới tài xế</h1>
+        </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col">
-      <form method="POST" th:action="@{/create-driver}" th:object="${taiXeThemMoi}">
-        <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" class="form-control" placeholder="Enter name" id="name"
-                 th:field="*{name}">
-          <div class="alert alert-danger bg-white border-0 pl-0 text-danger pt-1"
-               th:if="${#fields.hasErrors('name')}"
-               th:errors="*{name}"></div>
+    <div class="row">
+        <div class="col">
+            <form method="POST" th:action="@{/create-driver}" th:object="${taiXeThemMoi}">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" placeholder="Enter name" id="name"
+                           th:field="*{name}">
+                    <div class="alert alert-danger bg-white border-0 pl-0 text-danger pt-1"
+                         th:if="${#fields.hasErrors('name')}"
+                         th:errors="*{name}"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" class="form-control" placeholder="Enter address"
+                           th:field="*{address}" id="address">
+                    <div class="alert alert-danger bg-white border-0 pl-0 text-danger pt-1"
+                         th:if="${#fields.hasErrors('address')}"
+                         th:errors="*{address}"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone:</label>
+                    <input type="number" class="form-control" placeholder="Enter phone"
+                           id="phone" th:field="*{phone}"
+                    >
+                    <div class="alert alert-danger bg-white border-0 pl-0 text-danger pt-1"
+                         th:if="${#fields.hasErrors('phone')}"
+                         th:errors="*{phone}"></div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="levels">Level:</label>
+                    <select class="form-control" id="levels" th:field="*{levels}" multiple="true">
+                        <option th:each="cat : ${T(com.example.springmvc01.statics.DriverLevel).values()}"
+                                th:value="${cat}" th:text="${cat.value}">
+                        </option>
+                    </select>
+                    <div class="alert alert-danger bg-white border-0 pl-0 text-danger pt-1"
+                         th:if="${#fields.hasErrors('levels')}"
+                         th:errors="*{levels}"></div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a class="btn btn-secondary" href="/drivers">Back</a>
+            </form>
         </div>
-
-        <div class="form-group">
-          <label for="address">Address:</label>
-          <input type="text" class="form-control" placeholder="Enter address"
-                 th:field="*{address}" id="address">
-          <div class="alert alert-danger bg-white border-0 pl-0 text-danger pt-1"
-               th:if="${#fields.hasErrors('address')}"
-               th:errors="*{address}"></div>
-        </div>
-
-        <div class="form-group">
-          <label for="phone">Phone:</label>
-          <input type="number" class="form-control" placeholder="Enter phone"
-                 id="phone"  th:field="*{phone}"
-                 >
-          <div class="alert alert-danger bg-white border-0 pl-0 text-danger pt-1"
-               th:if="${#fields.hasErrors('phone')}"
-               th:errors="*{phone}"></div>
-
-        </div>
-
-        <div class="form-group">
-          <label for="levels">Level:</label>
-          <select class="form-control"  id="levels" th:field="*{levels}" multiple="true">
-            <option th:each="cat : ${T(com.example.springmvc01.statics.DriverLevel).values()}"
-                    th:value="${cat}" th:text="${cat.value}">
-            </option>
-          </select>
-          <div class="alert alert-danger bg-white border-0 pl-0 text-danger pt-1"
-               th:if="${#fields.hasErrors('levels')}"
-               th:errors="*{levels}"></div>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Save</button>
-        <a class="btn btn-secondary" href="/drivers">Back</a>
-      </form>
     </div>
-  </div>
 </div>
 
 </body>

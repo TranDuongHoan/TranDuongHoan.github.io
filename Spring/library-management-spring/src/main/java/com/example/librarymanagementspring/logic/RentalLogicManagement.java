@@ -24,7 +24,7 @@ public class RentalLogicManagement {
 
 
     public void inputNewRental() {
-        if(!readerLogic.readerIsNotEmpty() || !bookLogic.bookIsNotEmpty()) {
+        if (!readerLogic.readerIsNotEmpty() || !bookLogic.bookIsNotEmpty()) {
             System.out.println("Không có dữ liệu về người đọc hoặc đầu sách, vui lòng tạo dữ liệu:");
             return;
         }
@@ -36,7 +36,7 @@ public class RentalLogicManagement {
             System.out.println("Nhập ID người đọc:");
             int readerId;
             Reader reader = null;
-            do{
+            do {
                 readerId = new Scanner(System.in).nextInt();
                 for (int j = 0; j < readerLogic.getReaders().size(); j++) {
                     if (readerLogic.getReaders().get(j).getId() == readerId) {
@@ -48,7 +48,7 @@ public class RentalLogicManagement {
                     break;
                 }
                 System.out.println("Không tồn tại ID người đọc vừa nhập, xin vui lòng nhập lại: ");
-            }while (true);
+            } while (true);
 
             System.out.println("Người đọc mượn bao nhiêu đầu sách: ");
             int booksNumber = new Scanner(System.in).nextInt();
@@ -60,7 +60,7 @@ public class RentalLogicManagement {
                 System.out.println("Đầu sách thứ " + (j + 1) + "mà người đọc muốn mượn là đầu sách nào: ");
                 int bookId;
                 Book book = null;
-                do{
+                do {
                     bookId = new Scanner(System.in).nextInt();
                     for (int k = 0; k < bookLogic.getBooks().size(); k++) {
                         if (bookLogic.getBooks().get(k).getId() == bookId) {
@@ -72,7 +72,7 @@ public class RentalLogicManagement {
                         break;
                     }
                     System.out.println("Không tồn tại đầu sách có ID vừa nhập, xin vui lòng nhập lại: ");
-                }while (true);
+                } while (true);
 
                 System.out.println("Đầu sách này người đọc muốn mượn bao nhiêu cuốn sách:");
                 int bookNumber;
@@ -83,8 +83,8 @@ public class RentalLogicManagement {
                         continue;
                     }
                     int temp = totalBook;
-                    temp+=bookNumber * book.getTotalBook();
-                    if (temp < 5){
+                    temp += bookNumber * book.getTotalBook();
+                    if (temp < 5) {
                         System.out.println("Nếu số đầu sách vừa nhập quá 5, vui lòng nhập lại: ");
                         continue;
                     }
@@ -108,17 +108,17 @@ public class RentalLogicManagement {
 
 
     public void sortByReaderName() {
-        if (isEmptyRental()){
+        if (isEmptyRental()) {
             System.out.println("Chưa có dự liệu người đọc, vui lòng nhập dữ liệu trước khi sắp xếp");
             return;
         }
 
-        for (int i = 0; i < rentalManagements.size() -1; i++){
-            for (int j = i+1; j < rentalManagements.size(); j++){
-                if(rentalManagements.get(i).getReader().getName().compareToIgnoreCase(rentalManagements.get(j).getReader().getName()) > 0){
+        for (int i = 0; i < rentalManagements.size() - 1; i++) {
+            for (int j = i + 1; j < rentalManagements.size(); j++) {
+                if (rentalManagements.get(i).getReader().getName().compareToIgnoreCase(rentalManagements.get(j).getReader().getName()) > 0) {
                     RentalManagement temp = rentalManagements.get(i);
                     rentalManagements.set(i, rentalManagements.get(j));
-                    rentalManagements.set(j,temp);
+                    rentalManagements.set(j, temp);
                 }
             }
         }
@@ -126,16 +126,16 @@ public class RentalLogicManagement {
     }
 
     public void sortByTotalBook() {
-        if (isEmptyRental()){
+        if (isEmptyRental()) {
             System.out.println("Chưa có dự liệu người đọc, vui lòng nhập dữ liệu trước khi sắp xếp");
             return;
         }
-        for(int i = 0; i< rentalManagements.size(); i++){
-            for (int j = 0; j < rentalManagements.get(i).getDetails().size(); j++){
-                for(int k = j + 1; k < rentalManagements.get(i).getDetails().size(); k++){
-                    if(rentalManagements.get(i).getDetails().get(j).getBook().getTotalBook() > rentalManagements.get(i).getDetails().get(k).getBook().getTotalBook()){
+        for (int i = 0; i < rentalManagements.size(); i++) {
+            for (int j = 0; j < rentalManagements.get(i).getDetails().size(); j++) {
+                for (int k = j + 1; k < rentalManagements.get(i).getDetails().size(); k++) {
+                    if (rentalManagements.get(i).getDetails().get(j).getBook().getTotalBook() > rentalManagements.get(i).getDetails().get(k).getBook().getTotalBook()) {
                         RentalManagementDetail temp = rentalManagements.get(i).getDetails().get(k);
-                        rentalManagements.get(i).getDetails().set(j,rentalManagements.get(i).getDetails().get(k));
+                        rentalManagements.get(i).getDetails().set(j, rentalManagements.get(i).getDetails().get(k));
                         rentalManagements.get(i).getDetails().set(k, temp);
                     }
                 }
@@ -144,9 +144,9 @@ public class RentalLogicManagement {
         showRental();
     }
 
-    private boolean isEmptyRental(){
-        for (int i = 0; i < rentalManagements.size(); i++){
-            if (rentalManagements.get(i) != null){
+    private boolean isEmptyRental() {
+        for (int i = 0; i < rentalManagements.size(); i++) {
+            if (rentalManagements.get(i) != null) {
                 return false;
             }
         }
