@@ -49,7 +49,7 @@ public class StudentController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateStudent(@PathVariable Long id, @RequestBody @Valid StudentCreationRequest request) {
+    public ResponseEntity<?> updateStudent(@PathVariable Long id, @RequestBody @Valid StudentCreationRequest request) throws StudentNotFoundException {
         studentService.updateStudent(id, request);
         return ResponseEntity.ok(null);
     }

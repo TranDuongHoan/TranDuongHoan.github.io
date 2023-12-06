@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -144,7 +145,20 @@ public class StudentService {
     }
 
 
-    public void updateStudent(Long id, StudentCreationRequest request) {
+    public void updateStudent(Long id, StudentCreationRequest request) throws StudentNotFoundException {
+
+         Optional<Student> studentOptional =  studentJpaRepository.findById(id);
+        if (studentOptional.isEmpty()){
+            throw new StudentNotFoundException("Student with id " + id + " could not be found");
+        }
+        Student student = studentOptional.get();
+        student.setName(request.getName());
+        student.setPhone(request.getPhone());
+        student.setAddress(request.getAddress());
+        student.setClassName(request.getClassName());
+
+        studentJpaRepository.save(student);
+
 //        List<Student> students = studentRepository.getStudent();
 //        for (int i = 0; i < students.size(); i++) {
 //            if (students.get(i).getId() == id) {
