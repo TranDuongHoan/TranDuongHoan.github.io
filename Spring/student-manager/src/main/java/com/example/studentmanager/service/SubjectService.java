@@ -37,7 +37,7 @@ public class SubjectService {
                 .collect(Collectors.toList());
     }
 
-    public void createSubject(@Valid SubjectCreationRequest subjectCreationRequest) {
+    public void createSubject(SubjectCreationRequest subjectCreationRequest) {
         Subject subject = Subject.builder()
                 .name(subjectCreationRequest.getName())
                 .credit(subjectCreationRequest.getCredit())

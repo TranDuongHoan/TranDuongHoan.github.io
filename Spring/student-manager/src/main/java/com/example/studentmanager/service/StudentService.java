@@ -55,7 +55,7 @@ public class StudentService {
 //        return studentRepository.delete(id);
 //    }
 
-    public void createStudent(@Valid StudentCreationRequest studentCreationRequest) {
+    public void createStudent(StudentCreationRequest studentCreationRequest) {
         Student student = Student.builder()
                 .name(studentCreationRequest.getName())
                 .address(studentCreationRequest.getAddress())
