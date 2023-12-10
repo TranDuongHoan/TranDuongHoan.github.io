@@ -100,7 +100,7 @@ $(document).ready(function () {
             success: function (data) {
                 console.log(data);
 
-                //đổ dữ liệu vào form -- jQuery
+
                 $("#update-product-form #name").val(data.name);
                 $("#update-product-form #price").val(data.price);
                 $("#update-product-form #description").val(data.description);
@@ -130,7 +130,7 @@ $(document).ready(function () {
         $.ajax({
             url: "/admin/" + updateProductId,
             type: "PUT",
-            data: JSON.stringify(requestBody), // dữ liệu được gửi vào trong body của HTTP message lên backend
+            data: JSON.stringify(requestBody),
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 toastr.success("Update a product successfully");

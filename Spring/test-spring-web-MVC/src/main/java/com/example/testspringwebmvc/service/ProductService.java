@@ -63,7 +63,7 @@ public class ProductService {
 
         Optional<Product> productOptional =  productJpaRepository.findById(id);
         if (productOptional.isEmpty()){
-            throw new ProductNotFoundException("Student with id " + id + " could not be found");
+            throw new ProductNotFoundException("Product with id " + id + " could not be found");
         }
         Product product = productOptional.get();
         product.setName(request.getName());
