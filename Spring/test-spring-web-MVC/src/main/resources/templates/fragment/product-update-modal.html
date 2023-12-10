@@ -1,30 +1,30 @@
-<div class="modal fade" id="product-creation-modal" th:fragment="product-creation-modal">
+<div class="modal fade" id="product-update-modal" th:fragment="product-update-modal">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Creation Product</h4>
+                <h4 class="modal-title">Update Product</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
             <!-- Modal body -->
             <div class="modal-body">
-                <form id="create-product-form">
+                <form id="update-product-form">
                     <div class="form-group">
-                        <label for="name">Name<span class="text-danger">*</span></label>
+                        <label for="name">Name:</label>
                         <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
                     </div>
                     <div class="form-group">
-                        <label for="price">Address<span class="text-danger">*</span></label>
+                        <label for="price">Address:</label>
                         <input type="text" class="form-control" id="price" placeholder="Enter price" name="price">
                     </div>
                     <div class="form-group">
-                        <label for="description">Phone<span class="text-danger">*</span></label>
+                        <label for="description">Phone:</label>
                         <input type="text" class="form-control" id="description" placeholder="Enter description" name="description">
                     </div>
                     <div class="form-group">
-                        <label for="image">Class name<span class="text-danger">*</span></label>
+                        <label for="image">Class name:</label>
                         <input type="text" class="form-control" id="image" placeholder="Enter image"
                                name="className">
                     </div>
@@ -33,7 +33,7 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="save-product-btn">Save</button>
+                <button type="button" class="btn btn-success" id="update-product-btn">Update</button>
             </div>
 
         </div>

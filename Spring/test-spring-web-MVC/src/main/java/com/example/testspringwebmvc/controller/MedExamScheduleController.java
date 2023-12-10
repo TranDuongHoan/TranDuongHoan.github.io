@@ -12,7 +12,7 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/contact")
+@RequestMapping("/index")
 public class MedExamScheduleController {
 
     private final MedExamScheduleService medExamScheduleService;
@@ -21,7 +21,7 @@ public class MedExamScheduleController {
     public String getMedExamSchedule(Model model) {
         List<MedExamScheduleResponse> medexamschedules = medExamScheduleService.getMedExamSchedule();
         model.addAttribute("dsLichKham", medexamschedules);
-        return "contact";
+        return "index";
     }
 
 
