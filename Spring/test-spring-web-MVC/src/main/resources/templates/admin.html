@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
   <!-- jQuery library -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+<!--  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>-->
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -41,9 +41,7 @@
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
 
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.js"></script>
-  <script type="text/javascript" src="js/product.js"></script>
+
 
 </head>
 
@@ -123,7 +121,10 @@
             <td th:text="${sp.name}"></td>
             <td th:text="${sp.price}"></td>
             <td th:text="${sp.description}"></td>
-            <td th:image="${sp.image}"></td>
+            <td>
+              <img id="img" class="change-img-btn" alt="Image" src="/static/images/animal-bg.jpg" th:image="${sp.image}"
+              >
+            </td>
 
             <td>
               <a class="btn btn-primary btn-sm update-product-modal-open" th:attr="product-id=${sp.id}"
@@ -239,17 +240,19 @@
 
 
 
-
-  <script>
-    function openNav() {
-      document.getElementById("myNav").classList.toggle("menu_width")
-      document.querySelector(".custom_menu-btn").classList.toggle("menu_btn-style")
-    }
-  </script>
-
   <div th:replace="~{fragment/product-creation-modal :: product-creation-modal}"></div>
   <div th:replace="~{fragment/product-update-modal :: product-update-modal}"></div>
 
 </body>
+
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/product.js"></script>
+<script>
+  function openNav() {
+    document.getElementById("myNav").classList.toggle("menu_width")
+    document.querySelector(".custom_menu-btn").classList.toggle("menu_btn-style")
+  }
+</script>
 
 </html>
