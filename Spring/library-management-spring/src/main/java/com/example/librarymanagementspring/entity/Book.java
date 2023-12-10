@@ -1,7 +1,6 @@
 package com.example.librarymanagementspring.entity;
 
 import com.example.librarymanagementspring.stactics.BookSpecialization;
-import com.example.librarymanagementspring.stactics.ReaderLevel;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,7 +11,7 @@ import java.util.Scanner;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Book implements InputInfo {
     static int AUTO_ID = 100;
