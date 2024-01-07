@@ -21,6 +21,8 @@ public class Menu extends BaseEntity{
     @ManyToOne(targetEntity = Seller.class)
     Seller seller;
 
-
+    @JoinColumn(name = "cart_id")
+    @ManyToOne(targetEntity = Cart.class)
+    Cart cart;
 
 }

@@ -12,25 +12,13 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "sellers")
+@Table(name = "carts")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
-public class Seller extends  BaseEntity{
+public class Cart extends BaseEntity{
 
-    @JoinColumn(name = "food_category_id")
-    @ManyToOne(targetEntity = FoodCategory.class)
-    FoodCategory foodcategory;
-
-    @JoinColumn(name = "cart_id")
-    @ManyToOne(targetEntity = Cart.class)
-    Cart cart;
-
-    String shop_name;
-
-    String address;
-
-    String image;
-
-
+    @JoinColumn(name = "user_id")
+    @ManyToOne(targetEntity = User.class)
+    User user;
 
 }
