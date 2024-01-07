@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test_spring_web_MVC
+    username: root
+    password: 123
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  mail:
+    username: tranhoan88@gmail.com
+    password: DtNa@2023
+
+

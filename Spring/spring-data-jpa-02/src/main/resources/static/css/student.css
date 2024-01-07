@@ -1,0 +1,10 @@
+.error {
+    color: red;
+}
+
+.disabled-page {
+    color: #fff !important;;
+    background-color: #c6c7c8 !important;;
+    border-color: #9ea3a8 !important;
+    cursor: not-allowed;
+}

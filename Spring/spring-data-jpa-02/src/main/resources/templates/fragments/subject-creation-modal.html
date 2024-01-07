@@ -1,0 +1,41 @@
+<div class="modal fade" id="subject-creation-modal" th:fragment="subject-creation-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Tạo Mới Môn Học</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="create-subject-form">
+                    <div class="form-group">
+                        <label for="name">Name<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="credit">Credit<span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" id="credit" min="1" max="5" step="1" placeholder="Enter credit"
+                               name="credit">
+                    </div>
+                    <div class="form-group">
+                        <label for="subjectType">Subject Type<span class="text-danger">*</span></label>
+                        <select class="form-control"  id="subjectType" name="subjectType">
+<!--                            <option value="DAI_CUONG">Đại cương</option>-->
+<!--                            <option value="CO_SO">Cơ Sở</option>-->
+<!--                            <option value="CHUYEN_NGANH">Chuyên Ngành</option>-->
+                         </select>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="save-subject-btn">Save</button>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Builder
@@ -31,6 +33,12 @@ public class Product {
 
     @Column
     private String image;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "product_role",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
 
 
 }
