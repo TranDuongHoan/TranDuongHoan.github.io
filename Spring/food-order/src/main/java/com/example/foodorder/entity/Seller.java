@@ -31,6 +31,8 @@ public class Seller extends  BaseEntity{
 
     String image;
 
+    String rating;
+
 
 
 }

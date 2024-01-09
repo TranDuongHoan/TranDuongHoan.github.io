@@ -23,7 +23,9 @@ public class MenuItem extends BaseEntity{
 
     String name;
 
-    String price;
+    String originalPrice;
+
+    String actualPrice;
 
     String image;
 

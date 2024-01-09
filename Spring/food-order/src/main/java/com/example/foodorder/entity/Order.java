@@ -7,6 +7,8 @@ import jakarta.persistence.Table;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.time.LocalDateTime;
+
 @Data
 @Entity
 @Builder
@@ -25,5 +27,11 @@ public class Order extends BaseEntity{
     @ManyToOne(targetEntity = Seller.class)
     Seller seller;
 
+    String orderStatus;
 
+    String discountCode;
+
+    LocalDateTime shippingStartTime;
+
+    LocalDateTime completionTime;
 }

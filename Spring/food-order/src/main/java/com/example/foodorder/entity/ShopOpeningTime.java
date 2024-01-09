@@ -1,30 +1,29 @@
 package com.example.foodorder.entity;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Data
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "carts")
+@Table(name = "shopopeningtimes")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
-public class Cart extends BaseEntity{
+public class ShopOpeningTime extends BaseEntity{
 
-    @JoinColumn(name = "user_id")
-    @ManyToOne(targetEntity = User.class)
-    User user;
+    LocalDate fromDay;
 
-    Integer quantity;
+    LocalDate toDay;
 
-    String actualPrice;
+    LocalTime fromTime;
 
-
-
+    LocalTime toTime;
 }
