@@ -29,7 +29,7 @@ public class Otp extends BaseEntity{
 
     boolean confirm;
 
-    String confirmation_code;
+    String confirmationCode;
 
     LocalDateTime confirmationCodeExpiredIn;
 

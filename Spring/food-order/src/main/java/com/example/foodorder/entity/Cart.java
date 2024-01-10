@@ -29,6 +29,6 @@ public class Cart extends BaseEntity{
     @JoinTable(name = "cart_menu_item",
             joinColumns = @JoinColumn(name = "cart_id"),
             inverseJoinColumns = @JoinColumn(name = "menu_item_id"))
-    private Set<Role> roles = new HashSet<>();
+    private Set<MenuItem> menuItems = new HashSet<>();
 
 }
