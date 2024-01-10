@@ -1,11 +1,11 @@
 package com.example.foodorder.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -25,6 +25,10 @@ public class Cart extends BaseEntity{
 
     String actualPrice;
 
-
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "cart_menu_item",
+            joinColumns = @JoinColumn(name = "cart_id"),
+            inverseJoinColumns = @JoinColumn(name = "menu_item_id"))
+    private Set<Role> roles = new HashSet<>();
 
 }

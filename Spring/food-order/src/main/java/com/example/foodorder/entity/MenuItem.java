@@ -34,6 +34,9 @@ public class MenuItem extends BaseEntity{
 
     String description;
 
-    @ManyToMany(mappedBy = "order_menuitem")
+    @ManyToMany(mappedBy = "order_menu_item")
     private List<Order> orders;
+
+    @ManyToMany(mappedBy = "cart_menu_item")
+    private List<Cart> carts;
 }
