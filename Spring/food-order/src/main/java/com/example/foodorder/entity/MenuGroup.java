@@ -12,7 +12,7 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "menugroups")
+@Table(name = "menu_group")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
 public class MenuGroup extends BaseEntity{

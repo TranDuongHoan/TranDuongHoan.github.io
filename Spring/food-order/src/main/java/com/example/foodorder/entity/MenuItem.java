@@ -11,7 +11,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "menuitems")
+@Table(name = "menu_item")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
 public class MenuItem extends BaseEntity{

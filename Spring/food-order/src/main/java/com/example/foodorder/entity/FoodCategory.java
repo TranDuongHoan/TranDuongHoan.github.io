@@ -13,7 +13,7 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "foodcategorys")
+@Table(name = "food_category")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
 public class FoodCategory extends BaseEntity{

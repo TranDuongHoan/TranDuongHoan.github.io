@@ -12,7 +12,7 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "userfavorites")
+@Table(name = "user_favorite")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
 public class UserFavorite extends BaseEntity{

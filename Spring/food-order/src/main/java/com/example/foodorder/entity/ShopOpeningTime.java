@@ -16,7 +16,7 @@ import java.time.LocalTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "shopopeningtimes")
+@Table(name = "shop_opening_time")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
 public class ShopOpeningTime extends BaseEntity{

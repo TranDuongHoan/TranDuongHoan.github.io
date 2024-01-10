@@ -12,7 +12,7 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "menuitemtags")
+@Table(name = "menu_item_tag")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
 public class MenuItemTag extends BaseEntity{

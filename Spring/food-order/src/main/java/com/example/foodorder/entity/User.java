@@ -18,6 +18,10 @@ import java.util.Set;
 
 public class User extends BaseEntity{
 
+    @OneToOne
+    @JoinTable(name = "seller")
+    private Seller seller;
+
     String name;
 
     String address;
