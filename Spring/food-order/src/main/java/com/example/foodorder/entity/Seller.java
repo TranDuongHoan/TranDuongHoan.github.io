@@ -17,10 +17,6 @@ import lombok.experimental.FieldDefaults;
 
 public class Seller extends  BaseEntity{
 
-    @JoinColumn(name = "food_category_id")
-    @ManyToOne(targetEntity = FoodCategory.class)
-    FoodCategory foodcategory;
-
     @JoinColumn(name = "cart_id")
     @ManyToOne(targetEntity = Cart.class)
     Cart cart;

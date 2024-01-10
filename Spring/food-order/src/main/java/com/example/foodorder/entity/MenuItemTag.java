@@ -1,6 +1,8 @@
 package com.example.foodorder.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -14,6 +16,10 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
 public class MenuItemTag extends BaseEntity{
+
+    @JoinColumn(name = "menu_item_id")
+    @ManyToOne(targetEntity = MenuItem.class)
+    MenuItem menuItem;
 
     String tagName;
 

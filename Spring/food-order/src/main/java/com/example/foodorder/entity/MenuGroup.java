@@ -25,5 +25,5 @@ public class MenuGroup extends BaseEntity{
 
     String image;
 
-    String order;
+    Integer order;
 }

@@ -1,11 +1,10 @@
 package com.example.foodorder.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -21,6 +20,10 @@ public class MenuItem extends BaseEntity{
     @ManyToOne(targetEntity = MenuGroup.class)
     MenuGroup menuGroup;
 
+    @JoinColumn(name = "cart_id")
+    @ManyToOne(targetEntity = Cart.class)
+    Cart cart;
+
     String name;
 
     String originalPrice;
@@ -30,4 +33,7 @@ public class MenuItem extends BaseEntity{
     String image;
 
     String description;
+
+    @ManyToMany(mappedBy = "order_menuitem")
+    private List<Order> orders;
 }
