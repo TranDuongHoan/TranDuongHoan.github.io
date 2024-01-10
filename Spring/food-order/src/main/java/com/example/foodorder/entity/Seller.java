@@ -18,16 +18,16 @@ public class Seller extends  BaseEntity{
     @ManyToOne(targetEntity = Cart.class)
     Cart cart;
 
-    @Column
-    String shop_name;
+    @Column(name = "shop_name")
+    String shopName;
 
-    @Column
+    @Column(name = "address")
     String address;
 
-    @Column
+    @Column(name = "image")
     String image;
 
-    @Column
+    @Column(name = "rating")
     String rating;
 
 

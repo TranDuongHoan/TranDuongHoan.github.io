@@ -22,15 +22,15 @@ public class ShopOpeningTime extends BaseEntity{
     @ManyToOne(targetEntity = Seller.class)
     Seller seller;
 
-    @Column
+    @Column(name = "from_day")
     LocalDate fromDay;
 
-    @Column
+    @Column(name = "to_day")
     LocalDate toDay;
 
-    @Column
+    @Column(name = "from_time")
     LocalTime fromTime;
 
-    @Column
+    @Column(name = "to_time")
     LocalTime toTime;
 }

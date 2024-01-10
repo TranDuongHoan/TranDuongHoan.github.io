@@ -20,18 +20,18 @@ public class Discount extends BaseEntity{
     @ManyToOne(targetEntity = Order.class)
     Order order;
 
-    @Column
+    @Column(name = "discount_name")
     String name;
 
-    @Column
+    @Column(name = "discount_value")
     Integer discountValue;
 
-    @Column
+    @Column(name = "discount_unit")
     Integer discountUnit;
 
-    @Column
+    @Column(name = "start_time")
     LocalDateTime startTime;
 
-    @Column
+    @Column(name = "end_time")
     LocalDateTime endTime;
 }

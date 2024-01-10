@@ -24,19 +24,19 @@ public class MenuItem extends BaseEntity{
     @ManyToOne(targetEntity = Cart.class)
     Cart cart;
 
-    @Column
+    @Column(name = "menu_item_name")
     String name;
 
-    @Column
+    @Column(name = "original_price")
     String originalPrice;
 
-    @Column
+    @Column(name = "actual_price")
     String actualPrice;
 
-    @Column
+    @Column(name = "image")
     String image;
 
-    @Column
+    @Column(name = "description")
     String description;
 
     @ManyToMany(mappedBy = "order_menu_item")

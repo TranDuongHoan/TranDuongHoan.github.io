@@ -18,7 +18,7 @@ public class MenuItemTag extends BaseEntity{
     @ManyToOne(targetEntity = MenuItem.class)
     MenuItem menuItem;
 
-    @Column
+    @Column(name = "tag_name")
     String tagName;
 
 }

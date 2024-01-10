@@ -16,7 +16,7 @@ import lombok.experimental.FieldDefaults;
 
 public class CartMenuItem extends BaseEntity{
 
-    @Column
+    @Column(name = "quantity")
     Integer quantity;
 
 }

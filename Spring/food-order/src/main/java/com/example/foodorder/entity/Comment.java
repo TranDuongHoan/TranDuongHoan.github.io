@@ -27,6 +27,4 @@ public class Comment extends BaseEntity{
 
     @Column
     String content;
-
-
 }

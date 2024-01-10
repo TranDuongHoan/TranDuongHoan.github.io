@@ -21,10 +21,10 @@ public class Cart extends BaseEntity{
     @ManyToOne(targetEntity = User.class)
     User user;
 
-    @Column
+    @Column(name = "quantity")
     Integer quantity;
 
-    @Column
+    @Column(name = "actual_price")
     String actualPrice;
 
     @ManyToMany(fetch = FetchType.EAGER)

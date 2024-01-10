@@ -24,13 +24,13 @@ public class Otp extends BaseEntity{
     @ManyToOne(targetEntity = Seller.class)
     Seller seller;
 
-    @Column
+    @Column(name = "confirm")
     boolean confirm;
 
-    @Column
+    @Column(name = "confirmation_code")
     String confirmationCode;
 
-    @Column
+    @Column(name = "confirmation_code_expired_in")
     LocalDateTime confirmationCodeExpiredIn;
 
 

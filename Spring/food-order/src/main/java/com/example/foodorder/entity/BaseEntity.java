@@ -21,23 +21,17 @@ public class BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
     Long id;
 
-
-    @Column
     @CreatedDate
     LocalDateTime createdDateTime;
 
-    @Column
     @CreatedBy
     String createdBy;
 
-    @Column
     @LastModifiedDate
     LocalDateTime lastModifiedDateTime;
 
-    @Column
     @LastModifiedBy
     String lastModifiedBy;
 }

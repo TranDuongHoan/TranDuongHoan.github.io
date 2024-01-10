@@ -23,7 +23,7 @@ public class FoodCategory extends BaseEntity{
     @ManyToOne(targetEntity = Menu.class)
     Menu menu;
 
-    @Column
+    @Column(name = "food_category_name")
     String name;
 
 }

@@ -18,10 +18,10 @@ public class Rating extends BaseEntity{
     @ManyToOne(targetEntity = User.class)
     User user;
 
-    @Column
+    @Column(name = "comment")
     String comment;
 
-    @Column
+    @Column(name = "rated_star")
     Integer ratedStar;
 
 

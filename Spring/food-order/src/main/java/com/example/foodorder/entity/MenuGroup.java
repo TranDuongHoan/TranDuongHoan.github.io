@@ -18,12 +18,12 @@ public class MenuGroup extends BaseEntity{
     @ManyToOne(targetEntity = Menu.class)
     Menu menu;
 
-    @Column
+    @Column(name = "menu_group_name")
     String name;
 
-    @Column
+    @Column(name = "image")
     String image;
 
-    @Column
+    @Column(name = "order")
     Integer order;
 }

@@ -1,11 +1,24 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/food_order
     username: root
     password: 123
+    driver-class-name: com.mysql.jdbc.Driver
   jpa:
-    database: mysql
-    show-sql: true
     hibernate:
       ddl-auto: update
+    show-sql: true
+    database: mysql
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+  thymeleaf: # Thymeleaf
+    cache: false
+    mode: HTML
+    encoding: UTF-8
+    prefix: file:src/main/resources/templates/
+    resources: # Static resources
+      static-locations: file:src/main/resources/static/
+      cache:
+        period: 0e
