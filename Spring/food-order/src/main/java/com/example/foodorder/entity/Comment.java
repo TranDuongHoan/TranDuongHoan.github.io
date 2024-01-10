@@ -1,9 +1,6 @@
 package com.example.foodorder.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -25,7 +22,11 @@ public class Comment extends BaseEntity{
     @ManyToOne(targetEntity = Seller.class)
     Seller seller;
 
+    @Column
     String avatar;
 
+    @Column
     String content;
+
+
 }

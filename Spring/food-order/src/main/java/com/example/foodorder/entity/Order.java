@@ -26,12 +26,16 @@ public class Order extends BaseEntity{
     @ManyToOne(targetEntity = Seller.class)
     Seller seller;
 
+    @Column
     String orderStatus;
 
+    @Column
     String discountCode;
 
+    @Column
     LocalDateTime shippingStartTime;
 
+    @Column
     LocalDateTime completionTime;
 
     @ManyToMany(fetch = FetchType.EAGER)

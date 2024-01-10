@@ -1,9 +1,6 @@
 package com.example.foodorder.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -25,11 +22,15 @@ public class ShopOpeningTime extends BaseEntity{
     @ManyToOne(targetEntity = Seller.class)
     Seller seller;
 
+    @Column
     LocalDate fromDay;
 
+    @Column
     LocalDate toDay;
 
+    @Column
     LocalTime fromTime;
 
+    @Column
     LocalTime toTime;
 }

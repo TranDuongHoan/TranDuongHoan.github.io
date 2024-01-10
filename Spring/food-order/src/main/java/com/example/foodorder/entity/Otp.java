@@ -1,9 +1,6 @@
 package com.example.foodorder.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -27,10 +24,13 @@ public class Otp extends BaseEntity{
     @ManyToOne(targetEntity = Seller.class)
     Seller seller;
 
+    @Column
     boolean confirm;
 
+    @Column
     String confirmationCode;
 
+    @Column
     LocalDateTime confirmationCodeExpiredIn;
 
 

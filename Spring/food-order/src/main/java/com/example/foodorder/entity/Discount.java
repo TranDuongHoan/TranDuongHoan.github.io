@@ -1,9 +1,6 @@
 package com.example.foodorder.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -23,13 +20,18 @@ public class Discount extends BaseEntity{
     @ManyToOne(targetEntity = Order.class)
     Order order;
 
+    @Column
     String name;
 
+    @Column
     Integer discountValue;
 
+    @Column
     Integer discountUnit;
 
+    @Column
     LocalDateTime startTime;
 
+    @Column
     LocalDateTime endTime;
 }

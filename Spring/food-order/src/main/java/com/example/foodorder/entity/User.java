@@ -22,18 +22,25 @@ public class User extends BaseEntity{
     @JoinTable(name = "seller")
     private Seller seller;
 
+    @Column
     String name;
 
+    @Column
     String address;
 
+    @Column
     String phone;
 
+    @Column
     LocalDateTime birthday;
 
+    @Column
     String avatar;
 
+    @Column
     String email;
 
+    @Column
     String password;
 
     @ManyToMany(fetch = FetchType.EAGER)

@@ -1,9 +1,6 @@
 package com.example.foodorder.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -21,6 +18,7 @@ public class MenuItemTag extends BaseEntity{
     @ManyToOne(targetEntity = MenuItem.class)
     MenuItem menuItem;
 
+    @Column
     String tagName;
 
 }
