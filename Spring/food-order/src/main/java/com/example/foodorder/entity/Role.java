@@ -1,11 +1,11 @@
 package com.example.foodorder.entity;
 
 import com.example.foodorder.statics.Roles;
-import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 
+import javax.persistence.*;
 import java.util.List;
 
 

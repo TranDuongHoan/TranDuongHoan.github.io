@@ -1,8 +1,10 @@
 package com.example.foodorder.entity;
 
-import jakarta.persistence.*;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -16,7 +18,7 @@ public class Seller extends  BaseEntity{
 
     @JoinColumn(name = "cart_id")
     @ManyToOne(targetEntity = Cart.class)
-    Cart cart;
+    private Cart cart;
 
     @Column(name = "shop_name")
     String shopName;

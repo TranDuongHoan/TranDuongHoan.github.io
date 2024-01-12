@@ -1,14 +1,17 @@
 package com.example.foodorder.entity;
 
-import jakarta.persistence.*;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Data
 @Entity
+
+
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
