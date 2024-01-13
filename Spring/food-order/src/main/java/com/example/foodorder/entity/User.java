@@ -24,7 +24,7 @@ public class User extends BaseEntity{
     private Seller seller;
 
     @Column(name = "user_name")
-    String name;
+    String username;
 
     @Column(name = "address")
     String address;
