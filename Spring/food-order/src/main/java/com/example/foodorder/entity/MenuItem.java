@@ -40,9 +40,9 @@ public class MenuItem extends BaseEntity{
     @Column(name = "description")
     String description;
 
-    @ManyToMany(mappedBy = "order_menu_item")
+    @ManyToMany(mappedBy = "menuItems")
     private List<Order> orders;
 
-    @ManyToMany(mappedBy = "cart_menu_item")
+    @ManyToMany(mappedBy = "menuItems")
     private List<Cart> carts;
 }

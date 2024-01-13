@@ -22,7 +22,7 @@ public class Role extends BaseEntity{
     @Enumerated(EnumType.STRING)
     Roles name;
 
-    @ManyToMany(mappedBy = "user_role")
+    @ManyToMany(mappedBy = "roles")
     private List<User> users;
 
 }
