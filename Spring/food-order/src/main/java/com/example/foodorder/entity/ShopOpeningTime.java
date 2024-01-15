@@ -20,7 +20,7 @@ import java.time.LocalTime;
 public class ShopOpeningTime extends BaseEntity{
 
     @JoinColumn(name = "seller_id")
-    @ManyToOne(targetEntity = Seller.class)
+    @ManyToOne
     Seller seller;
 
     @Column(name = "from_day")

@@ -18,11 +18,11 @@ import javax.persistence.*;
 public class FoodCategory extends BaseEntity{
 
     @JoinColumn(name = "seller_id")
-    @ManyToOne(targetEntity = Seller.class)
+    @ManyToOne
     Seller seller;
 
     @JoinColumn(name = "menu_id")
-    @ManyToOne(targetEntity = Menu.class)
+    @ManyToOne
     Menu menu;
 
     @Column(name = "food_category_name")

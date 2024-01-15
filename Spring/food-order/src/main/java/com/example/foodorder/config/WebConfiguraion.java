@@ -26,11 +26,11 @@ public class WebConfiguraion extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/js/**")
                 .addResourceLocations("classpath:/static/js/")
                 .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
-        registry.addResourceHandler("/images/**")
-                .addResourceLocations("classpath:/static/images/")
+        registry.addResourceHandler("/img/**")
+                .addResourceLocations("classpath:/static/img/")
                 .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
-        registry.addResourceHandler("/fonts/**")
-                .addResourceLocations("classpath:/static/fonts/")
+        registry.addResourceHandler("/vendor/**")
+                .addResourceLocations("classpath:/static/vendor/")
                 .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
     }
 

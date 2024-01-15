@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 public class Discount extends BaseEntity{
 
     @JoinColumn(name = "order_id")
-    @ManyToOne(targetEntity = Order.class)
+    @ManyToOne
     Order order;
 
     @Column(name = "discount_name")

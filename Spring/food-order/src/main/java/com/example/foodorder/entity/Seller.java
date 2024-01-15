@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class Seller extends  BaseEntity{
 
     @JoinColumn(name = "cart_id")
-    @ManyToOne(targetEntity = Cart.class)
+    @ManyToOne
     private Cart cart;
 
     @Column(name = "shop_name")

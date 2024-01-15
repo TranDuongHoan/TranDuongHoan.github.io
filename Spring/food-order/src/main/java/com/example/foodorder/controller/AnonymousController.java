@@ -11,62 +11,82 @@ public class AnonymousController {
 
     @GetMapping("/")
     public String getHomePage(Model model) {
-        return "index";
+        return "home";
     }
 
-    @GetMapping("/about")
+    @GetMapping("/home")
+    public String getBackHomePage(Model model) {
+        return "home";
+    }
+
+    @GetMapping("/restaurant")
     public String getAboutPage(Model model) {
-        return "layout/about";
-    }
-
-    @GetMapping("/courses")
-    public String getCoursePage(Model model) {
-        return "course/courses";
-    }
-
-    @GetMapping("/courses/details")
-    public String getCourseDetailsPage(Model model) {
-        return "course/course-details";
-    }
-
-    @GetMapping("/instructors")
-    public String getInstructorPage(Model model) {
-        return "instructor/instructors";
-    }
-
-    @GetMapping("/myLearning")
-    public String getMyLearningPage(Model model) {
-        return "myLearning/myLearning";
-    }
-
-    @GetMapping("/contact")
-    public String getContactPage(Model model) {
-        return "layout/contact";
+        return "restaurant";
     }
 
     @GetMapping("/login")
     public String getLoginPage(Model model) {
-        return "account/login";
+        return "login";
     }
 
     @GetMapping("/signup")
     public String getSignupPage(Model model) {
-        return "account/signup";
+        return "signup";
     }
 
-    @GetMapping("/information")
-    public String getInformationPage(Model model) {
-        return "error/403";
+    @GetMapping("/verification")
+    public String getVerificationPage(Model model) {
+        return "verification";
+    }
+
+    @GetMapping("/forgot_password")
+    public String getForgotPasswordPage(Model model) {
+        return "forgot_password";
+    }
+
+    @GetMapping("/checkout")
+    public String getCheckOutPage(Model model) {
+        return "checkout";
+    }
+
+    @GetMapping("/location")
+    public String getLocationPage(Model model) {
+        return "location";
+    }
+
+    @GetMapping("/search")
+    public String getSearchPage(Model model) {
+        return "search";
+    }
+
+    @GetMapping("/successful")
+    public String getSuccessfulPage(Model model) {
+        return "successful";
+    }
+
+    @GetMapping("/map")
+    public String getMapPage(Model model) {
+        return "map";
+    }
+
+    @GetMapping("/trending")
+    public String getTrendingPage(Model model) {
+        return "trending";
+    }
+
+    @GetMapping("/offers")
+    public String getOffersPage(Model model) {
+        return "offers";
     }
 
     @GetMapping("/faq")
     public String getFAQPage(Model model) {
-        return "layout/faq";
+        return "faq";
     }
 
-    @GetMapping("/403")
+    @GetMapping("/not-found")
     public String getErrorPage(Model model) {
-        return "error/403";
+        return "not-found";
     }
 
 }

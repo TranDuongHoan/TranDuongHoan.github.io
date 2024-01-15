@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class RefreshToken extends BaseEntity {
 
     @JoinColumn(name = "user_id")
-    @ManyToOne(targetEntity = User.class)
+    @ManyToOne
     User user;
 
     @Column(name = "refresh_token")

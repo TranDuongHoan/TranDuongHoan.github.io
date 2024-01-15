@@ -51,7 +51,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         if (adminRoleOptional.isEmpty()) {
             Role adminRole = Role.builder().name(Roles.ADMIN).build();
             roleRepository.save(adminRole);
-            User admin = roleRepository.findByEmail("admin@gmail.com");
+            User admin = userRepository.findByEmail("admin@gmail.com");
             if (ObjectUtils.isEmpty(admin)) {
                 User user1 = new User();
                 user1.setEmail("admin@gmail.com");

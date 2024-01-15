@@ -16,6 +16,7 @@ import com.example.foodorder.statics.Roles;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
@@ -30,21 +31,20 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@RequiredArgsConstructor
 public class UserService {
 
-    PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
-    UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
 
-    RoleRepository roleRepository;
+    private final RoleRepository roleRepository;
 
-    RefreshTokenRepository refreshTokenRepository;
+    private final RefreshTokenRepository refreshTokenRepository;
 
-    JwtUtils jwtUtils;
+    private final JwtUtils jwtUtils;
 
     @Value("${application.security.refreshToken.tokenValidityMilliseconds}")
     private long refreshTokenValidityMilliseconds;

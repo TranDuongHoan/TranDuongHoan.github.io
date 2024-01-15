@@ -13,11 +13,10 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table(name = "menu_group")
 @FieldDefaults(level = AccessLevel.PRIVATE)
+public class MenuGroup extends BaseEntity {
 
-public class MenuGroup extends BaseEntity{
-
+    @ManyToOne
     @JoinColumn(name = "menu_id")
-    @ManyToOne(targetEntity = Menu.class)
     Menu menu;
 
     @Column(name = "menu_group_name")
@@ -26,6 +25,6 @@ public class MenuGroup extends BaseEntity{
     @Column(name = "image")
     String image;
 
-    @Column(name = "order")
+    @Column(name = "[order]")
     Integer order;
 }

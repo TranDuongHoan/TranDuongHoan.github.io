@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class Rating extends BaseEntity{
 
     @JoinColumn(name = "user_id")
-    @ManyToOne(targetEntity = User.class)
+    @ManyToOne
     User user;
 
     @Column(name = "comment")

@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class MenuItemTag extends BaseEntity{
 
     @JoinColumn(name = "menu_item_id")
-    @ManyToOne(targetEntity = MenuItem.class)
+    @ManyToOne
     MenuItem menuItem;
 
     @Column(name = "tag_name")

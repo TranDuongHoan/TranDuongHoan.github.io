@@ -17,11 +17,11 @@ import javax.persistence.*;
 public class Comment extends BaseEntity{
 
     @JoinColumn(name = "user_id")
-    @ManyToOne(targetEntity = User.class)
+    @ManyToOne
     User user;
 
     @JoinColumn(name = "seller_id")
-    @ManyToOne(targetEntity = Seller.class)
+    @ManyToOne
     Seller seller;
 
     @Column

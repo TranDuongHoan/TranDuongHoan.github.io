@@ -17,12 +17,12 @@ import java.util.List;
 
 public class MenuItem extends BaseEntity{
 
+    @ManyToOne
     @JoinColumn(name = "menu_group_id")
-    @ManyToOne(targetEntity = MenuGroup.class)
     MenuGroup menuGroup;
 
+    @ManyToOne
     @JoinColumn(name = "cart_id")
-    @ManyToOne(targetEntity = Cart.class)
     Cart cart;
 
     @Column(name = "menu_item_name")
