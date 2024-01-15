@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 public class LoginRequest {
 
     @NotBlank
-    @Size(max = 50)
+    @Size(max = 10)
     String phone;
 
     @NotBlank
