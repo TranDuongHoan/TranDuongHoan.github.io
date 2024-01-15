@@ -2,8 +2,10 @@ package com.github.truongbb.basicauthentication.config;
 
 import com.github.truongbb.basicauthentication.entity.Role;
 import com.github.truongbb.basicauthentication.entity.User;
-import com.github.truongbb.basicauthentication.repository.RoleRepository;
-import com.github.truongbb.basicauthentication.repository.UserRepository;
+import com.github.truongbb.basicauthentication.repository.RoleJpaRepository;
+
+import com.github.truongbb.basicauthentication.repository.UserJpaRepository;
+
 import com.github.truongbb.basicauthentication.statics.Roles;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -11,8 +13,10 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Component
@@ -20,26 +24,48 @@ import java.util.Set;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class DatabaseInitializer implements CommandLineRunner {
 
-    UserRepository userRepository;
+    private final UserJpaRepository userJpaRepository;
 
-    RoleRepository roleRepository;
+    private final RoleJpaRepository roleJpaRepository;
 
-    PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public void run(String... args) throws Exception {
-        Role userRole = Role.builder().name(Roles.USER.toString()).build();
-        Role adminRole = Role.builder().name(Roles.ADMIN.toString()).build();
-        roleRepository.save(userRole);
-        roleRepository.save(adminRole);
+        Optional<Role> userRoleOptional = roleJpaRepository.findByName(Roles.USER);
+        if (userRoleOptional.isEmpty()) {
+            Role userRole = Role.builder().name(Roles.USER).build();
+            roleJpaRepository.save(userRole);
 
-        User user = new User();
-        user.setUsername("admin");
-        user.setPassword(passwordEncoder.encode("admin123")); // Encrypt the password
-        Set<Role> roles = new HashSet<>();
-        roles.add(adminRole);
-        user.setRoles(roles);
-        userRepository.save(user);
+            User quyen = userJpaRepository.findByEmail("tranhoan88@gmail.com");
+            if (ObjectUtils.isEmpty(quyen)) {
+                User user2 = new User();
+                user2.setEmail("maiquyen2403@gmail.com");
+                user2.setFullName("Nguyễn Thị Mai Quyên");
+                user2.setPassword(passwordEncoder.encode("quyen")); // Encrypt the password
+                Set<Role> roles2 = new HashSet<>();
+                roles2.add(userRole);
+                user2.setRoles(roles2);
+                userJpaRepository.save(user2);
+            }
+        }
+        Optional<Role> adminRoleOptional = roleJpaRepository.findByName(Roles.ADMIN);
+        if (adminRoleOptional.isEmpty()) {
+            Role adminRole = Role.builder().name(Roles.ADMIN).build();
+            roleJpaRepository.save(adminRole);
+
+            User admin = userJpaRepository.findByEmail("admin@gmail.com");
+            if (ObjectUtils.isEmpty(admin)) {
+                User user1 = new User();
+                user1.setEmail("admin@gmail.com");
+                user1.setFullName("admin");
+                user1.setPassword(passwordEncoder.encode("admin")); // Encrypt the password
+                Set<Role> roles1 = new HashSet<>();
+                roles1.add(adminRole);
+                user1.setRoles(roles1);
+                userJpaRepository.save(user1);
+            }
+        }
+
+
     }
-
-}

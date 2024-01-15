@@ -11,8 +11,10 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Component
@@ -28,20 +30,39 @@ public class DatabaseInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Role userRole = Role.builder().name(Roles.USER.toString()).build();
-        Role adminRole = Role.builder().name(Roles.ADMIN.toString()).build();
-        Role sellerRole = Role.builder().name(Roles.SELLER.toString()).build();
-        roleRepository.save(userRole);
-        roleRepository.save(adminRole);
-        roleRepository.save(sellerRole);
+        Optional<Role> userRoleOptional = roleRepository.findByName(Roles.USER);
+        if (userRoleOptional.isEmpty()) {
+            Role userRole = Role.builder().name(Roles.USER).build();
+            roleRepository.save(userRole);
 
-        User user = new User();
-        user.setUsername("admin");
-        user.setPassword(passwordEncoder.encode("admin123")); // Encrypt the password
-        Set<Role> roles = new HashSet<>();
-        roles.add(adminRole);
-        user.setRoles(roles);
-        userRepository.save(user);
+            User hoan = userRepository.findByPhone("0915814554");
+            if (ObjectUtils.isEmpty(hoan)) {
+                User user2 = new User();
+                user2.setPhone("0915814554");
+                user2.setUsername("Trần Dương Hoàn");
+                user2.setPassword(passwordEncoder.encode("hoan")); // Encrypt the password
+                Set<Role> roles2 = new HashSet<>();
+                roles2.add(userRole);
+                user2.setRoles(roles2);
+                userRepository.save(user2);
+            }
+        }
+        Optional<Role> adminRoleOptional = roleRepository.findByName(Roles.ADMIN);
+        if (adminRoleOptional.isEmpty()) {
+            Role adminRole = Role.builder().name(Roles.ADMIN).build();
+            roleRepository.save(adminRole);
+            User admin = roleRepository.findByEmail("admin@gmail.com");
+            if (ObjectUtils.isEmpty(admin)) {
+                User user1 = new User();
+                user1.setEmail("admin@gmail.com");
+                user1.setUsername("admin");
+                user1.setPassword(passwordEncoder.encode("admin")); // Encrypt the password
+                Set<Role> roles1 = new HashSet<>();
+                roles1.add(adminRole);
+                user1.setRoles(roles1);
+                userRepository.save(user1);
+            }
+        }
+
     }
-
 }

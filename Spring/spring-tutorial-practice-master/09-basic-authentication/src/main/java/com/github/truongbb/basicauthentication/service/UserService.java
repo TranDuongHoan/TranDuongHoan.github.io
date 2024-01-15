@@ -5,8 +5,6 @@ import com.github.truongbb.basicauthentication.entity.Role;
 import com.github.truongbb.basicauthentication.entity.User;
 import com.github.truongbb.basicauthentication.model.request.UserRequest;
 import com.github.truongbb.basicauthentication.model.response.UserResponse;
-import com.github.truongbb.basicauthentication.repository.RoleRepository;
-import com.github.truongbb.basicauthentication.repository.UserRepository;
 import com.github.truongbb.basicauthentication.statics.Roles;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

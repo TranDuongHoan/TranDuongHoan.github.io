@@ -1,10 +1,12 @@
 package com.example.foodorder.config;
 
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.gson.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -13,12 +15,16 @@ import java.time.format.DateTimeFormatter;
 @Configuration
 public class BeanConfig {
 
-//    @Bean
-//    public ObjectMapper objectMapper() {
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-//        return objectMapper;
-//    }
+    @Bean
+    public ObjectMapper objectMapper() {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.enable(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE);
+        mapper.enable(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL);
+        mapper.enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        JavaTimeModule module = new JavaTimeModule();
+        mapper.registerModule(module);
+        return mapper;
+    }
 
     @Bean
     public Gson gson() {

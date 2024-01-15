@@ -2,19 +2,30 @@ package com.example.foodorder.service;
 
 import com.example.foodorder.entity.Role;
 import com.example.foodorder.entity.User;
+import com.example.foodorder.exception.RefreshTokenNotFoundException;
+import com.example.foodorder.model.request.RefreshTokenRequest;
 import com.example.foodorder.model.request.UserRequest;
+import com.example.foodorder.model.response.JwtResponse;
 import com.example.foodorder.model.response.UserResponse;
+import com.example.foodorder.repository.RefreshTokenRepository;
 import com.example.foodorder.repository.RoleRepository;
 import com.example.foodorder.repository.UserRepository;
+import com.example.foodorder.security.CustomUserDetails;
+import com.example.foodorder.security.JwtUtils;
 import com.example.foodorder.statics.Roles;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -30,6 +41,13 @@ public class UserService {
     ObjectMapper objectMapper;
 
     RoleRepository roleRepository;
+
+    RefreshTokenRepository refreshTokenRepository;
+
+    JwtUtils jwtUtils;
+
+    @Value("${application.security.refreshToken.tokenValidityMilliseconds}")
+    private long refreshTokenValidityMilliseconds;
 
     public List<UserResponse> getAll() {
         List<User> users = userRepository.findAll();
@@ -55,6 +73,31 @@ public class UserService {
         userRepository.save(user);
 
         return objectMapper.convertValue(user, UserResponse.class);
+    }
+
+    public JwtResponse refreshToken(RefreshTokenRequest request) throws RefreshTokenNotFoundException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+        String newToken = userRepository.findById(userDetails.getId())
+                .flatMap(user -> refreshTokenRepository.findByUserAndRefreshTokenAndInvalidated(user, request.getRefreshToken(), false)
+                        .map(refreshToken -> {
+                            LocalDateTime createdDateTime = refreshToken.getCreatedDateTime();
+                            LocalDateTime expiryTime = createdDateTime.plusSeconds(refreshTokenValidityMilliseconds / 1000);
+                            if (expiryTime.isBefore(LocalDateTime.now())) {
+                                refreshToken.setInvalidated(true);
+                                refreshTokenRepository.save(refreshToken);
+                                return null;
+                            }
+                            return jwtUtils.generateJwtToken(authentication);
+                        }))
+                .orElseThrow(() -> new UsernameNotFoundException("Tài khoản không tồn tại"));
+
+        if (newToken == null) {
+            throw new RefreshTokenNotFoundException();
+        }
+        return JwtResponse.builder()
+                .jwt(newToken)
+                .build();
     }
 
 }

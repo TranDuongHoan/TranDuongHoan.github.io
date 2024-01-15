@@ -1,8 +1,6 @@
 package com.github.truongbb.basicauthentication.security;
 
 import com.github.truongbb.basicauthentication.entity.User;
-import com.github.truongbb.basicauthentication.repository.UserRepository;
-import com.github.truongbb.basicauthentication.security.CustomUserDetails;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
