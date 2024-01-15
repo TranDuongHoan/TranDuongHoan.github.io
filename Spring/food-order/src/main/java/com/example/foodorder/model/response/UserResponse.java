@@ -6,6 +6,8 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
+import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Data
@@ -18,5 +20,18 @@ public class UserResponse {
     String username;
 
     Set<Role> roles;
+
+    String password;
+
+    String address;
+
+    String phone;
+
+    LocalDateTime birthday;
+
+    String avatar;
+
+    String email;
+
 
 }

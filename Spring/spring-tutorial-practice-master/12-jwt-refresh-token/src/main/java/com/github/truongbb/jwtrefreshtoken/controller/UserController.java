@@ -54,7 +54,7 @@ public class UserController {
 
     @GetMapping("/v2")
     public ModelAndView search1(UserSearchRequest request) {
-        ModelAndView modelAndView = new ModelAndView("/users");
+        ModelAndView modelAndView  = new ModelAndView("/users");
         modelAndView.addObject("userData", userService.searchUser(request));
         return modelAndView;
     }

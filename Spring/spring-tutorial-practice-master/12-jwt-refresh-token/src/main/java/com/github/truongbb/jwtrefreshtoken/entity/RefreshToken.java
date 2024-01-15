@@ -23,7 +23,7 @@ public class RefreshToken extends BaseEntity {
     @Column(name = "refresh_token")
     String refreshToken;
 
-    //    @Type(type= "org.hibernate.type.NumericBooleanType")
+//    @Type(type= "org.hibernate.type.NumericBooleanType")
     @Column(columnDefinition = "boolean default false")
     boolean invalidated;
 

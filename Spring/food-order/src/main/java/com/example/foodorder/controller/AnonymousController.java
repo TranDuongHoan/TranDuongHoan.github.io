@@ -34,6 +34,11 @@ public class AnonymousController {
         return "signup";
     }
 
+    @GetMapping("/signin")
+    public String getSigninPage(Model model) {
+        return "signin";
+    }
+
     @GetMapping("/verification")
     public String getVerificationPage(Model model) {
         return "verification";

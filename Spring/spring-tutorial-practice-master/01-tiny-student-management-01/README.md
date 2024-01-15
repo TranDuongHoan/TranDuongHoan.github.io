@@ -1,5 +1,6 @@
 # tiny student management 01
 
+
 ## Tech stack
 
 - HTML, CSS, Bootstrap
@@ -7,7 +8,7 @@
 - Spring boot 2.x:
     - Spring web MVC
     - Thymeleaf
-
+    
 ## Basic features:
 
 - List of students

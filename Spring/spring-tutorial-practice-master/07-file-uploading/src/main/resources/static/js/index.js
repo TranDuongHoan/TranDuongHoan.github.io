@@ -12,7 +12,7 @@ $(document).ready(function () {
         if (!tempFiles || tempFiles.length === 0) {
             return;
         }
-        console.log(event.target.files[0]);
+        console.log(event.target.files[0].data);
         chosenFile = tempFiles[0];
 
         const imageBlob = new Blob([chosenFile], {type: chosenFile.type});

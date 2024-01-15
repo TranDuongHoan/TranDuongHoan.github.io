@@ -3,15 +3,14 @@
 Basic validation in Spring boot 2.x + thymeleaf
 
 ## Tech stack
-
 - HTML, CSS, Bootstrap
 - Jdk 17
 - Lombok
-- Object mapper
+- Object mapper  
 - Spring boot 2.x:
     - Spring web MVC
     - Thymeleaf
-
+    
 ## Basic features:
 
 - List of studentModels
@@ -20,11 +19,9 @@ Basic validation in Spring boot 2.x + thymeleaf
 - Delete a studentModel (with confirmation)
 
 ## Notes:
-
-- No bootstrap popup use
+- No bootstrap popup use 
 
 ## References:
-
 [1] https://asbnotebook.com/spring-boot-thymeleaf-form-validation-example/
 
 [2] https://techmaster.vn/posts/37061/spring-boot-cac-phuong-phap-thong-bao-loi-dung-thymeleaf
