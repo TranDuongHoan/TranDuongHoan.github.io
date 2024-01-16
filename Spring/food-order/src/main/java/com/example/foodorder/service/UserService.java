@@ -30,20 +30,16 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserService {
 
-    private final PasswordEncoder passwordEncoder;
+
 
     private final UserRepository userRepository;
 
     private final ObjectMapper objectMapper;
 
-    private final RoleRepository roleRepository;
 
-    private final RefreshTokenRepository refreshTokenRepository;
 
-    private final JwtUtils jwtUtils;
 
-    @Value("${application.security.refreshToken.tokenValidityMilliseconds}")
-    private long refreshTokenValidityMilliseconds;
+
 
     public List<UserResponse> getAll() {
         List<User> users = userRepository.findAll();
@@ -57,43 +53,8 @@ public class UserService {
         return userRepository.findById(id).map(u -> objectMapper.convertValue(u, UserResponse.class)).orElseThrow(ClassNotFoundException::new);
     }
 
-    public UserResponse create(UserRequest request) {
-        Optional<Role> roleOptional = roleRepository.findByName(Roles.USER.name());
 
-        User user = new User();
-        user.setUsername(request.getUsername());
-        user.setPassword(passwordEncoder.encode(request.getPassword())); // Encrypt the password
-        Set<Role> roles = new HashSet<>();
-        roles.add(roleOptional.get());
-        user.setRoles(roles);
-        userRepository.save(user);
 
-        return objectMapper.convertValue(user, UserResponse.class);
-    }
 
-    public JwtResponse refreshToken(RefreshTokenRequest request) throws RefreshTokenNotFoundException {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-        String newToken = userRepository.findById(userDetails.getId())
-                .flatMap(user -> refreshTokenRepository.findByUserAndRefreshTokenAndInvalidated(user, request.getRefreshToken(), false)
-                        .map(refreshToken -> {
-                            LocalDateTime createdDateTime = refreshToken.getCreatedDateTime();
-                            LocalDateTime expiryTime = createdDateTime.plusSeconds(refreshTokenValidityMilliseconds / 1000);
-                            if (expiryTime.isBefore(LocalDateTime.now())) {
-                                refreshToken.setInvalidated(true);
-                                refreshTokenRepository.save(refreshToken);
-                                return null;
-                            }
-                            return jwtUtils.generateJwtToken(authentication);
-                        }))
-                .orElseThrow(() -> new UsernameNotFoundException("Tài khoản không tồn tại"));
-
-        if (newToken == null) {
-            throw new RefreshTokenNotFoundException();
-        }
-        return JwtResponse.builder()
-                .jwt(newToken)
-                .build();
-    }
 
 }

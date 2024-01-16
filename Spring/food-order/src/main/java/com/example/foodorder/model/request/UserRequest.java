@@ -1,38 +1,47 @@
 package com.example.foodorder.model.request;
 
-import lombok.AccessLevel;
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Column;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserRequest {
 
-    @NotBlank
-    @Size(max = 100)
+    @NotBlank(message = "Username is required")
+    @Length(max = 100, message = "Username must be less than 100 characters")
     String username;
 
-    @NotBlank
+    @NotBlank(message = "Password is required")
     String password;
 
-    @NotBlank
+    @Length(max = 255, message = "Address must be less than 255 characters")
     String address;
 
-    @NotBlank
+    @Pattern(regexp = "^0[0-9]{9}", message = "Phone must be 10 characters, start with zero")
     String phone;
 
-    @NotBlank
+    @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
     LocalDateTime birthday;
 
-    @NotBlank
+    @Length(max = 255, message = "Avatar must be less than 255 characters")
     String avatar;
 
-    @NotBlank
+    @NotBlank(message = "Email is required")
+    @Email(regexp = "^[A-Za-z0-9+_.-]+@(.+)$",
+            message = "Email must be email format")
+    @Length(max = 255, message = "Email must be less than 255 characters")
     String email;
 
 }

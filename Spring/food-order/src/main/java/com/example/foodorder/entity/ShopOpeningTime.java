@@ -3,11 +3,9 @@ package com.example.foodorder.entity;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-import java.time.LocalTime;
 
 @Data
 @Entity
@@ -24,14 +22,14 @@ public class ShopOpeningTime extends BaseEntity{
     Seller seller;
 
     @Column(name = "from_day")
-    LocalDate fromDay;
+    LocalDateTime fromDay;
 
     @Column(name = "to_day")
-    LocalDate toDay;
+    LocalDateTime toDay;
 
     @Column(name = "from_time")
-    LocalTime fromTime;
+    LocalDateTime fromTime;
 
     @Column(name = "to_time")
-    LocalTime toTime;
+    LocalDateTime toTime;
 }
