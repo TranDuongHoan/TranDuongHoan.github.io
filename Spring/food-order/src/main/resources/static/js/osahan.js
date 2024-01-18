@@ -173,7 +173,9 @@ Version: 1.0
     // call our plugin
     var Nav = $main_nav.hcOffcanvasNav(defaultOptions);
 
-    // Tooltip
-    $('[data-bs-toggle="tooltip"]').tooltip();
+    // // Tooltip
+    // $('[data-bs-toggle="tooltip"]').tooltip();
+
+
 
 })(jQuery); // End of use strict

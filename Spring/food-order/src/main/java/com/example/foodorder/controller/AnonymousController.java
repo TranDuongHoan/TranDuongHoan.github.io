@@ -9,16 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @AllArgsConstructor
 public class AnonymousController {
 
-    @GetMapping("/")
-    public String getHomePage(Model model) {
-        return "home";
-    }
-
-    @GetMapping("/home")
-    public String getBackHomePage(Model model) {
-        return "home";
-    }
-
     @GetMapping("/restaurant")
     public String getAboutPage(Model model) {
         return "restaurant";

@@ -1,16 +1,18 @@
 package com.example.foodorder.security;
 
+
 import com.example.foodorder.entity.User;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import java.util.Collection;
 import java.util.stream.Collectors;
 
 public class CustomUserDetails implements UserDetails {
 
     private User user;
-
 
     public CustomUserDetails(User user) {
         this.user = user;
@@ -34,6 +36,10 @@ public class CustomUserDetails implements UserDetails {
         return user.getUsername();
     }
 
+    public Long getId() {
+        return user.getId();
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -53,5 +59,4 @@ public class CustomUserDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
 }

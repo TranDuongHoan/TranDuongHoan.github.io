@@ -3,10 +3,12 @@ package com.example.foodorder.entity;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.springframework.http.ResponseEntity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Data
@@ -50,5 +52,6 @@ public class User extends BaseEntity{
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    
+
+
 }

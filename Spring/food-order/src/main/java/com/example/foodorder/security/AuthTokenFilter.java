@@ -1,5 +1,7 @@
 package com.example.foodorder.security;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +17,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class AuthTokenFilter extends OncePerRequestFilter {
 
     @Autowired
-    private JwtUtils jwtUtils;
+    JwtUtils jwtUtils;
 
     @Autowired
-    private CustomUserDetailsService userDetailsService;
+    CustomUserDetailsService userDetailsService;
 
     static final Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class);
 
@@ -59,5 +62,4 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
         return null;
     }
-
 }

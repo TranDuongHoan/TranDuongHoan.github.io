@@ -1,7 +1,5 @@
 package com.example.foodorder.security;
 
-
-import com.example.foodorder.entity.User;
 import com.example.foodorder.repository.UserRepository;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -20,10 +18,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if (user == null) {
-            throw new UsernameNotFoundException("User not found");
-        }
-        return new CustomUserDetails(user);
+        return userRepository.findByUsername(username)
+                .map(CustomUserDetails::new)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
+
 }
