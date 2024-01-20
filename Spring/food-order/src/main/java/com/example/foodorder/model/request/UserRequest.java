@@ -21,7 +21,7 @@ public class UserRequest {
 
     @NotBlank(message = "Username is required")
     @Length(max = 100, message = "Username must be less than 100 characters")
-    String username;
+    String name;
 
     @NotBlank(message = "Password is required")
     String password;

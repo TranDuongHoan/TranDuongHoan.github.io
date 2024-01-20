@@ -14,7 +14,7 @@ $(document).ready(function () {
         onkeyup: false,
         onclick: false,
         rules: {
-            'userName': {
+            'name': {
                 required: true,
                 maxlength: 100
             },

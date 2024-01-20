@@ -14,7 +14,7 @@ public class RegistrationRequest {
 
     @NotBlank
     @Size(max = 50)
-    String username;
+    String name;
 
     @NotBlank
     String password;

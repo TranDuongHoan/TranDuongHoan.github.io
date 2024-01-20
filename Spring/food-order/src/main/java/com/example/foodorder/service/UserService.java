@@ -77,7 +77,7 @@ public class UserService {
             roles.add(optionalRole.get());
         }
         User user = User.builder()
-                .username(registrationRequest.getUsername())
+                .username(registrationRequest.getName())
                 .phone(registrationRequest.getPhone())
                 .password(passwordEncoder.encode(registrationRequest.getPassword()))
                 .roles(roles)
@@ -136,7 +136,7 @@ public class UserService {
     }
 
     public void createUser(@Valid UserRequest request) throws ExistedUserException {
-        Optional<User> userOptional = userRepository.findByUsername(request.getUsername());
+        Optional<User> userOptional = userRepository.findByUsername(request.getName());
         if (!userOptional.isEmpty()) {
             throw new ExistedUserException();
         }
@@ -144,7 +144,7 @@ public class UserService {
         Set<Role> roles = roleRepository.findByName(Roles.USER).stream().collect(Collectors.toSet());
 
         User user = User.builder()
-                .username(request.getUsername())
+                .username(request.getName())
                 .password(passwordEncoder.encode("123"))
                 .phone(request.getPhone())
                 .roles(roles)
