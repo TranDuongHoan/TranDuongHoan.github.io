@@ -85,6 +85,34 @@ $(document).ready(function () {
 
 
 
+    const loginValidator = $('#log-in-form').validate({
+        onfocusout: false,
+        onkeyup: false,
+        onclick: false,
+        rules: {
+            "phone": {
+                required: true,
+                vietnamesePhone: true,
+                maxlength: 10
+            },
+            'password': {
+                required: true,
+                passwordFormat: true,
+            }
+        },
+        messages: {
+            "phone": {
+                required: "Mobie number is required",
+                maxlength: "Mobie number must be less than 10 characters",
+                vietnamesePhone: "Mobie number must be a sequence of 10 digits starting with 0"
+            },
+            'password': {
+                required: "Password is required",
+                passwordFormat: "Password must be less than 10 characters"
+            }
+        }
+    });
+
 
     $('#log-in-btn').click(async function (event) {
 
@@ -139,4 +167,4 @@ $(document).ready(function () {
 
 
 
-});
+})
