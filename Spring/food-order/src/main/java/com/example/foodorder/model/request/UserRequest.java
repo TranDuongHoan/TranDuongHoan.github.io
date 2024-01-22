@@ -1,5 +1,6 @@
 package com.example.foodorder.model.request;
 
+import com.example.foodorder.statics.UserStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -43,5 +44,7 @@ public class UserRequest {
             message = "Email must be email format")
     @Length(max = 255, message = "Email must be less than 255 characters")
     String email;
+
+    private UserStatus userStatus;
 
 }

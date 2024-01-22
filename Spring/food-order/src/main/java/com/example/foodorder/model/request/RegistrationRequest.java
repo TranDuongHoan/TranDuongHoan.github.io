@@ -1,6 +1,6 @@
 package com.example.foodorder.model.request;
 
-import com.example.foodorder.entity.Role;
+
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
@@ -22,7 +22,5 @@ public class RegistrationRequest {
     @NotBlank
     String phone;
 
-    @NotBlank
-    Role role;
 
 }

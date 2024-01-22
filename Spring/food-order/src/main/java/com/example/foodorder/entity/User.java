@@ -1,6 +1,7 @@
 package com.example.foodorder.entity;
 
 
+import com.example.foodorder.statics.UserStatus;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.springframework.http.ResponseEntity;
@@ -45,6 +46,10 @@ public class User extends BaseEntity{
 
     @Column(name = "password")
     String password;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private UserStatus userStatus;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",

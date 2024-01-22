@@ -33,19 +33,19 @@
                 <div class="px-5 col-10 mx-auto">
                     <h2 class="text-dark my-0">Welcome Back</h2>
                     <p class="text-50">Sign in to continue</p>
-                    <form class="mt-5 mb-4" action="/verification">
+                    <form class="mt-5 mb-4" action="/verification" id="log-in-form">
 
                             <div class="form-group">
-                                <label class="text-dark pb-1">Mobile Number</label>
-                                <input type="phone" placeholder="Enter Mobile Number" class="form-control py-1">
+                                <label class="text-dark pb-1" for="phone">Mobile Number</label>
+                                <input type="phone" placeholder="Enter Mobile Number" class="form-control py-1" id="phone" name="phone">
                             </div>
                             <div class="form-group">
-                                <label class="text-dark pb-1">Password</label>
-                                <input type="password" placeholder="Enter Password" class="form-control py-1">
+                                <label class="text-dark pb-1" for="password">Password</label>
+                                <input type="password" placeholder="Enter Password" class="form-control py-1" id="password" name="password">
                             </div>
 
 
-                        <button class="btn btn-primary btn-lg w-100">SIGN IN</button>
+                        <button class="btn btn-primary btn-lg w-100" type="button" id="log-in-btn">SIGN IN</button>
                         <div class="py-2">
                             <button class="btn btn-lg btn-facebook w-100"><i class="feather-facebook"></i> Connect with Facebook</button>
                         </div>
@@ -169,7 +169,8 @@
     <script type="text/javascript" src="vendor/sidebar/hc-offcanvas-nav.js"></script>
     <!-- Custom scripts for all pages-->
     <script type="text/javascript" src="js/osahan.js"></script>
-    <script src="js/validation.js"></script>
+    <script src="js/authentication.js"></script>
+
 </body>
 
 </html>

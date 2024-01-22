@@ -69,18 +69,14 @@ public class UserService {
 
     public User registerUser(RegistrationRequest registrationRequest) {
         Set<Role> roles = new HashSet<>();
-        if (registrationRequest.getRole().equals("SELLER")) {
-            Optional<Role> optionalRole = roleRepository.findByName(Roles.SELLER);
-            roles.add(optionalRole.get());
-        } else {
-            Optional<Role> optionalRole = roleRepository.findByName(Roles.USER);
-            roles.add(optionalRole.get());
-        }
+
+        Optional<Role> optionalRole = roleRepository.findByName(Roles.USER);
+        roles.add(optionalRole.get());
+
         User user = User.builder()
                 .username(registrationRequest.getName())
                 .phone(registrationRequest.getPhone())
                 .password(passwordEncoder.encode(registrationRequest.getPassword()))
-                .roles(roles)
                 .build();
         userRepository.save(user);
         return user;

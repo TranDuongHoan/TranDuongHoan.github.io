@@ -6,8 +6,8 @@ $(document).ready(function () {
     }, "SDT phải là dãy 10 ký tụ số bắt đầu bằng số 0(mặc định");
 
     $.validator.addMethod("passwordFormat", function (value, element) {
-        return this.optional(element) || /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/i.test(value);
-    }, "Mật khẩu tối thiểu 8 ký tự, ít nhất một chữ cái, một số và một ký tự đặc biệt");
+        return this.optional(element) || /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{10,}$/i.test(value);
+    }, "Mật khẩu tối đa 10 ký tự, ít nhất một chữ cái, một số và một ký tự đặc biệt");
 
     const signupValidator = $('#sign-up-form').validate({
         onfocusout: false,
@@ -25,7 +25,8 @@ $(document).ready(function () {
             },
             'password': {
                 required: true,
-                passwordFormat: true
+                passwordFormat: true,
+                maxlength: 10
             }
         },
         messages: {
@@ -40,7 +41,7 @@ $(document).ready(function () {
             },
             'password': {
                 required: "Password is required",
-                passwordFormat: "Password must be less than 8 characters"
+                passwordFormat: "Password must be less than 10 characters"
             }
         }
     });
@@ -58,16 +59,16 @@ $(document).ready(function () {
             return;
         }
 
-        const RequestBody = {};
+        const requestBody = {};
         for (let i = 0; i < signupData.length; i++) {
-            RequestBody[signupData[i].name] = signupData[i].value;
+            requestBody[signupData[i].name] = signupData[i].value;
         }
 
 
         $.ajax({
             url: "/authentication/signup",
             type: "POST",
-            data: JSON.stringify(requestBody), // dữ liệu được gửi vào trong body của HTTP message lên backend
+            data: JSON.stringify(requestBody),
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 toastr.success("Đăng ký thành công");
@@ -81,4 +82,61 @@ $(document).ready(function () {
             }
         });
     });
+
+
+
+
+    $('#log-in-btn').click(async function (event) {
+
+        const isValidForm = $('#log-in-form').valid();
+        if (!isValidForm) {
+            return;
+        }
+
+        const loginData = $('#log-in-form').serializeArray();
+        if (!loginData || loginData.length === 0) {
+            return;
+        }
+
+        const requestBody = {};
+        for (let i = 0; i < loginData.length; i++) {
+            requestBody[loginData[i].name] = loginData[i].value;
+        }
+
+        await $.ajax({
+            type: "POST",
+            url: "/authentication/login",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(requestBody),
+            success: function (data) {
+                toastr.success("Đăng nhập thành công!");
+                localStorage.setItem("access-token", data.jwt);
+                localStorage.setItem("refresh-token", data.refreshToken);
+                const userInfo = {
+                    roles: data.roles,
+                    email: data.email,
+                    fullName: data.fullName,
+                    avatar: data.avatar
+                };
+                localStorage.setItem("user-info", JSON.stringify(userInfo));
+                setTimeout(() => {
+                    if (data.roles == 'ADMIN') {
+                        window.location.href = "http://localhost:8080/courses/analysis/admin";
+                    } else {
+                        window.location.href = "http://localhost:8080";
+                    }
+                }, 1500);
+            },
+            error: function (error) {
+                toastr.error("Đã có lỗi xảy ra, vui lòng thử lại sau!");
+                console.log(error);
+            }
+        });
+
+    });
+
+
+
+
+
 });
