@@ -14,6 +14,7 @@ import com.example.foodorder.repository.RefreshTokenRepository;
 import com.example.foodorder.repository.UserRepository;
 import com.example.foodorder.security.CustomUserDetails;
 import com.example.foodorder.security.JwtUtils;
+import com.example.foodorder.service.EmailService;
 import com.example.foodorder.service.UserService;
 import com.example.foodorder.statics.UserStatus;
 import lombok.AccessLevel;
@@ -30,7 +31,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -39,18 +42,20 @@ import java.util.stream.Collectors;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/authentication")
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+
 public class AuthenticationController {
 
-    JwtUtils jwtUtils;
+    private final JwtUtils jwtUtils;
 
-    UserService userService;
+    private final UserService userService;
 
-    UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    RefreshTokenRepository refreshTokenRepository;
+    private final RefreshTokenRepository refreshTokenRepository;
 
-    AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
+
+    private final EmailService emailService;
 
     @PostMapping("/login")
     public JwtResponse authenticateUser(@Valid @RequestBody LoginRequest request) throws UnauthorizedException {
@@ -97,13 +102,20 @@ public class AuthenticationController {
 
 
     @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody RegistrationRequest request) {
-        return userRepository.findByUsername(request.getName())
-                .map(user -> new ResponseEntity<>("Username is existed", HttpStatus.BAD_REQUEST))
-                .orElseGet(() -> {
-                    userService.registerUser(request);
-                    return new ResponseEntity<>(null, HttpStatus.CREATED);
-                });
+    public ResponseEntity<?> registerUser(@Valid @RequestBody RegistrationRequest request) throws MessagingException {
+
+        Optional<User> user = userRepository.findByEmail(request.getEmail());
+        if (user.isPresent()) {
+            return new ResponseEntity<>("Email is existed", HttpStatus.BAD_REQUEST);
+        }
+
+        Optional<User> user1 = userRepository.findByPhone(request.getPhone());
+        if (user1.isPresent()) {
+            return new ResponseEntity<>("Phone is existed", HttpStatus.BAD_REQUEST);
+        }
+        User newUser = userService.registerUser(request);
+        emailService.verifyAccount(newUser.getId(), request.getName(), request.getEmail(), request.getRole());
+        return new ResponseEntity<>(null, HttpStatus.CREATED);
     }
 
     @PostMapping

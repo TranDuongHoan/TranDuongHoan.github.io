@@ -17,9 +17,8 @@ import com.example.foodorder.security.CustomUserDetails;
 import com.example.foodorder.security.JwtUtils;
 import com.example.foodorder.security.SecurityUtils;
 import com.example.foodorder.statics.Roles;
+import com.example.foodorder.statics.UserStatus;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.AccessLevel;
-import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,27 +27,27 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
-
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserService {
 
-    final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
-    final UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    final RoleRepository roleRepository;
+    private final RoleRepository roleRepository;
 
-    final ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
 
-    final RefreshTokenRepository refreshTokenRepository;
+    private final RefreshTokenRepository refreshTokenRepository;
 
-    final UserCustomRepository userCustomRepository;
+    private final UserCustomRepository userCustomRepository;
+
+
 
     @Value("${application.security.refreshToken.tokenValidityMilliseconds}")
     long refreshTokenValidityMilliseconds;
@@ -65,6 +64,7 @@ public class UserService {
         this.refreshTokenRepository = refreshTokenRepository;
         this.userCustomRepository = userCustomRepository;
         this.jwtUtils = jwtUtils;
+
     }
 
     public User registerUser(RegistrationRequest registrationRequest) {
@@ -77,6 +77,7 @@ public class UserService {
                 .username(registrationRequest.getName())
                 .phone(registrationRequest.getPhone())
                 .password(passwordEncoder.encode(registrationRequest.getPassword()))
+                .email(registrationRequest.getEmail())
                 .build();
         userRepository.save(user);
         return user;
@@ -162,5 +163,15 @@ public class UserService {
                 .data(users)
                 .build();
     }
+
+    public void verifyAccount(Long id) {
+        System.out.println(id);
+        Optional<User> user = userRepository.findById(id);
+        user.get().setUserStatus(UserStatus.ACTIVATED);
+        userRepository.save(user.get());
+    }
+
+
+
 
 }

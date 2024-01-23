@@ -1,6 +1,10 @@
 $(document).ready(function () {
     toastr.options.timeOut = 2000;
 
+    $.validator.addMethod("emailFormat", function (value, element) {
+        return this.optional(element) || /^[A-Za-z0-9+_.-]+@(.+)$/i.test(value);
+    }, "Vui lòng nhập email hợp lệ");
+
     $.validator.addMethod("vietnamesePhone", function (value, element) {
         return this.optional(element) || /^0[0-9]{9}/i.test(value);
     }, "SDT phải là dãy 10 ký tụ số bắt đầu bằng số 0(mặc định");
@@ -23,6 +27,11 @@ $(document).ready(function () {
                 vietnamesePhone: true,
                 maxlength: 10
             },
+            'email': {
+                required: true,
+                emailFormat: true,
+                maxlength: 50
+            },
             'password': {
                 required: true,
                 passwordFormat: true,
@@ -38,6 +47,11 @@ $(document).ready(function () {
                 required: "Mobie number is required",
                 maxlength: "Mobie number must be less than 10 characters",
                 vietnamesePhone: "Mobie number must be a sequence of 10 digits starting with 0"
+            },
+            'email': {
+                required: "Email is required",
+                emailFormat: "Please enter a valid email address",
+                maxlength: "Username must be less than 50 characters"
             },
             'password': {
                 required: "Password is required",
@@ -65,6 +79,8 @@ $(document).ready(function () {
         }
 
 
+
+
         $.ajax({
             url: "/authentication/signup",
             type: "POST",
@@ -90,10 +106,10 @@ $(document).ready(function () {
         onkeyup: false,
         onclick: false,
         rules: {
-            "phone": {
+            'email': {
                 required: true,
-                vietnamesePhone: true,
-                maxlength: 10
+                emailFormat: true,
+                maxlength: 50
             },
             'password': {
                 required: true,
@@ -101,10 +117,10 @@ $(document).ready(function () {
             }
         },
         messages: {
-            "phone": {
-                required: "Mobie number is required",
-                maxlength: "Mobie number must be less than 10 characters",
-                vietnamesePhone: "Mobie number must be a sequence of 10 digits starting with 0"
+            'email': {
+                required: "Email is required",
+                emailFormat: "Please enter a valid email address",
+                maxlength: "Username must be less than 50 characters"
             },
             'password': {
                 required: "Password is required",

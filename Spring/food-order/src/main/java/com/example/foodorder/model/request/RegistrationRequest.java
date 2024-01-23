@@ -22,5 +22,13 @@ public class RegistrationRequest {
     @NotBlank
     String phone;
 
+    @NotBlank
+    @Size(max = 50)
+    String email;
+
+    String role;
+
+
+
 
 }

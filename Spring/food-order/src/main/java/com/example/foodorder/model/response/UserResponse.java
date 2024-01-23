@@ -17,35 +17,34 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@FieldDefaults(level = AccessLevel.PRIVATE)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserResponse {
 
-    Long id;
+    private Long id;
 
-    String name;
+    private String name;
 
-    Set<Role> roles;
+    private Set<Role> roles;
 
-    String password;
+    private String password;
 
-    String address;
+    private String address;
 
-    String phone;
+    private String phone;
 
-    LocalDateTime birthday;
+    private LocalDateTime birthday;
 
-    String avatar;
+    private String avatar;
 
-    String email;
+    private String email;
 
-    LocalDateTime createdDateTime;
+    private LocalDateTime createdDateTime;
 
-    String createdBy;
+    private String createdBy;
 
-    LocalDateTime lastModifiedDateTime;
+    private LocalDateTime lastModifiedDateTime;
 
-    String lastModifiedBy;
+    private String lastModifiedBy;
 
 
 }
