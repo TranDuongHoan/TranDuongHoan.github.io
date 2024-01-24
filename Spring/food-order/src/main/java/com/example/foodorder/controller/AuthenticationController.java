@@ -104,12 +104,12 @@ public class AuthenticationController {
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody RegistrationRequest request) throws MessagingException {
 
-        User user = userRepository.findByEmail(request.getEmail());
+        Optional<User> user = Optional.ofNullable(userRepository.findByEmail(request.getEmail()));
         if (user.isPresent()) {
             return new ResponseEntity<>("Email is existed", HttpStatus.BAD_REQUEST);
         }
 
-        User user1 = userRepository.findByPhone(request.getPhone());
+        Optional<User> user1 = Optional.ofNullable(userRepository.findByPhone(request.getPhone()));
         if (user1.isPresent()) {
             return new ResponseEntity<>("Phone is existed", HttpStatus.BAD_REQUEST);
         }

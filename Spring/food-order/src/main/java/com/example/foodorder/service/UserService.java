@@ -137,7 +137,7 @@ public class UserService {
     }
 
     public void createUser(@Valid UserRequest request) throws ExistedUserException {
-        User userOptional = userRepository.findByUsername(request.getName());
+        Optional<User> userOptional = Optional.ofNullable(userRepository.findByUsername(request.getName()));
         if (!userOptional.isEmpty()) {
             throw new ExistedUserException();
         }
@@ -178,14 +178,14 @@ public class UserService {
 
     @Transactional
     public void changePassword(ChangePasswordRequest request) throws UserNotFoundException, PasswordNotMatchedException {
-        Optional<User> user = userRepository.findByEmail(request.getEmail());
+        Optional<User> user = Optional.ofNullable(userRepository.findByEmail(request.getEmail()));
         if (user.isPresent()) {
             throw new UserNotFoundException("User could not be found");
         }
         if (!request.getNewPassword().equals(request.getRenewPassword())) {
             throw new PasswordNotMatchedException("Password don't matched");
         }
-                user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+        user.setPassword(passwordEncoder.encode(request.getNewPassword()));
         userRepository.save(user);
     }
 
