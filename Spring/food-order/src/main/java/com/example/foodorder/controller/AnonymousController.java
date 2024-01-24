@@ -39,6 +39,11 @@ public class AnonymousController {
         return "forgot_password";
     }
 
+    @GetMapping("/change_password")
+    public String getChangePasswordPage(Model model) {
+        return "change_password";
+    }
+
     @GetMapping("/checkout")
     public String getCheckOutPage(Model model) {
         return "checkout";

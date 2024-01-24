@@ -35,10 +35,10 @@ public class DatabaseInitializer implements CommandLineRunner {
             Role userRole = Role.builder().name(Roles.USER).build();
             roleRepository.save(userRole);
 
-            User hoan = userRepository.findByPhone("0915814554");
+            User hoan = userRepository.findByEmail("tranhoan88@gmail.com");
             if (ObjectUtils.isEmpty(hoan)) {
                 User user2 = new User();
-                user2.setPhone("0915814554");
+                user2.setEmail("tranhoan88@gmail.com");
                 user2.setUsername("Hoan");
                 user2.setPassword(passwordEncoder.encode("hoan")); // Encrypt the password
                 Set<Role> roles2 = new HashSet<>();
@@ -52,10 +52,10 @@ public class DatabaseInitializer implements CommandLineRunner {
             Role adminRole = Role.builder().name(Roles.ADMIN).build();
             roleRepository.save(adminRole);
 
-            User admin = userRepository.findByPhone("0912345678");
+            User admin = userRepository.findByEmail("admin@gmail.com");
             if (ObjectUtils.isEmpty(admin)) {
                 User user1 = new User();
-                user1.setPhone("0912345678");
+                user1.setEmail("admin@gmail.com");
                 user1.setUsername("admin");
                 user1.setPassword(passwordEncoder.encode("admin")); // Encrypt the password
                 Set<Role> roles1 = new HashSet<>();

@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import java.io.File;
+
 
 @Service
 public class EmailService {
@@ -47,5 +47,19 @@ public class EmailService {
         javaMailSender.send(mimeMessage);
     }
 
+
+    public void otpSendingMail(String name, String receiver, String otp) throws MessagingException {
+
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper;
+        mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+        mimeMessageHelper.setFrom(sender);
+        mimeMessageHelper.setTo(receiver);
+        mimeMessageHelper.setText("Bạn <b>" + name +
+                "</b> thân mến,<br>Đây là OTP của bạn, OTP có giá trị sử dụng một lần duy nhất. Vui lòng truy cập website để lấy lại mật khẩu.<br>" +
+                otp, true);
+        mimeMessageHelper.setSubject("Lấy lại mật khẩu");
+        javaMailSender.send(mimeMessage);
+    }
 
 }

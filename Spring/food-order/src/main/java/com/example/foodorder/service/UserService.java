@@ -1,14 +1,15 @@
 package com.example.foodorder.service;
 
+import com.example.foodorder.entity.OTP;
 import com.example.foodorder.entity.Role;
 import com.example.foodorder.entity.User;
-import com.example.foodorder.exception.ExistedUserException;
-import com.example.foodorder.exception.RefreshTokenNotFoundException;
+import com.example.foodorder.exception.*;
 import com.example.foodorder.model.request.*;
 import com.example.foodorder.model.response.CommonResponse;
 import com.example.foodorder.model.response.JwtResponse;
 import com.example.foodorder.model.response.UserResponse;
 import com.example.foodorder.model.response.UserSearchResponse;
+import com.example.foodorder.repository.OTPJpaRepository;
 import com.example.foodorder.repository.RefreshTokenRepository;
 import com.example.foodorder.repository.RoleRepository;
 import com.example.foodorder.repository.UserRepository;
@@ -27,6 +28,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.ObjectUtils;
+
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -47,22 +50,23 @@ public class UserService {
 
     private final UserCustomRepository userCustomRepository;
 
+    private final OTPJpaRepository otpJpaRepository;
 
+    private final JwtUtils jwtUtils;
 
     @Value("${application.security.refreshToken.tokenValidityMilliseconds}")
     long refreshTokenValidityMilliseconds;
 
-    final JwtUtils jwtUtils;
-
     public UserService(PasswordEncoder passwordEncoder, UserRepository userRepository,
                        RoleRepository roleRepository, ObjectMapper objectMapper,
-                       RefreshTokenRepository refreshTokenRepository, UserCustomRepository userCustomRepository, JwtUtils jwtUtils) {
+                       RefreshTokenRepository refreshTokenRepository, UserCustomRepository userCustomRepository, OTPJpaRepository otpJpaRepository, JwtUtils jwtUtils) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.objectMapper = objectMapper;
         this.refreshTokenRepository = refreshTokenRepository;
         this.userCustomRepository = userCustomRepository;
+        this.otpJpaRepository = otpJpaRepository;
         this.jwtUtils = jwtUtils;
 
     }
@@ -172,6 +176,42 @@ public class UserService {
     }
 
 
+    @Transactional
+    public void changePassword(ChangePasswordRequest request) throws UserNotFoundException, PasswordNotMatchedException {
+        Optional<User> user = userRepository.findByEmail(request.getEmail());
+        if (user.isPresent()) {
+            throw new UserNotFoundException("User could not be found");
+        }
+        if (!request.getNewPassword().equals(request.getRenewPassword())) {
+            throw new PasswordNotMatchedException("Password don't matched");
+        }
+                user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+        userRepository.save(user);
+    }
 
 
+    @Transactional
+    public void forgetPassword(ForgetPasswordRequest request) throws UserNotFoundException, OTPNotMatchedException,
+            PasswordNotMatchedException, OTPNotFoundException, OTPExpiredException {
+        OTP otp = otpJpaRepository.findByOtp(request.getOtp());
+        if (ObjectUtils.isEmpty(otp)) {
+            throw new OTPNotFoundException("OTP "+ request.getOtp() + " could not be found" );
+        }
+        if (!request.getNewPassword().equals(request.getRenewPassword())) {
+            throw new PasswordNotMatchedException("Password don't matched");
+        }
+        //kiểm tra otp còn trong thời gian sống hay không
+        LocalDateTime currentTime = LocalDateTime.now();
+        LocalDateTime expirationTime = otpJpaRepository.findByOtp(request.getOtp()).getLiveTime();
+        if (currentTime.isAfter(expirationTime)) {
+            throw new OTPExpiredException("OTP " + request.getOtp() + " has already expired");
+        }
+        User user = otp.getUser();
+        user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+        userRepository.save(user);
+    }
+
+    public String getUserName(String email) {
+        return userRepository.findByEmail(email).getUsername();
+    }
 }
