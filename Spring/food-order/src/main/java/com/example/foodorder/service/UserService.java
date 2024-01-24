@@ -137,7 +137,7 @@ public class UserService {
     }
 
     public void createUser(@Valid UserRequest request) throws ExistedUserException {
-        Optional<User> userOptional = userRepository.findByUsername(request.getName());
+        User userOptional = userRepository.findByUsername(request.getName());
         if (!userOptional.isEmpty()) {
             throw new ExistedUserException();
         }
