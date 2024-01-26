@@ -9,9 +9,9 @@ $(document).ready(function () {
         return this.optional(element) || /^0[0-9]{9}/i.test(value);
     }, "SDT phải là dãy 10 ký tụ số bắt đầu bằng số 0(mặc định");
 
-    $.validator.addMethod("passwordFormat", function (value, element) {
-        return this.optional(element) || /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{10,}$/i.test(value);
-    }, "Mật khẩu tối đa 10 ký tự, ít nhất một chữ cái, một số và một ký tự đặc biệt");
+    // $.validator.addMethod("passwordFormat", function (value, element) {
+    //     return this.optional(element) || /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]$/i.test(value);
+    // }, "Mật khẩu tối đa 10 ký tự, ít nhất một chữ cái, một số và một ký tự đặc biệt");
 
     const signupValidator = $('#sign-up-form').validate({
         onfocusout: false,
@@ -34,8 +34,7 @@ $(document).ready(function () {
             },
             'password': {
                 required: true,
-                passwordFormat: true,
-                maxlength: 10
+                // passwordFormat: true
             }
         },
         messages: {
@@ -54,8 +53,7 @@ $(document).ready(function () {
                 maxlength: "Email must be less than 50 characters"
             },
             'password': {
-                required: "Password is required",
-                passwordFormat: "Password must be less than 10 characters"
+                required: "Password is required"
             }
         }
     });
@@ -113,18 +111,18 @@ $(document).ready(function () {
             },
             'password': {
                 required: true,
-                passwordFormat: true,
+                // passwordFormat: true,
             }
         },
         messages: {
             'email': {
                 required: "Email is required",
                 emailFormat: "Please enter a valid email address",
-                maxlength: "Username must be less than 50 characters"
+                maxlength: "Email must be less than 50 characters"
             },
             'password': {
                 required: "Password is required",
-                passwordFormat: "Password must be less than 10 characters"
+                // passwordFormat: "Password must be less than 10 characters"
             }
         }
     });
@@ -165,7 +163,7 @@ $(document).ready(function () {
                 localStorage.setItem("user-info", JSON.stringify(userInfo));
                 setTimeout(() => {
                     if (data.roles == 'ADMIN') {
-                        window.location.href = "http://localhost:8080/courses/analysis/admin";
+                        window.location.href = "http://localhost:8080";
                     } else {
                         window.location.href = "http://localhost:8080";
                     }
