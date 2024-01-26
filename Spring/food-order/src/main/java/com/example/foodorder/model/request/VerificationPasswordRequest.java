@@ -1,4 +1,4 @@
-package com.example.foodorder.exception;
+package com.example.foodorder.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,18 +13,17 @@ import javax.validation.constraints.Pattern;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ForgetPasswordRequest {
+public class VerificationPasswordRequest {
 
     @NotBlank(message = "OTP is required")
     private String otp;
 
     @NotBlank(message = "New password is required")
-    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$", message = "Must be password format")
+//    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$", message = "Must be password format")
     private String newPassword;
 
     @NotBlank(message = "Renew password is required")
-    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$", message = "Must be password format")
+//    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$", message = "Must be password format")
     private String renewPassword;
-
 
 }

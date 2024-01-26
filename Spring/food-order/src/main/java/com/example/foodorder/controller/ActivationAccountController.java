@@ -17,6 +17,6 @@ public class ActivationAccountController {
     @GetMapping("/accounts/{id}/activation")
     public String getAccountActivationPage(@PathVariable Long id, Model model) {
         userService.verifyAccount(id);
-        return "redirect:/";
+        return "redirect:/account_activation_successful";
     }
 }

@@ -2,8 +2,10 @@ package com.example.foodorder.controller;
 
 
 import com.example.foodorder.exception.*;
-import com.example.foodorder.model.request.ChangePasswordRequest;
+import com.example.foodorder.model.request.ForgotPasswordRequest;
 import com.example.foodorder.model.request.MailRequest;
+import com.example.foodorder.model.request.UpdatePasswordRequest;
+import com.example.foodorder.model.request.VerificationPasswordRequest;
 import com.example.foodorder.service.EmailService;
 import com.example.foodorder.service.OTPService;
 import com.example.foodorder.service.UserService;
@@ -30,19 +32,25 @@ public class ProfileController {
         return "profile/profile";
     }
 
-    @GetMapping("/forget-password")
-    public String getForgetPasswordPage(Model model) {
-        return "profile/forget-password";
+    @GetMapping("/forgot_password")
+    public String getForgotPasswordPage(Model model) {
+        return "profile/forgot_password";
     }
 
-    @PutMapping("/changePassword")
-    public ResponseEntity<?> changePassword(@RequestBody @Valid ChangePasswordRequest request)
+    @GetMapping("/verification")
+    public String getVerificationPage(Model model) {
+        return "profile/verification";
+    }
+
+
+    @PutMapping("/change_password")
+    public ResponseEntity<?> changePassword(@RequestBody @Valid UpdatePasswordRequest request)
             throws UserNotFoundException, PasswordNotMatchedException {
         userService.changePassword(request);
         return ResponseEntity.ok(null);
     }
 
-    @PostMapping("/otp-sending")
+    @PostMapping("/forgot_password")
     public ResponseEntity<?> otpSending(@RequestBody @Valid MailRequest request) throws MessagingException {
         String otp = otpService.createOTP(request.getEmail());
         String fullName = userService.getUserName(request.getEmail());
@@ -51,10 +59,10 @@ public class ProfileController {
     }
 
 
-    @PutMapping("/forgetPassword")
-    public ResponseEntity<?> forgetPassword(@RequestBody @Valid ForgetPasswordRequest request) throws UserNotFoundException,
+    @PutMapping("/verification")
+    public ResponseEntity<?> verificationPassword(@RequestBody @Valid VerificationPasswordRequest request) throws UserNotFoundException,
             OTPNotMatchedException, PasswordNotMatchedException, OTPNotFoundException, OTPExpiredException {
-        userService.forgetPassword(request);
+        userService.verificationPassword(request);
         return ResponseEntity.ok(null);
     }
 

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/mailSending")
 public class EmailSendingController {
 
-
     @GetMapping
     public String getMailSendingManagementPage(Model model) {
         return "admin/mail-sending/manage-mail-sending";

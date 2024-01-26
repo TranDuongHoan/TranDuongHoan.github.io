@@ -31,24 +31,37 @@
         <div class="d-flex align-items-center justify-content-center flex-column vh-100">
             <div class="px-5 col-md-6 ms-auto">
                 <div class="px-5 col-10 mx-auto mb-4">
-                    <h2 class="mb-3">Verify your phone number</h2>
+                    <h2 class="mb-3">Verify your email</h2>
                     <h6 class="text-black-50">Enter your OTP code here</h6>
-                    <form action="/home">
+                    <form action="/home" id="verification-form">
                         <div class="row my-5 mx-0 otp">
                             <div class="col pe-1 ps-0">
-                                <input type="text" value="4" class="form-control form-control-lg">
+                                <input type="text" class="form-control form-control-lg" id="otp-1" name="otp-1" maxlength="1" pattern="[0-9]">
                             </div>
                             <div class="col px-2">
-                                <input type="text" value="0" class="form-control form-control-lg">
+                                <input type="text" class="form-control form-control-lg" id="otp-2" name="otp-2" maxlength="1" pattern="[0-9]">
                             </div>
                             <div class="col px-2">
-                                <input type="text" value="8" class="form-control form-control-lg">
+                                <input type="text" class="form-control form-control-lg"id="otp-3" name="otp-3" maxlength="1" pattern="[0-9]">
                             </div>
                             <div class="col ps-1 pe-0">
-                                <input type="text" value="0" class="form-control form-control-lg">
+                                <input type="text" class="form-control form-control-lg"id="otp-4" name="otp-4" maxlength="1" pattern="[0-9]">
                             </div>
+
+                            <div class ="row my-5 mx-0 password">
+                                <h6 class="text-black-50">Enter your password here</h6>
+                                <div class="form-group">
+                                    <label class="form-label pb-1" for="new-password">New password</label>
+                                    <input type="password" class="form-control py-1" id="new-password" name="newPassword">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label pb-1" for="renew-password">Renew password</label>
+                                    <input type="password" class="form-control py-1" id="renew-password" name="renewPassword">
+                                </div>
+                            </div>
+
                         </div>
-                        <button class="btn btn-lg btn-primary w-100">Verify Now</button>
+                        <button class="btn btn-lg btn-primary w-100" id="verification-btn" type="button">Verify Now</button>
                     </form>
                 </div>
                 <div class="new-acc d-flex align-items-center justify-content-center">
@@ -162,10 +175,13 @@
     <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- slick Slider JS-->
     <script type="text/javascript" src="vendor/slick/slick/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
     <!-- Sidebar JS-->
     <script type="text/javascript" src="vendor/sidebar/hc-offcanvas-nav.js"></script>
     <!-- Custom scripts for all pages-->
     <script type="text/javascript" src="js/osahan.js"></script>
+    <script src="js/profile.js"></script>
 </body>
 
 </html>

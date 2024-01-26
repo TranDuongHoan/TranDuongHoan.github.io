@@ -51,7 +51,7 @@ $(document).ready(function () {
             'email': {
                 required: "Email is required",
                 emailFormat: "Please enter a valid email address",
-                maxlength: "Username must be less than 50 characters"
+                maxlength: "Email must be less than 50 characters"
             },
             'password': {
                 required: "Password is required",

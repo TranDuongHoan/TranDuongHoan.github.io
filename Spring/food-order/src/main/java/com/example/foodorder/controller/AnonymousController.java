@@ -89,4 +89,9 @@ public class AnonymousController {
         return "not-found";
     }
 
+    @GetMapping("/account_activation_successful")
+    public String activationAccountSuccessful(Model model) {
+        return "account_activation_successful";
+    }
+
 }

@@ -23,7 +23,7 @@ public class OTPService {
 
     public String createOTP(String email) {
         Random random = new Random();
-        int newOTP = 10000 + random.nextInt(90000);
+        int newOTP = 1000 + random.nextInt(9000);
         User user = userRepository.findByEmail(email);
         LocalDateTime currentTime = LocalDateTime.now();
         LocalDateTime expirationTime = currentTime.plus(OTP_EXPIRATION_MILLISECOND, ChronoUnit.MILLIS);
