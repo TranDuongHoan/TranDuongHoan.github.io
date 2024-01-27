@@ -104,10 +104,10 @@ $(document).ready(function () {
         onkeyup: false,
         onclick: false,
         rules: {
-            'email': {
+            "phone": {
                 required: true,
-                emailFormat: true,
-                maxlength: 50
+                vietnamesePhone: true,
+                maxlength: 10
             },
             'password': {
                 required: true,
@@ -115,13 +115,13 @@ $(document).ready(function () {
             }
         },
         messages: {
-            'email': {
-                required: "Email is required",
-                emailFormat: "Please enter a valid email address",
-                maxlength: "Email must be less than 50 characters"
+            "phone": {
+                required: "Mobie number is required",
+                maxlength: "Mobie number must be less than 10 characters",
+                vietnamesePhone: "Mobie number must be a sequence of 10 digits starting with 0"
             },
             'password': {
-                required: "Password is required",
+                required: "Password is required"
                 // passwordFormat: "Password must be less than 10 characters"
             }
         }
@@ -156,14 +156,15 @@ $(document).ready(function () {
                 localStorage.setItem("refresh-token", data.refreshToken);
                 const userInfo = {
                     roles: data.roles,
+                    phone: data.phone,
                     email: data.email,
-                    fullName: data.fullName,
+                    userName: data.userName,
                     avatar: data.avatar
                 };
                 localStorage.setItem("user-info", JSON.stringify(userInfo));
                 setTimeout(() => {
                     if (data.roles == 'ADMIN') {
-                        window.location.href = "http://localhost:8080";
+                        window.location.href = "http://localhost:8080/courses/analysis";
                     } else {
                         window.location.href = "http://localhost:8080";
                     }

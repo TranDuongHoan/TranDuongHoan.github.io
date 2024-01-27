@@ -77,6 +77,9 @@ $(document).ready(() => {
             success: function (data) {
                 toastr.success("Thay đổi mật khẩu thành công!");
                 console.log(data);
+                setTimeout(() => {
+                    window.location.href = "http://localhost:8080";
+                }, 3000);
             },
             error: function (error) {
                 toastr.error("Đã có lỗi xảy ra, vui lòng thử lại sau!");

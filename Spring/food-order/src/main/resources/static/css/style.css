@@ -1334,4 +1334,8 @@ footer .text-muted {
         flex: unset !important;
         max-width: 100%;
     }
+
+    .error {
+        color: red;
+    }
 }
