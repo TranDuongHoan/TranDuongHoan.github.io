@@ -5,6 +5,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -18,7 +19,7 @@ public class Seller extends  BaseEntity{
 
     @JoinColumn(name = "cart_id")
     @ManyToOne
-    private Cart cart;
+    Cart cart;
 
     @Column(name = "shop_name")
     String shopName;
@@ -31,6 +32,7 @@ public class Seller extends  BaseEntity{
 
     @Column(name = "rating")
     String rating;
+
 
 
 

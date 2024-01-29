@@ -1,16 +1,44 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test_spring_web_MVC
+    url: jdbc:mysql://localhost:3306/food_order
     username: root
     password: 123
+    driver-class-name: com.mysql.jdbc.Driver
   jpa:
-    database: mysql
-    show-sql: true
     hibernate:
       ddl-auto: update
+    show-sql: true
+    database: mysql
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
   mail:
+    host: smtp.gmail.com
     username: tranhoan88@gmail.com
-    password: DtNa@2023
+    password: lwxz iawv riyq wnwd
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
+  thymeleaf: # Thymeleaf
+    cache: false
+    mode: HTML
+    encoding: UTF-8
+    prefix: file:src/main/resources/templates/
+    resources: # Static resources
+      static-locations: file:src/main/resources/static/
+      cache:
+        period: 0e
 
+application:
+  security:
+    jwt:
+      secretKey: 10371e90d78b54c3b23b0616976a51e26553ef4954f312457d9322e1eca6dcf3091b55331c465f5fd262905538aa463a9f2acc0a
+      tokenValidityMilliseconds: 900000
+      rememberMeTokenValiditySeconds: 86400000
+    refreshToken:
+      tokenValidityMilliseconds: 86400000

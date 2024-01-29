@@ -7,10 +7,7 @@ import lombok.experimental.FieldDefaults;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Column;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.LocalDateTime;
 
 @Data
@@ -36,7 +33,7 @@ public class UserRequest {
     @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
     LocalDateTime birthday;
 
-    @Length(max = 255, message = "Avatar must be less than 255 characters")
+    @NotEmpty(message = "Avatar is required")
     String avatar;
 
     @NotBlank(message = "Email is required")
@@ -45,6 +42,6 @@ public class UserRequest {
     @Length(max = 255, message = "Email must be less than 255 characters")
     String email;
 
-    private UserStatus userStatus;
+    UserStatus userStatus;
 
 }

@@ -20,32 +20,31 @@ import javax.validation.Valid;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/profile")
+@RequestMapping("/")
 public class ProfileController {
     private final UserService userService;
     private final EmailService emailService;
     private final OTPService otpService;
 
-
-    @GetMapping
-    public String getProfilePage(Model model) {
-        return "profile/profile";
+    @GetMapping("/verification")
+    public String getVerificationPage(Model model) {
+        return "verification";
     }
 
     @GetMapping("/forgot_password")
     public String getForgotPasswordPage(Model model) {
-        return "profile/forgot_password";
+        return "forgot_password";
     }
 
-    @GetMapping("/verification")
-    public String getVerificationPage(Model model) {
-        return "profile/verification";
+    @GetMapping("/change_password")
+    public String getChangePasswordPage(Model model) {
+        return "change_password";
     }
 
 
     @PutMapping("/change_password")
     public ResponseEntity<?> changePassword(@RequestBody @Valid UpdatePasswordRequest request)
-            throws UserNotFoundException, PasswordNotMatchedException {
+            throws PasswordNotMatchedException {
         userService.changePassword(request);
         return ResponseEntity.ok(null);
     }

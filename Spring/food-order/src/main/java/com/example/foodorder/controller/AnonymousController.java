@@ -29,19 +29,9 @@ public class AnonymousController {
         return "signin";
     }
 
-    @GetMapping("/verification")
-    public String getVerificationPage(Model model) {
-        return "verification";
-    }
-
-    @GetMapping("/forgot_password")
-    public String getForgotPasswordPage(Model model) {
-        return "forgot_password";
-    }
-
-    @GetMapping("/change_password")
-    public String getChangePasswordPage(Model model) {
-        return "change_password";
+    @GetMapping("/profile")
+    public String getProfilePage(Model model) {
+        return "profile";
     }
 
     @GetMapping("/checkout")

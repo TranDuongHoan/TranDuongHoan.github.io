@@ -177,8 +177,10 @@ public class UserService {
 
 
     @Transactional
-    public void changePassword(UpdatePasswordRequest request) throws UserNotFoundException, PasswordNotMatchedException {
-        User user = userRepository.findByEmail(request.getNewPassword());
+    public void changePassword(UpdatePasswordRequest request) throws PasswordNotMatchedException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+        User user = customUserDetails.getUser();
         if (!request.getNewPassword().equals(request.getRenewPassword())) {
             throw new PasswordNotMatchedException("Password don't matched");
         }

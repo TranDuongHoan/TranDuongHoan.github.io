@@ -24,7 +24,7 @@ public class User extends BaseEntity{
 
     @OneToOne
     @JoinTable(name = "seller")
-    private Seller seller;
+    Seller seller;
 
     @Column(name = "user_name")
     String username;
@@ -49,13 +49,13 @@ public class User extends BaseEntity{
 
     @Column
     @Enumerated(EnumType.STRING)
-    private UserStatus userStatus;
+    UserStatus userStatus;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles = new HashSet<>();
+    Set<Role> roles = new HashSet<>();
 
 
     

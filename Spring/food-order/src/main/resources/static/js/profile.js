@@ -30,7 +30,7 @@ $(document).ready(() => {
             },
             "renewPassword": {
                 required: true,
-                equalTo: '#newPassword'
+                equalTo: '#new-password'
             }
         },
         messages: {
@@ -66,12 +66,12 @@ $(document).ready(() => {
         for (let i = 0; i < changePasswordData.length; i++) {
             requestBody[changePasswordData[i].name] = changePasswordData[i].value;
         }
-        requestBody["email"] = email;
+
         console.log(requestBody)
         //call api lên backend
         await $.ajax({
             type: "PUT",
-            url: "/profile/change_password",
+            url: "/change_password/",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(requestBody),
             success: function (data) {
@@ -131,7 +131,7 @@ $(document).ready(() => {
         //call api lên backend
         await $.ajax({
             type: "POST",
-            url: "/profile/forgot_password",
+            url: "/forgot_password/",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(requestBody),
             success: function (data) {
@@ -205,7 +205,7 @@ $(document).ready(() => {
         //call api lên backend
         await $.ajax({
             type: "PUT",
-            url: "/profile/verification",
+            url: "/verification/",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(requestBody),
             success: function (data) {
