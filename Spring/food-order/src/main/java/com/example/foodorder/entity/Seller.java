@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name = "sellers")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
-public class Seller extends  BaseEntity{
+public class Seller extends BaseEntity{
 
     @JoinColumn(name = "cart_id")
     @ManyToOne
